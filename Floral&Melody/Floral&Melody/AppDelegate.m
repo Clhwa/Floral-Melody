@@ -40,7 +40,7 @@
     FindViewController * FindVC = [[FindViewController alloc] init];
     
     UINavigationController * FindNav = [[UINavigationController alloc] initWithRootViewController:FindVC];
-    
+
     FindNav.tabBarItem.title = @"百科";
     
 #pragma mark - JMRadio

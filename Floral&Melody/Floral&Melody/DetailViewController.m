@@ -8,17 +8,18 @@
 
 #import "DetailViewController.h"
 #import <WebKit/WebKit.h>
-#import "MJRefresh.h"
+
 #import "WarnLabel.h"
 #import "GoToTopButton.h"
 #import "XLHMJRefresh.h"
 #define WIDTH self.view.frame.size.width
 #define HEIGHT self.view.frame.size.height
-@interface DetailViewController ()<WKNavigationDelegate>
+@interface DetailViewController ()<UIScrollViewDelegate,UIWebViewDelegate>
 
-@property(nonatomic,strong)WKWebView *web;
+@property(nonatomic,strong)UIWebView *web;
 @property(nonatomic,strong)UIActivityIndicatorView *act;
-@property(nonatomic,strong)UILabel *collectView;
+@property(nonatomic,strong)UIButton *collectView;
+@property(nonatomic,strong)GoToTopButton *button;
 @end
 
 @implementation DetailViewController
@@ -26,26 +27,52 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    _web = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    _web = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_web];
-    _web.navigationDelegate = self;
-    //异步
-    [self performSelectorInBackground:@selector(loadWeb) withObject:nil];
+    _web.scrollView.delegate = self;
+    _web.delegate = self;
+    
+    //加载
+    [self loadWeb];
     //添加刷新
-//    [_web.scrollView addHeaderWithTarget:self action:@selector(refresh)];
     MJRefreshNormalHeader * header = [[XLHMJRefresh shareXLHMJRefresh] header];
     header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refresh)];
     _web.scrollView.mj_header = header;
     //置顶
-    GoToTopButton *button = [[GoToTopButton alloc]initWithFrame:CGRectMake(WIDTH-20-45, HEIGHT-64-20-45, 45, 45) withControlView:_web.scrollView];
-    [self.view addSubview:button];
+    _button = [[GoToTopButton alloc]initWithFrame:CGRectMake(WIDTH-20-45, HEIGHT-64-20-45, 45, 45) withControlView:_web.scrollView];
+    [self.view addSubview:_button];
 
     //添加收藏按钮
-    
+    [self.view addSubview:self.collectView];
     
     // Do any additional setup after loading the view.
 }
+#pragma mark-出现
+-(void)appearCollectButton
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        self.collectView.alpha = 0.6;
+        self.button.alpha = 0.6;
+    }];
+}
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    [self appearCollectButton];
+}
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self appearCollectButton];
+}
 
+#pragma mark-滚动隐藏
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.collectView.alpha != 0) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.collectView.alpha = 0;
+            self.button.alpha = 0;
+        }];
+    }
+}
 
 #pragma amrk-刷新
 -(void)refresh
@@ -61,30 +88,25 @@
     [_web loadRequest:request];
 }
 #pragma mark-代理方法
--(void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation
+-(void)webViewDidStartLoad:(UIWebView *)webView
 {
     [self.act startAnimating];
 }
--(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
+-(void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [_web.scrollView.mj_header endRefreshing];
     [_act stopAnimating];
     WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
     warnLab.text = @"网页加载成功";
+    [self performSelector:@selector(appearCollectButton) withObject:nil afterDelay:0.8];
 }
--(void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {//这个
     [_web.scrollView.mj_header endRefreshing];
     [_act stopAnimating];
     WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
     warnLab.text = @"加载失败了,亲";
-}
--(void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error
-{
-    [_web.scrollView.mj_header endRefreshing];
-    [_act stopAnimating];
-    WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
-    warnLab.text = @"加载失败了,亲";
+    [self performSelector:@selector(appearCollectButton) withObject:nil afterDelay:0.8];
 }
 #pragma mark-懒加载
 -(UIActivityIndicatorView *)act
@@ -97,15 +119,41 @@
     }
     return _act;
 }
--(UILabel *)collectView
+#pragma makr-收藏
+-(void)collect
+{
+    NSString *str = [NSString string];
+    if ([self.collectView.titleLabel.text isEqualToString:@"收藏"]) {
+        str = @"已收藏";
+    }else if ([self.collectView.titleLabel.text isEqualToString:@"已收藏"]){
+        str = @"收藏";
+    }
+    [UIView animateWithDuration:0.2 animations:^{
+        self.collectView.transform = CGAffineTransformMakeTranslation(self.collectView.frame.size.width, 0);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^{
+            self.collectView.transform = CGAffineTransformIdentity;
+            [self.collectView setTitle:str forState:UIControlStateNormal];
+        }];
+    }];
+}
+
+-(UIButton *)collectView
 {
     if (!_collectView) {
-        _collectView = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+        _collectView = [UIButton buttonWithType:UIButtonTypeCustom];
+        _collectView.frame = CGRectMake(WIDTH-25, 150, 30, 80);
         _collectView.backgroundColor = [UIColor blackColor];
-        _collectView.alpha = 0.5;
-        _collectView.text = @"收藏";
-        _collectView.numberOfLines = 0;
-        _collectView.textColor = [UIColor whiteColor];
+        _collectView.alpha = 0.6;
+        [_collectView setTitle:@"收藏" forState:UIControlStateNormal];
+        _collectView.titleLabel.numberOfLines = 0;
+        [_collectView setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
+        _collectView.layer.cornerRadius = 5;
+        _collectView.layer.masksToBounds = YES;
+        
+        [_collectView addTarget:self action:@selector(collect) forControlEvents:UIControlEventTouchUpInside];
+        
     }
     return _collectView;
 }

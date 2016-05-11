@@ -35,9 +35,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
+   
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"百科";
+
     
     [self loadData];
     
@@ -171,7 +172,7 @@
         layout.minimumLineSpacing = SPACE;
         layout.sectionInset = UIEdgeInsetsMake(EDG, SPACE, EDG, SPACE);
         
-        _collect = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-64) collectionViewLayout:layout];
+        _collect = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 64, WIDTH, HEIGHT-64-49) collectionViewLayout:layout];
         _collect.backgroundColor =[UIColor whiteColor];
         [self.view addSubview:_collect];
         _collect.delegate = self;

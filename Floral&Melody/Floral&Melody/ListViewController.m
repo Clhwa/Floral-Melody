@@ -29,7 +29,7 @@
 @property(nonatomic,assign)NSInteger number;
 @property(nonatomic,strong)UICollectionView* collectionView;
 @property(nonatomic,strong)NSMutableArray *dataArr;
-
+@property(nonatomic,strong)GoToTopButton *button;
 @property(nonatomic,strong)NSString *warnStr;
 @property(nonatomic,assign)CGFloat mycenterY;
 
@@ -49,6 +49,30 @@ static const CGFloat kFirstItemTransform = 0.05f;
     
     
     // Do any additional setup after loading the view.
+}
+#pragma mark-滚动后出现
+-(void)appearCollectButton
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        self.button.alpha = 0.6;
+    }];
+}
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    [self appearCollectButton];
+}
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self appearCollectButton];
+}
+
+#pragma mark-滚动隐藏
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.button.alpha != 0) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.button.alpha = 0;
+        }];
+    }
 }
 #pragma mark-搜索页面数据
 -(void)seekViewLoadData
@@ -79,8 +103,9 @@ static const CGFloat kFirstItemTransform = 0.05f;
     _collectionView.mj_footer = footer;
 
     //置顶
-    GoToTopButton *button = [[GoToTopButton alloc]initWithFrame:CGRectMake(WIDTH-20-45, HEIGHT-64-20-45, 45, 45) withControlView:_collectionView];
-    [self.view addSubview:button];
+    _button = [[GoToTopButton alloc]initWithFrame:CGRectMake(WIDTH-20-45, HEIGHT-64-20-45, 45, 45) withControlView:_collectionView];
+    [self.view addSubview:_button];
+    _button.alpha = 0.6;
 }
 #pragma mark-判断加载哪个URL
 -(void)jugeWhichURLToloadData
@@ -201,7 +226,7 @@ static const CGFloat kFirstItemTransform = 0.05f;
                 ListContent *content = [[ListContent alloc]init];
                 [content setValuesForKeysWithDictionary:dic2];
                 [self.dataArr addObject:content];
-//                NSLog(@"name=%@",content.Name);
+
             }
             
         }else{
@@ -242,7 +267,7 @@ static const CGFloat kFirstItemTransform = 0.05f;
 {
     if (!_collectionView) {
         StickCollectionViewFlowLayout *layout = [[StickCollectionViewFlowLayout alloc]init];
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-64) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 64, WIDTH, HEIGHT-64-49) collectionViewLayout:layout];
         layout.firstItemTransform = kFirstItemTransform;
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.delegate = self;
