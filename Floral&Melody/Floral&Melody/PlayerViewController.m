@@ -15,7 +15,7 @@
 #define ControllerHeight 70
 #define kJJColor(r,g,b) [UIColor colorWithRed:(r/255.0) green:(g/255.0) blue:(b/255.0) alpha:1.0]
 
-@interface PlayerViewController ()<UIScrollViewDelegate,JJPlayerDeleger,UIWebViewDelegate>
+@interface PlayerViewController ()<UIScrollViewDelegate,JJPlayerDeleger>
 
 @property(nonatomic,strong)JJPlayer *player;
 @property(nonatomic,strong)AVPlayerItem *PlayItem;
@@ -327,7 +327,7 @@
     //webview
     self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(KWidth, 0, KWidth, KHeight-55-70)];
     [self.scrollV addSubview:self.webView];
-    _webView.delegate = self;
+    
    
 //    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.music.webview_url]]];
 
@@ -363,14 +363,6 @@
     int minute = interVal / 60;
     int second = (int)interVal % 60;
     return [NSString stringWithFormat:@"%d:%02d",minute,second];
-}
--(void)webViewDidFinishLoad:(UIWebView *)webView
-{
-#pragma mark - WebView-color
-   //改变背景颜色
-    NSString *str7 = @"document.getElementsByTagName('body')[0].style.backgroundColor='yellow'";
-    [_webView stringByEvaluatingJavaScriptFromString:str7];
-//    [UIColor blackColor];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

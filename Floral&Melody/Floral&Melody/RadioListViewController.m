@@ -45,8 +45,8 @@
     footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(requestMore)];
     _tableV.mj_footer = footer;
     
-    
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 //刷新
 -(void)refresh
@@ -136,7 +136,7 @@
     [self.headerV sd_setImageWithURL:[NSURL URLWithString:self.radio.coverimg]];
     
     //tableView
-    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KWidth, KHeight-64)];
+    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KWidth, KHeight-64-49)];
     self.tableV.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.tableV];
     _tableV.delegate = self;

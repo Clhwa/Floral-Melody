@@ -65,6 +65,7 @@
     NSMutableArray * array = [NSMutableArray arrayWithObjects: SpecialNav, FindNav, JMNav, mineNav, nil];
     
     tabbar.viewControllers = array;
+
     
     /** Set rootViewController **/
     self.window.rootViewController = tabbar;
