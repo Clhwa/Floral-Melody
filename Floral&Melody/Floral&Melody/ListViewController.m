@@ -68,6 +68,9 @@ static const CGFloat kFirstItemTransform = 0.05f;
 #pragma mark-滚动隐藏
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    if (![self.view.subviews containsObject:self.button]) {
+        [self.view addSubview:self.button];
+    }
     if (self.button.alpha != 0) {
         [UIView animateWithDuration:0.3 animations:^{
             self.button.alpha = 0;
@@ -102,10 +105,7 @@ static const CGFloat kFirstItemTransform = 0.05f;
     footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
     _collectionView.mj_footer = footer;
 
-    //置顶
-    _button = [[GoToTopButton alloc]initWithFrame:CGRectMake(WIDTH-20-45, HEIGHT-64-20-45, 45, 45) withControlView:_collectionView];
-    [self.view addSubview:_button];
-    _button.alpha = 0.6;
+    
 }
 #pragma mark-判断加载哪个URL
 -(void)jugeWhichURLToloadData
@@ -263,6 +263,15 @@ static const CGFloat kFirstItemTransform = 0.05f;
     _numberLab.attributedText = colorString;
 }
 #pragma mark-懒加载
+-(GoToTopButton *)button
+{
+    if (!_button) {
+        //置顶
+        _button = [[GoToTopButton alloc]initWithFrame:CGRectMake(WIDTH-20-45, HEIGHT-64-20-45, 45, 45) withControlView:_collectionView];
+        _button.alpha = 0.6;
+    }
+    return _button;
+}
 -(UICollectionView *)collectionView
 {
     if (!_collectionView) {

@@ -12,8 +12,8 @@
 
 @property(nonatomic,assign)NSInteger TypeId;
 @property(nonatomic,strong)NSString *TypeName;
-@property(nonatomic,strong)NSString *ImageUrl;
+//@property(nonatomic,strong)NSString *ImageUrl;
 
-@property(nonatomic,strong)UIImage *image;
+//@property(nonatomic,strong)UIImage *image;
 
 @end
