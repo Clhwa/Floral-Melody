@@ -27,17 +27,18 @@
 const CGFloat RPSlidingCellFeatureHeight = 200.0f;
 const CGFloat RPSlidingCellCollapsedHeight = 88.0f;
 const CGFloat RPSlidingCellDetailTextPadding = 20.0f;
-const CGFloat RPSlidingMenuNormalImageCoverAlpha = 0.5f;
+const CGFloat RPSlidingMenuNormalImageCoverAlpha = 0.6f;
 const CGFloat RPSlidingMenuFeaturedImageCoverAlpha = 0.2f;
 
 @interface RPSlidingMenuCell ()
 
 @property (strong, nonatomic) UIView *imageCover;
+@property(nonatomic,strong)CAGradientLayer *layer;
 
 @end
 
 @implementation RPSlidingMenuCell
-
+@synthesize layer;
 - (id)initWithFrame:(CGRect)frame {
 
     self = [super initWithFrame:frame];
@@ -59,13 +60,15 @@ const CGFloat RPSlidingMenuFeaturedImageCoverAlpha = 0.2f;
 - (void)setupTextLabel {
 
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    self.textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenRect.size.width, self.contentView.frame.size.height)];
+    self.textLabel =
+    [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenRect.size.width, self.contentView.frame.size.height)];
     self.textLabel.center = self.contentView.center;
-    self.textLabel.font = [UIFont boldSystemFontOfSize:32.0];
+    self.textLabel.font =  [UIFont boldSystemFontOfSize:20.0f];
     self.textLabel.textColor = [UIColor whiteColor];
     self.textLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.textLabel];
 }
+
 
 - (void)setupDetailTextLabel {
 
@@ -102,6 +105,26 @@ const CGFloat RPSlidingMenuFeaturedImageCoverAlpha = 0.2f;
     [self.backgroundImageView addSubview:self.imageCover];
     [self.contentView insertSubview:self.backgroundImageView atIndex:0];
     [self.contentView insertSubview:self.imageCover atIndex:1];
+    
+
+    self.layer = [CAGradientLayer layer];
+    
+    //设置颜色渐变的方向
+    self.layer.startPoint = CGPointMake(0.5, 0);
+    self.layer.endPoint = CGPointMake(0.5, 1);
+    
+    //
+    self.layer.bounds = _imageCover.frame;
+    self.layer.position = CGPointMake(_imageCover.frame.size.width/2, _imageCover.frame.size.height/2);
+    
+    //渐变颜色
+    self.layer.colors = @[(id)[UIColor whiteColor].CGColor,(id)[UIColor whiteColor].CGColor,(id)[UIColor blackColor].CGColor];
+    self.layer.locations = @[@0.2,@0.6,@0.9];
+    
+    [_imageCover.layer addSublayer:self.layer];
+    
+//    self.layer.mask = _backgroundImageView.layer;
+
 
 }
 
@@ -125,10 +148,10 @@ const CGFloat RPSlidingMenuFeaturedImageCoverAlpha = 0.2f;
 
     // scale title as it collapses but keep origin x the same and the y location proportional to view height.  Also fade in alpha
     self.textLabel.transform = CGAffineTransformMakeScale(scaleAndAlpha, scaleAndAlpha);
-    self.textLabel.center = self.contentView.center;
+    self.textLabel.center = CGPointMake(self.contentView.center.x, self.contentView.center.y+60);
 
     // keep detail just under text label
-    self.detailTextLabel.center = CGPointMake(self.center.x, self.textLabel.center.y + 40.0f);
+    self.detailTextLabel.center = CGPointMake(self.center.x, self.textLabel.center.y + 25.0f);
 
     // its convenient to set the alpha of the fading controls to the percent of growth value
     self.detailTextLabel.alpha = percentOfGrowth;

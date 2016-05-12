@@ -34,7 +34,18 @@
 @property(nonatomic,strong)NSMutableArray *dataArray;
 @property(nonatomic,strong)UIActivityIndicatorView *act;
 
+<<<<<<< HEAD
 @property(nonatomic,assign)NSInteger typeId;
+=======
+@property(nonatomic,strong)UICollectionView *collect;
+
+
+
+
+
+//@property(nonatomic,strong)UICollectionView *collect;
+
+>>>>>>> 4d8c53fcb34683476138c3313a64ddd3d89fbda3
 @end
 
 @implementation FindViewController

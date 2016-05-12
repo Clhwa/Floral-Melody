@@ -41,8 +41,7 @@ typedef void(^block)();
     MJRefreshNormalHeader * header = [[XLHMJRefresh shareXLHMJRefresh] header];
     header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refresh)];
     _collectV.mj_header = header;
-    
-    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 -(void)refresh
@@ -53,14 +52,14 @@ typedef void(^block)();
 {
     
    _layout = [[RPSlidingMenuLayout alloc] initWithDelegate:nil];
-    self.collectV = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) collectionViewLayout:_layout];
+    self.collectV = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-49) collectionViewLayout:_layout];
     [self.view addSubview:_collectV];
     
     _collectV.delegate = self;
     _collectV.dataSource = self;
     
     //设置偏移量
-   _collectV.contentInset = UIEdgeInsetsMake(0, 0, -(825), 0);
+   _collectV.contentInset = UIEdgeInsetsMake(0, 0, -(800), 0);
    
     NSLog(@"--------------->%f",_collectV.contentInset.bottom);
     [_collectV registerClass:[RPSlidingMenuCell class] forCellWithReuseIdentifier:@"cell"];
@@ -130,7 +129,7 @@ typedef void(^block)();
     NSMutableURLRequest *request1 = [NSMutableURLRequest requestWithURL:url1];
     request1.HTTPMethod  = @"POST";
     //添加请求体 (请求体是一个NSData 我们用post的目的是想保留一部分数据 我们将这部分数转化成NSData类型 放入请求体中)
-    NSString *body1 = [NSString stringWithFormat:@"auth=XZU7RH7m1861DC8Z8H8HvkTJxQMGoPLGO9zo4XDA0cWP22NdFSh9d7fo&client=1&deviceid=6D4DD967-5EB2-40E2-A202-37E64F3BEA31&limit=%ld&start=0&version=4.0.4",_number];
+    NSString *body1 = [NSString stringWithFormat:@"auth=XZU7RH7m1861DC8Z8H8HvkTJxQMGoPLGO9zo4XDA0cWP22NdFSh9d7fo&client=1&deviceid=6D4DD967-5EB2-40E2-A202-37E64F3BEA31&limit=%ld&start=1&version=4.0.4",_number];
     request1.HTTPBody = [body1 dataUsingEncoding:NSUTF8StringEncoding];
     
     NSURLSession *session1 = [NSURLSession sharedSession];
