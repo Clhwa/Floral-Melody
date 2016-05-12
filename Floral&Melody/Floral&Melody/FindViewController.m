@@ -37,6 +37,7 @@
 
 @property(nonatomic,assign)NSInteger typeId;
 
+
 @property(nonatomic,strong)UICollectionView *collect;
 
 
@@ -46,6 +47,11 @@
 
 
 
+
+
+
+
+>>>>>>> 4d011a0903013cef960aa34a4817cec3745a7c35
 @end
 
 @implementation FindViewController
