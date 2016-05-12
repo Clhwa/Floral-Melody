@@ -29,9 +29,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor yellowColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = self.radio.title;
-    self.navigationController.navigationBarHidden = NO;
     _page = 10;
     [self Request];
     [self creatTableView];
@@ -46,7 +45,7 @@
     _tableV.mj_footer = footer;
     
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 //刷新
 -(void)refresh
@@ -132,11 +131,11 @@
 -(void)creatTableView
 {
     //顶部大图
-    self.headerV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,KWidth , HeaderViewHeight)];
+    self.headerV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64,KWidth , HeaderViewHeight)];
     [self.headerV sd_setImageWithURL:[NSURL URLWithString:self.radio.coverimg]];
     
     //tableView
-    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KWidth, KHeight-64-49)];
+    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KWidth, KHeight-49)];
     self.tableV.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.tableV];
     _tableV.delegate = self;

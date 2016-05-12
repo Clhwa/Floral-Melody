@@ -34,7 +34,7 @@
     [self initTableView];
     _Images = [NSArray arrayWithObjects:[UIImage imageNamed:@"one"], [UIImage imageNamed:@"two"],[UIImage imageNamed:@"three"],[UIImage imageNamed:@"four"],nil];
    self.Title = [NSMutableArray arrayWithObjects:@"文章",@"视频",@"百科",@"电台", nil];
-    self.Content = [NSMutableArray arrayWithObjects:@"关于花千谷", @"关注我们",@"版权声明",@"清理缓存",@"当前版本     V1.0.1",nil];
+    self.Content = [NSMutableArray arrayWithObjects:@"关于应用", @"关注我们",@"版权声明",@"清理缓存",@"当前版本     V1.0.1",nil];
     
     [self createFloralMelody];
     
@@ -70,6 +70,7 @@
     _tableV.dataSource = self;
     _tableV.showsVerticalScrollIndicator = NO;
     _tableV.separatorStyle = UITableViewCellAccessoryNone;
+    _tableV.scrollEnabled = NO;
     
 
 }
@@ -111,7 +112,10 @@
     
     
     [self.Content replaceObjectAtIndex:3 withObject:clearCacheName];
-    [self.tableV reloadData];
+    
+    NSIndexSet *indexS = [[NSIndexSet alloc] initWithIndex:3];
+    [self.tableV reloadSections:indexS withRowAnimation:UITableViewRowAnimationLeft];
+    
 }
 
 // 询问用户是否删除缓存
@@ -147,7 +151,10 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 10;
+    if (section == 4) {
+        return 10;
+    }
+    return 0;
 }
 //分区高度
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

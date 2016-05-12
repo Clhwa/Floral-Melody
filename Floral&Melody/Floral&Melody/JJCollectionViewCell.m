@@ -36,8 +36,8 @@
     vi.backgroundColor = [UIColor blackColor];
     [self addSubview:vi];
     vi.frame = CGRectMake(0, self.contentView.frame.size.width+12, 3, 16);
-    self.title.frame = CGRectMake(6, self.contentView.frame.size.width+10, 100, 20);
-    self.content.frame = CGRectMake(0, self.contentView.frame.size.width+30, 100, 20);
+    self.title.frame = CGRectMake(6, self.contentView.frame.size.width+10, 40, 20);
+    self.content.frame = CGRectMake(0, self.contentView.frame.size.width+30, 80, 20);
     
     self.title.font = [UIFont systemFontOfSize:16];
 
