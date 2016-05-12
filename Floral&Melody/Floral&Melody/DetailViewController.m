@@ -182,7 +182,7 @@
 #pragma mark-判断此页面是否已收藏
 -(NSString *)returnResult
 {
-   NSArray *array = [[DataBaseUtil shareDataBase]selectTable:@"baike" withClassName:@"ListContent" withtextArray:@[@"title",@"url",@"imageData"] withList:@"url" withYouWantSearchContent:@""];
+   NSArray *array = [[DataBaseUtil shareDataBase]selectTable:@"baike" withClassName:@"ListContent" withtextArray:@[@"title",@"url",@"imageData"] withList:@"url" withYouWantSearchContent:_myUrlStr];
     if (array.count>0) {
         return @"已收藏";
     }
