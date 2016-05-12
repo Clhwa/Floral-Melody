@@ -19,9 +19,9 @@
         self.musicVisit = [[UILabel alloc] init];
         [self.contentView addSubview:self.musicVisit];
         
-        self.saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.contentView addSubview:self.saveButton];
-        [self.saveButton addTarget: self action:@selector(nn) forControlEvents:UIControlEventTouchDown];
+//        self.saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [self.contentView addSubview:self.saveButton];
+//        [self.saveButton addTarget: self action:@selector(nn) forControlEvents:UIControlEventTouchDown];
         
         self.imageV = [[UIImageView alloc] init];
         [self.contentView addSubview:self.imageV];
@@ -41,13 +41,13 @@
     self.bigImageV.frame = CGRectMake(85, 40, 20, 20);
     self.titleLabel.frame = CGRectMake(85, 10, self.contentView.bounds.size.width-85-60, 30);
     self.musicVisit.frame = CGRectMake(105, 40, 80, 20);
-    self.saveButton.frame = CGRectMake(self.contentView.bounds.size.width-60, (80-30)/2, 30, 30);
+//    self.saveButton.frame = CGRectMake(self.contentView.bounds.size.width-60, (80-30)/2, 30, 30);
     self.titleLabel.font = [UIFont systemFontOfSize:14];
     
     
     self.musicVisit.textColor = [UIColor lightGrayColor];
     self.musicVisit.font =[UIFont systemFontOfSize:12];
-    [self.saveButton setImage:[UIImage imageNamed:@"iconfont-xiazai"] forState:UIControlStateNormal];
+//    [self.saveButton setImage:[UIImage imageNamed:@"iconfont-xiazai"] forState:UIControlStateNormal];
     
 
      self.titleLabel.text = self.listModel.longTitle;
