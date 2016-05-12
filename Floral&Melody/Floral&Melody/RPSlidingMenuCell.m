@@ -106,7 +106,7 @@ const CGFloat RPSlidingMenuFeaturedImageCoverAlpha = 0.2f;
     [self.contentView insertSubview:self.backgroundImageView atIndex:0];
     [self.contentView insertSubview:self.imageCover atIndex:1];
     
-
+#warning 添加渐变
     self.layer = [CAGradientLayer layer];
     
     //设置颜色渐变的方向

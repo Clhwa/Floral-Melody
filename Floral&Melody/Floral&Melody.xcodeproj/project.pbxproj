@@ -74,6 +74,7 @@
 		3F5C9A451CDA23BF00DB1036 /* XLHMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C9A441CDA23BF00DB1036 /* XLHMenuTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		3F5C9A491CDA317000DB1036 /* XLHArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C9A481CDA317000DB1036 /* XLHArticleViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3F5C9A4C1CDA318600DB1036 /* XLHVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C9A4B1CDA318600DB1036 /* XLHVideoViewController.m */; settings = {ASSET_TAGS = (); }; };
+		3F6633FD1CE4BDD900AB2F67 /* meigui.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F6633FC1CE4BDD900AB2F67 /* meigui.jpg */; settings = {ASSET_TAGS = (); }; };
 		3F8138061CDAE5A5004B411C /* XLHSpecialMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8138051CDAE5A5004B411C /* XLHSpecialMenuTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		3F81380A1CDAF110004B411C /* XLHColumnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8138091CDAF110004B411C /* XLHColumnViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3F81380D1CDAF3FC004B411C /* XLHColumnTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F81380C1CDAF3FC004B411C /* XLHColumnTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -161,7 +162,6 @@
 		3FE7D6661CE1E859007DCE81 /* 返回.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE7D6651CE1E859007DCE81 /* 返回.png */; settings = {ASSET_TAGS = (); }; };
 		3FE7D6771CE1F98C007DCE81 /* 置顶1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE7D6731CE1F98C007DCE81 /* 置顶1.png */; settings = {ASSET_TAGS = (); }; };
 		3FE7D6781CE1F98C007DCE81 /* hua3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE7D6741CE1F98C007DCE81 /* hua3.png */; settings = {ASSET_TAGS = (); }; };
-		3FF108661CE47DFF003061E9 /* meigui.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3FF108651CE47DFF003061E9 /* meigui.jpg */; settings = {ASSET_TAGS = (); }; };
 		3FF108681CE48D56003061E9 /* 搜索3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FF108671CE48D56003061E9 /* 搜索3.png */; settings = {ASSET_TAGS = (); }; };
 		3FFE43C11CE2BBF2007823E4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE43C01CE2BBF2007823E4 /* MBProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -295,6 +295,7 @@
 		3F5C9A481CDA317000DB1036 /* XLHArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLHArticleViewController.m; sourceTree = "<group>"; };
 		3F5C9A4A1CDA318600DB1036 /* XLHVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLHVideoViewController.h; sourceTree = "<group>"; };
 		3F5C9A4B1CDA318600DB1036 /* XLHVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLHVideoViewController.m; sourceTree = "<group>"; };
+		3F6633FC1CE4BDD900AB2F67 /* meigui.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = meigui.jpg; sourceTree = "<group>"; };
 		3F8138031CDAE0AE004B411C /* PrefixHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.h; sourceTree = "<group>"; };
 		3F8138041CDAE5A5004B411C /* XLHSpecialMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLHSpecialMenuTableViewCell.h; sourceTree = "<group>"; };
 		3F8138051CDAE5A5004B411C /* XLHSpecialMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLHSpecialMenuTableViewCell.m; sourceTree = "<group>"; };
@@ -465,7 +466,6 @@
 		3FE7D6651CE1E859007DCE81 /* 返回.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回.png"; sourceTree = "<group>"; };
 		3FE7D6731CE1F98C007DCE81 /* 置顶1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "置顶1.png"; sourceTree = "<group>"; };
 		3FE7D6741CE1F98C007DCE81 /* hua3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hua3.png; sourceTree = "<group>"; };
-		3FF108651CE47DFF003061E9 /* meigui.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = meigui.jpg; sourceTree = "<group>"; };
 		3FF108671CE48D56003061E9 /* 搜索3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "搜索3.png"; sourceTree = "<group>"; };
 		3FFE43BF1CE2BBF2007823E4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		3FFE43C01CE2BBF2007823E4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
@@ -497,6 +497,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F046F491CE483BB00E51167 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		3F046F4A1CE483CC00E51167 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3FA77E3B1CE35235006949DA /* JJCollectionViewCell.h */,
+				3FA77E3C1CE35235006949DA /* JJCollectionViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		3F046F4B1CE4840400E51167 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3F4894B01CE209FB004BF8DB /* XLHMineViewController.h */,
+				3F4894B11CE209FB004BF8DB /* XLHMineViewController.m */,
+				3F046F441CE4377200E51167 /* SaveViewController.h */,
+				3F046F451CE4377200E51167 /* SaveViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		3F4893F01CE1F9DF004BF8DB /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -769,13 +796,10 @@
 		3F4894AF1CE209E6004BF8DB /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-				3FA77E3B1CE35235006949DA /* JJCollectionViewCell.h */,
-				3FA77E3C1CE35235006949DA /* JJCollectionViewCell.m */,
 				3FA77E301CE33DD9006949DA /* images */,
-				3F4894B01CE209FB004BF8DB /* XLHMineViewController.h */,
-				3F4894B11CE209FB004BF8DB /* XLHMineViewController.m */,
-				3F046F441CE4377200E51167 /* SaveViewController.h */,
-				3F046F451CE4377200E51167 /* SaveViewController.m */,
+				3F046F4A1CE483CC00E51167 /* Views */,
+				3F046F491CE483BB00E51167 /* Model */,
+				3F046F4B1CE4840400E51167 /* Controllers */,
 			);
 			name = Mine;
 			sourceTree = "<group>";
@@ -1268,8 +1292,8 @@
 			children = (
 				3FD3176E1CE3365000056CA1 /* 花叶.png */,
 				3FF108671CE48D56003061E9 /* 搜索3.png */,
+				3F6633FC1CE4BDD900AB2F67 /* meigui.jpg */,
 				3FE7D6731CE1F98C007DCE81 /* 置顶1.png */,
-				3FF108651CE47DFF003061E9 /* meigui.jpg */,
 				3FE7D6741CE1F98C007DCE81 /* hua3.png */,
 			);
 			name = resource;
@@ -1394,8 +1418,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F4894881CE206EA004BF8DB /* 4.jpg in Resources */,
+				3F6633FD1CE4BDD900AB2F67 /* meigui.jpg in Resources */,
 				3F046F431CE4314900E51167 /* bizi.png in Resources */,
-				3FF108661CE47DFF003061E9 /* meigui.jpg in Resources */,
 				3F4894841CE206BD004BF8DB /* ic_action_next.png in Resources */,
 				3F947A8E1CD8BD4100111559 /* LaunchScreen.storyboard in Resources */,
 				3F5C9A181CD9E06500DB1036 /* menu.png in Resources */,

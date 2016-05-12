@@ -38,14 +38,6 @@
 @property(nonatomic,assign)NSInteger typeId;
 
 
-
-
-
-
-
-
-
-
 @end
 
 @implementation FindViewController

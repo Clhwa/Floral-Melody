@@ -30,6 +30,9 @@ typedef void(^SDWebImageCheckCacheCompletionBlock)(BOOL isInCache);
 
 typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger totalSize);
 
+
+
+
 /**
  * SDImageCache maintains a memory cache and an optional disk cache. Disk cache write operations are performed
  * asynchronous so it doesn’t add unnecessary latency to the UI.
@@ -65,6 +68,8 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
  */
 - (id)initWithNamespace:(NSString *)ns;
 
+#warning 清除缓存的方法
+- (float)checkTmpSize;
 /**
  * Add a read-only cache path to search for images pre-cached by SDImageCache
  * Useful if you want to bundle pre-loaded images with your app
