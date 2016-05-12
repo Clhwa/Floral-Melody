@@ -42,7 +42,7 @@
     self.title.font = [UIFont systemFontOfSize:16];
 
     self.content.textColor = [UIColor grayColor];
-    self.content.font = [UIFont systemFontOfSize:14];
+    self.content.font = [UIFont systemFontOfSize:12];
 }
 
 @end
