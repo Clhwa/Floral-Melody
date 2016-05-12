@@ -31,7 +31,7 @@ typedef void(^block)();
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor cyanColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     _number = 20;
     [self requestMore];
     self.navigationItem.title = @"电台";
@@ -41,7 +41,7 @@ typedef void(^block)();
     MJRefreshNormalHeader * header = [[XLHMJRefresh shareXLHMJRefresh] header];
     header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refresh)];
     _collectV.mj_header = header;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 -(void)refresh
@@ -52,7 +52,7 @@ typedef void(^block)();
 {
     
    _layout = [[RPSlidingMenuLayout alloc] initWithDelegate:nil];
-    self.collectV = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-49) collectionViewLayout:_layout];
+    self.collectV = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height-49-64) collectionViewLayout:_layout];
     [self.view addSubview:_collectV];
     
     _collectV.delegate = self;

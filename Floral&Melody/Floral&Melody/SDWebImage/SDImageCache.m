@@ -78,8 +78,7 @@ BOOL ImageDataHasPNGPreffix(NSData *data) {
         dispatch_sync(_ioQueue, ^{
             _fileManager = [NSFileManager new];
         });
-
-#if TARGET_OS_IPHONE
+        #if TARGET_OS_IPHONE
         // Subscribe to app events
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(clearMemory)
@@ -99,6 +98,20 @@ BOOL ImageDataHasPNGPreffix(NSData *data) {
     }
 
     return self;
+}
+
+
+#pragma mark 清理缓存图片
+- (float)checkTmpSize {//Bill
+    float totalSize = 0;
+    NSDirectoryEnumerator *fileEnumerator = [[NSFileManager defaultManager] enumeratorAtPath:self.diskCachePath];
+    for (NSString *fileName in fileEnumerator) {
+        NSString *filePath = [self.diskCachePath stringByAppendingPathComponent:fileName];
+        NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];
+        unsigned long long length = [attrs fileSize];
+        totalSize += length / 1024.0 / 1024.0;
+    } // NSLog(@"tmp size is %.2f",totalSize);
+    return totalSize;
 }
 
 - (void)dealloc {

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SDImageCache.h"
 @interface XLHMineViewController : UIViewController
 
 @end
