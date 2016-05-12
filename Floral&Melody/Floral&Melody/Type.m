@@ -12,7 +12,7 @@
 
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
-    NSLog(@"%@",key);
+    NSLog(@"key = %@",key);
 }
 -(void)setValueWith:(NSDictionary *)dic
 {

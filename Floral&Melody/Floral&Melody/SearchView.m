@@ -61,7 +61,7 @@
 //    [path moveToPoint:CGPointMake(searchButtonWidth, 0)];
     CGFloat arcCenterY = searchButtonHeight * 0.5;
 //    [path addLineToPoint:CGPointMake(searchButtonWidth-(BUTTON_WIDTH-arcCenterY), 0)];
-//    [path addArcWithCenter:CGPointMake(searchButtonWidth-(BUTTON_WIDTH-arcCenterY) ,  arcCenterY) radius:arcCenterY startAngle: 0 endAngle: M_PI_2 clockwise:NO];//clockwise(YES)顺时(NO)逆时方向
+//    [path addArcWithCenter:CGPointMake(searchButtonWidth-(BUTTON_WIDTH-arcCenterY) ,  arcCenterY) radius:arcCenterY startAngle: 0 endAngle: M_PI_2 clockwise:NO];
 //    [path addLineToPoint:CGPointMake(searchButtonWidth, searchButtonWidth)];
 //    shapeLayer.path = path.CGPath;
 //    _leftButton.layer.mask = shapeLayer;
@@ -79,7 +79,7 @@
     UIBezierPath *fromBezierPath = [UIBezierPath bezierPath];
     [fromBezierPath moveToPoint:CGPointMake(WIDTH-(0), BUTTON_Y)];
     [fromBezierPath addLineToPoint:CGPointMake(WIDTH-(BUTTON_WIDTH-arcCenterY), BUTTON_Y)];
-    [fromBezierPath addArcWithCenter:CGPointMake(WIDTH-(BUTTON_WIDTH-arcCenterY) , arcCenterY+BUTTON_Y) radius:arcCenterY startAngle: 0 endAngle: M_PI_2 clockwise:NO];
+    [fromBezierPath addArcWithCenter:CGPointMake(WIDTH-(BUTTON_WIDTH-arcCenterY) , arcCenterY+BUTTON_Y) radius:arcCenterY startAngle: 0 endAngle: M_PI_2 clockwise:NO];//clockwise(YES)顺时(NO)逆时方向
     [fromBezierPath addLineToPoint:CGPointMake(WIDTH-(0), searchButtonHeight+BUTTON_Y)];
     
     
