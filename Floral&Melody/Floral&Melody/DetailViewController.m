@@ -38,9 +38,7 @@
     MJRefreshNormalHeader * header = [[XLHMJRefresh shareXLHMJRefresh] header];
     header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refresh)];
     _web.scrollView.mj_header = header;
-    //置顶
-    _button = [[GoToTopButton alloc]initWithFrame:CGRectMake(WIDTH-20-45, HEIGHT-64-20-45, 45, 45) withControlView:_web.scrollView];
-    [self.view addSubview:_button];
+    
 
     //添加收藏按钮
     [self.view addSubview:self.collectView];
@@ -66,6 +64,10 @@
 #pragma mark-滚动隐藏
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    if (![self.view.subviews containsObject:self.button]) {
+        [self.view addSubview:self.button];
+    }
+    
     if (self.collectView.alpha != 0) {
         [UIView animateWithDuration:0.3 animations:^{
             self.collectView.alpha = 0;
@@ -109,6 +111,14 @@
     [self performSelector:@selector(appearCollectButton) withObject:nil afterDelay:0.8];
 }
 #pragma mark-懒加载
+-(GoToTopButton *)button
+{
+    if (!_button) {
+        //置顶
+        _button = [[GoToTopButton alloc]initWithFrame:CGRectMake(WIDTH-20-45, HEIGHT-64-20-45, 45, 45) withControlView:_web.scrollView];
+    }
+    return _button;
+}
 -(UIActivityIndicatorView *)act
 {
     if (!_act) {

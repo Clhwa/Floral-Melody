@@ -9,8 +9,7 @@
 #import "FindViewController.h"
 
 #import "NetworkRequestManager.h"
-//#import "BFCollectionViewCell.h"
-//#import "BFCollectionReusableView.h"
+
 #import "Type.h"
 #import "Content.h"
 #import "UIImageView+WebCache.h"
@@ -24,18 +23,17 @@
 
 #define WIDTH self.view.frame.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
-//#define SPACE 20
-//#define EDG 10
+
 #define myCenterY 200
 @interface FindViewController ()
 @property (nonatomic,strong) DBSphereView *sphereView;
-//@property(nonatomic,strong)UIImageView *centerImageV;
+
 @property (strong, nonatomic) DisperseBtn *disView;
 @property(nonatomic,strong)SearchView *s;
 
 @property(nonatomic,strong)NSMutableArray *dataArray;
 @property(nonatomic,strong)UIActivityIndicatorView *act;
-//@property(nonatomic,strong)UICollectionView *collect;
+
 @property(nonatomic,assign)NSInteger typeId;
 @end
 
@@ -87,56 +85,6 @@
 }
 
 
-#pragma mark-cell
-////cell数量
-//-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-//{
-//    Type *type = _dataArray[section];
-//    return type.Content.count;
-//}
-////cell
-//-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    BFCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"myCell" forIndexPath:indexPath];
-//    Type *type = self.dataArray[indexPath.section];
-//    Content *content = type.contentArr[indexPath.item];
-//    cell.label.text = content.TypeName;
-//    [cell.imageV sd_setImageWithURL:[NSURL URLWithString:content.ImageUrl]];
-//    return cell;
-//
-//}
-//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    ListViewController *list = [[ListViewController alloc]init];
-//    Type *type = self.dataArray[indexPath.section];
-//    list.type = type.TypeId;
-//    Content *content = type.contentArr[indexPath.item];
-//    list.typeId = content.TypeId;
-//    list.title = content.TypeName;
-//    list.isSeek = NO;
-//    _s.hidden = YES;
-//    [self.navigationController pushViewController:list animated:YES];
-//}
-////分区数
-//-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-//{
-//    return _dataArray.count;
-//}
-////自定义分区(分区样子)
-//-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (kind == UICollectionElementKindSectionHeader) {
-//        BFCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
-//        Type *type = _dataArray[indexPath.section];
-//        headerView.titleLab.text = type.TypeName;
-//        return headerView;
-//    }
-//    return nil;
-//}
-////分区的高度
-//-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-//    return CGSizeMake(_collect.frame.size.width, 40);
-//}
 #pragma mark- 请求数据
 -(void)loadData
 {
@@ -152,9 +100,11 @@
             [self.dataArray addObject:type];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-//            [self.collect reloadData];
+
             [self.view addSubview:self.sphereView];//云
             [self.act stopAnimating];
+            [self performSelector:@selector(buttonPressed:) withObject:(UIButton*)[self.view viewWithTag:10010+2] afterDelay:0.7];
+            
             //添加搜索框
             _s = [[SearchView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64) withSearchBlock:^{
                 if (_s.tf.text.length == 0) {
@@ -181,37 +131,6 @@
 }
 
 #pragma mark-懒加载
-//-(UIImageView *)centerImageV
-//{
-//    if (!_centerImageV) {
-//        _centerImageV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
-//        _centerImageV.image = [UIImage imageNamed:@"花叶"];
-//    }
-//    return _centerImageV;
-//}
-//-(UICollectionView *)collect
-//{
-//    if (!_collect) {
-//        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
-//        //边距
-//        CGFloat w = (WIDTH - 5*SPACE)/4;
-//        layout.itemSize = CGSizeMake(w, w+30);
-//        layout.minimumInteritemSpacing = SPACE;
-//        layout.minimumLineSpacing = SPACE;
-//        layout.sectionInset = UIEdgeInsetsMake(EDG, SPACE, EDG, SPACE);
-//        
-//        _collect = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 64, WIDTH, HEIGHT-64-49) collectionViewLayout:layout];
-//        _collect.backgroundColor =[UIColor whiteColor];
-//        [self.view addSubview:_collect];
-//        _collect.delegate = self;
-//        _collect.dataSource = self;
-//        //注册
-//        [_collect registerClass:[BFCollectionViewCell class] forCellWithReuseIdentifier:@"myCell"];
-//        //注册分区头
-//        [_collect registerClass:[BFCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
-//    }
-//    return _collect;
-//}
 -(UIActivityIndicatorView *)act
 {
     if (!_act) {
@@ -309,6 +228,7 @@
     }
     [self setDisViewButtonsNum:type];
     
+    //动画
     CGPoint point = btn.center;
     point.x += self.sphereView.frame.origin.x;
     point.y += self.sphereView.frame.origin.y;
@@ -337,7 +257,7 @@
         [btn setTitle:name forState:UIControlStateNormal];
         [btn setTitleColor:[self randomColor] forState:UIControlStateNormal];
         btn.showsTouchWhenHighlighted = YES;
-//        [btn setBackgroundImage:content.image forState:UIControlStateNormal];//不要图片
+
         [btn.titleLabel sizeToFit];
         [marr addObject:btn];
         [titleArr addObject:content.TypeName];

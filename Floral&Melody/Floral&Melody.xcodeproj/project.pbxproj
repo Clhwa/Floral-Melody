@@ -23,8 +23,6 @@
 		3F48940D1CE1FA30004BF8DB /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4894081CE1FA30004BF8DB /* FMResultSet.m */; settings = {ASSET_TAGS = (); }; };
 		3F4894321CE1FB04004BF8DB /* Content.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F48942F1CE1FB04004BF8DB /* Content.m */; settings = {ASSET_TAGS = (); }; };
 		3F4894331CE1FB04004BF8DB /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4894311CE1FB04004BF8DB /* Type.m */; settings = {ASSET_TAGS = (); }; };
-		3F48943C1CE1FB1E004BF8DB /* BFCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4894351CE1FB1E004BF8DB /* BFCollectionReusableView.m */; settings = {ASSET_TAGS = (); }; };
-		3F48943D1CE1FB1E004BF8DB /* BFCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4894371CE1FB1E004BF8DB /* BFCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		3F48943E1CE1FB1E004BF8DB /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4894391CE1FB1E004BF8DB /* SearchView.m */; settings = {ASSET_TAGS = (); }; };
 		3F48943F1CE1FB1E004BF8DB /* WarnEnableEmptyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F48943B1CE1FB1E004BF8DB /* WarnEnableEmptyLabel.m */; settings = {ASSET_TAGS = (); }; };
 		3F4894421CE1FB2B004BF8DB /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4894411CE1FB2B004BF8DB /* FindViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -210,10 +208,6 @@
 		3F48942F1CE1FB04004BF8DB /* Content.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Content.m; sourceTree = "<group>"; };
 		3F4894301CE1FB04004BF8DB /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
 		3F4894311CE1FB04004BF8DB /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
-		3F4894341CE1FB1E004BF8DB /* BFCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFCollectionReusableView.h; sourceTree = "<group>"; };
-		3F4894351CE1FB1E004BF8DB /* BFCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFCollectionReusableView.m; sourceTree = "<group>"; };
-		3F4894361CE1FB1E004BF8DB /* BFCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFCollectionViewCell.h; sourceTree = "<group>"; };
-		3F4894371CE1FB1E004BF8DB /* BFCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFCollectionViewCell.m; sourceTree = "<group>"; };
 		3F4894381CE1FB1E004BF8DB /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
 		3F4894391CE1FB1E004BF8DB /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
 		3F48943A1CE1FB1E004BF8DB /* WarnEnableEmptyLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarnEnableEmptyLabel.h; sourceTree = "<group>"; };
@@ -571,10 +565,6 @@
 		3F48942C1CE1FAEE004BF8DB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3F4894341CE1FB1E004BF8DB /* BFCollectionReusableView.h */,
-				3F4894351CE1FB1E004BF8DB /* BFCollectionReusableView.m */,
-				3F4894361CE1FB1E004BF8DB /* BFCollectionViewCell.h */,
-				3F4894371CE1FB1E004BF8DB /* BFCollectionViewCell.m */,
 				3F4894381CE1FB1E004BF8DB /* SearchView.h */,
 				3F4894391CE1FB1E004BF8DB /* SearchView.m */,
 				3F48943A1CE1FB1E004BF8DB /* WarnEnableEmptyLabel.h */,
@@ -1447,7 +1437,6 @@
 				3FC20E181CDB3EDB002E8EF9 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				3F48943F1CE1FB1E004BF8DB /* WarnEnableEmptyLabel.m in Sources */,
 				3F4894A11CE20764004BF8DB /* RPSlidingMenuCell.m in Sources */,
-				3F48943D1CE1FB1E004BF8DB /* BFCollectionViewCell.m in Sources */,
 				3FC20E4E1CDB6B1A002E8EF9 /* NSData+ImageContentType.m in Sources */,
 				3F48949A1CE20736004BF8DB /* RadioListTableViewCell.m in Sources */,
 				3F4894321CE1FB04004BF8DB /* Content.m in Sources */,
@@ -1517,7 +1506,6 @@
 				3FC20E581CDB6B1A002E8EF9 /* UIImage+MultiFormat.m in Sources */,
 				3F947ACC1CD8C13A00111559 /* XLHSpecialViewController.m in Sources */,
 				3FC20E171CDB3EDB002E8EF9 /* AFNetworkActivityIndicatorManager.m in Sources */,
-				3F48943C1CE1FB1E004BF8DB /* BFCollectionReusableView.m in Sources */,
 				3F8138061CDAE5A5004B411C /* XLHSpecialMenuTableViewCell.m in Sources */,
 				3FC158911CDDEFDA00D90DB0 /* XLHTipsView.m in Sources */,
 				3FC20E541CDB6B1A002E8EF9 /* SDWebImageManager.m in Sources */,
