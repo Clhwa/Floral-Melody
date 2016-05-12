@@ -10,6 +10,7 @@
 		3F046F431CE4314900E51167 /* bizi.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F046F421CE4314900E51167 /* bizi.png */; settings = {ASSET_TAGS = (); }; };
 		3F046F461CE4377200E51167 /* SaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F046F451CE4377200E51167 /* SaveViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3F046F481CE4818C00E51167 /* meigui.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F046F471CE4818C00E51167 /* meigui.jpg */; settings = {ASSET_TAGS = (); }; };
+		3F046F4E1CE4AFB700E51167 /* JJTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F046F4D1CE4AFB700E51167 /* JJTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		3F1E78F31CDC495600837839 /* 冬青黑体.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3F1E78F21CDC495600837839 /* 冬青黑体.otf */; settings = {ASSET_TAGS = (); }; };
 		3F1E78F61CDC8AA800837839 /* XLHTOPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E78F51CDC8AA800837839 /* XLHTOPViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3F1E78F91CDC967800837839 /* XLHTOPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E78F81CDC967800837839 /* XLHTOPTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -189,6 +190,8 @@
 		3F046F441CE4377200E51167 /* SaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveViewController.h; sourceTree = "<group>"; };
 		3F046F451CE4377200E51167 /* SaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveViewController.m; sourceTree = "<group>"; };
 		3F046F471CE4818C00E51167 /* meigui.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = meigui.jpg; sourceTree = "<group>"; };
+		3F046F4C1CE4AFB700E51167 /* JJTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJTableViewCell.h; sourceTree = "<group>"; };
+		3F046F4D1CE4AFB700E51167 /* JJTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJTableViewCell.m; sourceTree = "<group>"; };
 		3F1E78F21CDC495600837839 /* 冬青黑体.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "冬青黑体.otf"; sourceTree = "<group>"; };
 		3F1E78F41CDC8AA800837839 /* XLHTOPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLHTOPViewController.h; sourceTree = "<group>"; };
 		3F1E78F51CDC8AA800837839 /* XLHTOPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLHTOPViewController.m; sourceTree = "<group>"; };
@@ -509,6 +512,8 @@
 		3F046F4A1CE483CC00E51167 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3F046F4C1CE4AFB700E51167 /* JJTableViewCell.h */,
+				3F046F4D1CE4AFB700E51167 /* JJTableViewCell.m */,
 				3FA77E3B1CE35235006949DA /* JJCollectionViewCell.h */,
 				3FA77E3C1CE35235006949DA /* JJCollectionViewCell.m */,
 			);
@@ -1572,6 +1577,7 @@
 				3FE7D6601CE1C2FD007DCE81 /* XLHArticleTableViewCell.m in Sources */,
 				3F947AFE1CD8C9A300111559 /* MJRefreshBackFooter.m in Sources */,
 				3FC20E571CDB6B1A002E8EF9 /* UIImage+GIF.m in Sources */,
+				3F046F4E1CE4AFB700E51167 /* JJTableViewCell.m in Sources */,
 				3F81380D1CDAF3FC004B411C /* XLHColumnTableViewCell.m in Sources */,
 				3FC20E231CDB3EDB002E8EF9 /* AFURLSessionManager.m in Sources */,
 				3FE7D65D1CE1C2A5007DCE81 /* XLHArticleView.m in Sources */,

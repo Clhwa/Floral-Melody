@@ -7,7 +7,7 @@
 //
 
 #import "JJCollectionViewCell.h"
-
+#import "UIImageView+WebCache.h"
 @implementation JJCollectionViewCell
 -(id)initWithFrame:(CGRect)frame
 {
