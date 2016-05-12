@@ -36,6 +36,7 @@
 @property(nonatomic,strong)NSMutableArray *dataArray;
 @property(nonatomic,strong)UIActivityIndicatorView *act;
 //@property(nonatomic,strong)UICollectionView *collect;
+@property(nonatomic,assign)NSInteger typeId;
 @end
 
 @implementation FindViewController
@@ -79,7 +80,7 @@
     [self.navigationController pushViewController:list animated:YES];
     
 }
-#pragma makr-屏幕出现
+#pragma mark-屏幕出现
 -(void)viewDidAppear:(BOOL)animated
 {
     _s.hidden = NO;
@@ -152,7 +153,7 @@
         }
         dispatch_async(dispatch_get_main_queue(), ^{
 //            [self.collect reloadData];
-            [self.view addSubview:self.sphereView];
+            [self.view addSubview:self.sphereView];//云
             [self.act stopAnimating];
             //添加搜索框
             _s = [[SearchView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64) withSearchBlock:^{
@@ -228,7 +229,7 @@
     }
     return _dataArray;
 }
-#pragma mark-云标签
+#pragma mark-花叶懒加载
 -(DisperseBtn *)disView
 {
     if (!_disView) {
@@ -239,14 +240,16 @@
     }
     return _disView;
 }
+#pragma mark-云标签懒加载
 -(DBSphereView *)sphereView
 {
     if (!_sphereView) {
         _sphereView = [[DBSphereView alloc] initWithFrame:CGRectMake(50, HEIGHT-100-49-51, 100, 100)];
         NSMutableArray *array = [NSMutableArray array];
-        NSInteger tag = 10010;
+
         //添加按钮
-        for (Type *type in self.dataArray) {
+        for (int i = 0;i<self.dataArray.count;i++) {
+            Type *type = [self.dataArray objectAtIndex:i];
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
             btn.frame = CGRectMake(0, 0, 150, 20);
             btn.showsTouchWhenHighlighted = YES;
@@ -255,7 +258,7 @@
             
             btn.titleLabel.font = [UIFont fontWithName:@"Zapfino" size:24];
             [btn addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-            btn.tag = tag++;
+            btn.tag = 10010+i;
             [array addObject:btn];
             [_sphereView addSubview:btn];
         }
@@ -296,9 +299,10 @@
     }
     return CGPointZero;
 }
+#pragma mark-点击云标签方法
 - (void)buttonPressed:(UIButton *)btn
 {
-   
+    _typeId = btn.tag-10010;
    Type *type = [self.dataArray objectAtIndex:btn.tag-10010];
     if (![self.view.subviews containsObject:self.disView]) {
         [self.view addSubview:self.disView];
@@ -337,15 +341,24 @@
         [btn.titleLabel sizeToFit];
         [marr addObject:btn];
         [titleArr addObject:content.TypeName];
-        btn.tag = 10086+i;
+        btn.tag = 100086+i;
         [btn addTarget:self action:@selector(buttonTagget:) forControlEvents:UIControlEventTouchUpInside];
     }
     _disView.btns = marr;//返回一个按钮数组
 }
 
-#pragma makr-散开按钮的方法
+#pragma mark-点击散开按钮的方法
 -(void)buttonTagget:(UIButton *)sender{
-    
+    ListViewController *list = [[ListViewController alloc]init];
+    Type *type = self.dataArray[_typeId];
+        list.type = type.TypeId;
+        Content *content = type.contentArr[sender.tag-100086];
+        list.typeId = content.TypeId;
+        list.title = content.TypeName;
+        list.isSeek = NO;
+        _s.hidden = YES;
+        [self.navigationController pushViewController:list animated:YES];
+
 }
 
 #pragma mark-颜色

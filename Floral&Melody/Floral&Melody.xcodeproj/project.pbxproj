@@ -564,8 +564,6 @@
 			children = (
 				3F4894401CE1FB2B004BF8DB /* FindViewController.h */,
 				3F4894411CE1FB2B004BF8DB /* FindViewController.m */,
-				3FD3176E1CE3365000056CA1 /* 花叶.png */,
-				3FD3176C1CE334F600056CA1 /* meigui.jpg */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1245,8 +1243,10 @@
 		3FE7D6711CE1F96D007DCE81 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				3FD3176E1CE3365000056CA1 /* 花叶.png */,
 				3FE7D6721CE1F98C007DCE81 /* 搜索1.png */,
 				3FE7D6731CE1F98C007DCE81 /* 置顶1.png */,
+				3FD3176C1CE334F600056CA1 /* meigui.jpg */,
 				3FE7D6741CE1F98C007DCE81 /* hua3.png */,
 				3FE7D6751CE1F98C007DCE81 /* search@2x.png */,
 			);
