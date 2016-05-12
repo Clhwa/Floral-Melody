@@ -13,8 +13,8 @@
 //适配半径时的增长量
 #define kRadiusStep 10
 //最小半径
-#define kMinRadius 180 //修改距离
-#define kButtonW 80 //修改大小
+#define kMinRadius 150 //修改距离
+#define kButtonW 107 //修改大小<150
 #define kAnimationDuration 0.4
 
 @interface DisperseBtn ()
@@ -37,7 +37,7 @@
 #pragma mark-修改
         btn.layer.cornerRadius = btn.frame.size.width/2;
         btn.layer.masksToBounds = YES;
-
+        btn.titleLabel.font = [UIFont systemFontOfSize:17];
         
         [self addSubview:btn];
     }
@@ -56,7 +56,7 @@
     imgView.center = kCenter;
     imgView.userInteractionEnabled = YES;
 #pragma mark-修改
-    imgView.backgroundColor = [UIColor whiteColor];
+//    imgView.backgroundColor = [UIColor whiteColor];
     imgView.layer.cornerRadius = self.bounds.size.width/2;
     imgView.layer.masksToBounds = YES;
     

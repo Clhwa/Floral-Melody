@@ -13,10 +13,10 @@
 {
     
 }
--(void)setImageUrl:(NSString *)ImageUrl
-{
-    _ImageUrl = ImageUrl;
-    _image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:ImageUrl]]];
-}
+//-(void)setImageUrl:(NSString *)ImageUrl
+//{
+//    _ImageUrl = ImageUrl;
+//    _image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:ImageUrl]]];
+//}
 
 @end

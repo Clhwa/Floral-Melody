@@ -233,7 +233,7 @@
 {
     if (!_disView) {
         _disView = [[DisperseBtn alloc]init];
-        _disView.frame = CGRectMake(100, 100, 70, 70);//60<*<80
+        _disView.frame = CGRectMake(100, 100, 65, 65);//60<*<80
         _disView.borderRect = CGRectMake(0, 64, WIDTH, HEIGHT-64-49);
         _disView.closeImage = [UIImage imageNamed:@"花叶"];
     }
@@ -249,7 +249,7 @@
         for (Type *type in self.dataArray) {
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
             btn.frame = CGRectMake(0, 0, 150, 20);
-            
+            btn.showsTouchWhenHighlighted = YES;
             [self setButtonTitleWithType:type forButton:btn];
             [btn setTitleColor:[self randomColor] forState:UIControlStateNormal];
             
@@ -282,7 +282,7 @@
 #pragma mark-设置中心按钮的中心位置
 -(CGPoint)returnCenterPointForbutton:(UIButton *)btn
 {
-    CGFloat space = 45;
+    CGFloat space = 50;
     if (btn.tag == 10010) {
         return  CGPointMake(space, 64+space);//左上方
     }else if (btn.tag == 10010+1){
@@ -332,7 +332,9 @@
         NSString *name = [NSString stringWithFormat:@"%@",content.TypeName];
         [btn setTitle:name forState:UIControlStateNormal];
         [btn setTitleColor:[self randomColor] forState:UIControlStateNormal];
-        [btn setBackgroundImage:content.image forState:UIControlStateNormal];
+        btn.showsTouchWhenHighlighted = YES;
+//        [btn setBackgroundImage:content.image forState:UIControlStateNormal];//不要图片
+        [btn.titleLabel sizeToFit];
         [marr addObject:btn];
         [titleArr addObject:content.TypeName];
         btn.tag = 10086+i;
@@ -341,6 +343,7 @@
     _disView.btns = marr;//返回一个按钮数组
 }
 
+#pragma makr-散开按钮的方法
 -(void)buttonTagget:(UIButton *)sender{
     
 }
