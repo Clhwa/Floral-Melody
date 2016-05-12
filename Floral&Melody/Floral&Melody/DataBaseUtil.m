@@ -34,8 +34,9 @@ static DataBaseUtil *dataBase = nil;
     self = [super init];
     if (self) {
       NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
-        NSString *dbPath = [docPath stringByAppendingPathComponent:@"FM.sqlite"];//建立文件
+        NSString *dbPath = [docPath stringByAppendingPathComponent:@"flower.sqlite"];//建立文件
         self.db = [FMDatabase databaseWithPath:dbPath];
+        NSLog(@"%@",docPath);
     }
     return self;
 }
@@ -93,12 +94,16 @@ static DataBaseUtil *dataBase = nil;
     return NO;
 }
 
--(NSArray *)selectTable:(NSString *)name withClassName:(NSString *)className withtextArray:(NSArray *)textArr
+-(NSArray *)selectTable:(NSString *)name withClassName:(NSString *)className withtextArray:(NSArray *)textArr withList:(NSString *)list withYouWantSearchContent:(NSString *)content
 {
     NSMutableArray *array = [NSMutableArray array];
     if ([_db open]) {
-        NSString *sql = [NSString stringWithFormat:@"select * from %@",name];
-        
+        NSString *sql = nil;
+        if (content == nil) {
+            sql = [NSString stringWithFormat:@"select * from %@",name];
+        }else{
+            sql = [NSString stringWithFormat:@"select * from %@ where %@ = '%@'",name,list,content];
+        }
        FMResultSet *set = [_db executeQuery:sql];
         while ([set next]) {
           NSObject *object = [NSClassFromString(className) alloc];

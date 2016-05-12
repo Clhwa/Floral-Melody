@@ -45,6 +45,8 @@
         //imageV
         _imageV.backgroundColor = [UIColor whiteColor];
         _imageV.frame = CGRectMake(SPACE, SPACE, HEIGHT-2*SPACE, HEIGHT-2*SPACE-20);
+        _imageV.layer.cornerRadius = 5;
+        _imageV.layer.masksToBounds =YES;
         //菊花
         _act.center = CGPointMake(_imageV.frame.size.width/2, _imageV.frame.size.height/2);
         
@@ -59,7 +61,7 @@
         _textLab.frame = CGRectMake(w+SPACE*2, _titleLab.frame.origin.y+_titleLab.frame.size.height+SPACE, WIDTH-w-SPACE*3, 60);
         _textLab.font = [UIFont systemFontOfSize:14];
         _textLab.numberOfLines = 3;
-     
+        _textLab.textColor = [UIColor darkGrayColor];
     }
     return self;
 }

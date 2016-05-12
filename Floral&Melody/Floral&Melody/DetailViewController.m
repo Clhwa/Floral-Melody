@@ -7,11 +7,12 @@
 //
 
 #import "DetailViewController.h"
-#import <WebKit/WebKit.h>
 
+#import "DataBaseUtil.h"
 #import "WarnLabel.h"
 #import "GoToTopButton.h"
 #import "XLHMJRefresh.h"
+
 #define WIDTH self.view.frame.size.width
 #define HEIGHT self.view.frame.size.height
 @interface DetailViewController ()<UIScrollViewDelegate,UIWebViewDelegate>
@@ -20,6 +21,7 @@
 @property(nonatomic,strong)UIActivityIndicatorView *act;
 @property(nonatomic,strong)UIButton *collectView;
 @property(nonatomic,strong)GoToTopButton *button;
+@property(nonatomic,strong)NSString *myUrlStr;
 @end
 
 @implementation DetailViewController
@@ -84,8 +86,8 @@
 #pragma mark-加载页面
 -(void)loadWeb
 {
-    NSString *str =[NSString stringWithFormat: @"http://101.200.141.66:8080/EncyclopediaDetail?Id=%ld&Type=0",_iden];
-    NSURL *url = [NSURL URLWithString:str];
+    _myUrlStr =[NSString stringWithFormat: @"http://101.200.141.66:8080/EncyclopediaDetail?Id=%ld&Type=0",_iden];
+    NSURL *url = [NSURL URLWithString:_myUrlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [_web loadRequest:request];
 }
@@ -132,12 +134,17 @@
 #pragma makr-收藏
 -(void)collect
 {
+    //判断
     NSString *str = [NSString string];
+    NSString *warnStr = nil;
     if ([self.collectView.titleLabel.text isEqualToString:@"收藏"]) {
         str = @"已收藏";
+        warnStr = @"收藏成功";
     }else if ([self.collectView.titleLabel.text isEqualToString:@"已收藏"]){
         str = @"收藏";
+        warnStr = @"取消收藏";
     }
+    //动画
     [UIView animateWithDuration:0.2 animations:^{
         self.collectView.transform = CGAffineTransformMakeTranslation(self.collectView.frame.size.width, 0);
     } completion:^(BOOL finished) {
@@ -146,6 +153,9 @@
             [self.collectView setTitle:str forState:UIControlStateNormal];
         }];
     }];
+    //提示
+    WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:HEIGHT/2 withSuperView:self.view];
+    warnLab.text = warnStr;
 }
 
 -(UIButton *)collectView
@@ -155,7 +165,9 @@
         _collectView.frame = CGRectMake(WIDTH-25, 150, 30, 80);
         _collectView.backgroundColor = [UIColor blackColor];
         _collectView.alpha = 0.6;
-        [_collectView setTitle:@"收藏" forState:UIControlStateNormal];
+        
+        [_collectView setTitle:[self returnResult] forState:UIControlStateNormal];//判断是否已收藏
+        
         _collectView.titleLabel.numberOfLines = 0;
         [_collectView setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         
@@ -166,6 +178,16 @@
         
     }
     return _collectView;
+}
+#pragma mark-判断此页面是否已收藏
+-(NSString *)returnResult
+{
+   NSArray *array = [[DataBaseUtil shareDataBase]selectTable:@"baike" withClassName:@"ListContent" withtextArray:@[@"title",@"url",@"imageData"] withList:@"url" withYouWantSearchContent:@""];
+    if (array.count>0) {
+        return @"已收藏";
+    }
+    return @"收藏";
+  
 }
 
 - (void)didReceiveMemoryWarning {

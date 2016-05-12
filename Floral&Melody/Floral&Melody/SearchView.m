@@ -34,7 +34,7 @@
     if (self) {
         _mySearchBlock = block;
         
-        self.backgroundColor = [UIColor cyanColor];
+
         self.clipsToBounds = YES;
         
         //左边
@@ -159,7 +159,7 @@
 {
     if (!_imageV) {
         _imageV = [[UIImageView alloc]initWithFrame:CGRectMake(WIDTH-_leftButton.frame.size.width+10, 22-18/2+20, 18, 18)];
-        _imageV.image = [UIImage imageNamed:@"搜索1"];
+        _imageV.image = [UIImage imageNamed:@"搜索3"];
     }
     return _imageV;
 }

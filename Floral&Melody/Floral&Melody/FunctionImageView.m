@@ -43,12 +43,12 @@
         [self addGestureRecognizer:tap];
         self.userInteractionEnabled = YES;
         //外加
-        self.layer.borderWidth = 4;
-        self.layer.borderColor = [UIColor lightGrayColor].CGColor;
-        self.layer.shadowColor = [UIColor darkGrayColor].CGColor;
-       self.layer.shadowOffset = CGSizeMake(5, 5);
-        self.layer.shadowOpacity = 0.7;
-        self.layer.shouldRasterize = YES;
+//        self.layer.borderWidth = 4;
+//        self.layer.borderColor = [UIColor lightGrayColor].CGColor;
+//        self.layer.shadowColor = [UIColor darkGrayColor].CGColor;
+//       self.layer.shadowOffset = CGSizeMake(5, 5);
+//        self.layer.shadowOpacity = 0.7;
+//        self.layer.shouldRasterize = YES;
     }
     return self;
 }
@@ -56,8 +56,8 @@
 -(void)tapImage
 {
     if (!_isbig) {
-        self.layer.borderWidth = 0;
-        self.layer.shadowOffset = CGSizeMake(0, 0);
+//        self.layer.borderWidth = 0;
+//        self.layer.shadowOffset = CGSizeMake(0, 0);
         //展示放大图片
         [self getFrameToAddIntoWindow];
         
@@ -84,10 +84,6 @@
     //2在获取在cell上的位置
     //3记得导航栏的64
     
-    //判断是否在tableView或者collectionView上
-//    if ([self.superview.superview isKindOfClass:[UICollectionViewCell class]]) {
-//        
-//    }
     _mySuperView = self.superview;//记录加在哪个父类视图上
     _selfRect = self.frame;//点击前的位置大小
     
@@ -195,8 +191,8 @@
 -(void)touchBack
 {
     //外加
-    self.layer.borderWidth = 4;
-    self.layer.shadowOffset = CGSizeMake(5, 5);
+//    self.layer.borderWidth = 4;
+//    self.layer.shadowOffset = CGSizeMake(5, 5);
     
     [_backgroundView removeFromSuperview];
     [UIView animateWithDuration:0.3 animations:^{

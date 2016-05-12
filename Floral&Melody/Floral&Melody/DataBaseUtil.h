@@ -19,6 +19,6 @@
 //删除数据:表名,列名,数值
 -(BOOL)deleteObjectWithTableName:(NSString *)name withTextName:(NSString *)text withValue:(NSString *)value;
 //查询数据:表名,类名,类的属性数组
--(NSArray *)selectTable:(NSString *)name withClassName:(NSString *)className withtextArray:(NSArray *)textArr;
+-(NSArray *)selectTable:(NSString *)name withClassName:(NSString *)className withtextArray:(NSArray *)textArr withList:(NSString *)list withYouWantSearchContent:(NSString *)content;
 
 @end
