@@ -29,6 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.navigationItem.title = _list.Name;
+    
     _web = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_web];
     _web.scrollView.delegate = self;
@@ -86,7 +88,7 @@
 #pragma mark-加载页面
 -(void)loadWeb
 {
-    _myUrlStr =[NSString stringWithFormat: @"http://101.200.141.66:8080/EncyclopediaDetail?Id=%ld&Type=0",_iden];
+    _myUrlStr =[NSString stringWithFormat: @"http://101.200.141.66:8080/EncyclopediaDetail?Id=%ld&Type=0",_list.Id];
     NSURL *url = [NSURL URLWithString:_myUrlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [_web loadRequest:request];
@@ -105,11 +107,13 @@
     [self performSelector:@selector(appearCollectButton) withObject:nil afterDelay:0.8];
 }
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{//这个
+{
     [_web.scrollView.mj_header endRefreshing];
     [_act stopAnimating];
+    //提示框
     WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
-    warnLab.text = @"加载失败了,亲";
+        warnLab.text = @"加载失败了,亲";
+
     [self performSelector:@selector(appearCollectButton) withObject:nil afterDelay:0.8];
 }
 #pragma mark-懒加载
@@ -134,15 +138,30 @@
 #pragma makr-收藏
 -(void)collect
 {
+    //没有查询到有没有收藏就返回
+    if ([self.collectView.titleLabel.text isEqualToString:@"查询中"]) {
+        return;
+    }
     //判断
+    BOOL b = NO;
     NSString *str = [NSString string];
     NSString *warnStr = nil;
     if ([self.collectView.titleLabel.text isEqualToString:@"收藏"]) {
+        if([[DataBaseUtil shareDataBase]insertWithTableName:@"baike"withObjectTextArray:@[@"title",@"url",@"imageUrl"] withObjectValueArray:@[_list.Name,_myUrlStr,_list.ImageUrl]]){
+            b = YES;
+        }
         str = @"已收藏";
         warnStr = @"收藏成功";
     }else if ([self.collectView.titleLabel.text isEqualToString:@"已收藏"]){
+        if ([[DataBaseUtil shareDataBase]deleteObjectWithTableName:@"baike" withTextName:@"url" withValue:_myUrlStr]) {
+            b = YES;
+        }
         str = @"收藏";
         warnStr = @"取消收藏";
+    }
+    //如果数据库操作失败就返回
+    if (!b) {
+        return;
     }
     //动画
     [UIView animateWithDuration:0.2 animations:^{
@@ -165,8 +184,9 @@
         _collectView.frame = CGRectMake(WIDTH-25, 150, 30, 80);
         _collectView.backgroundColor = [UIColor blackColor];
         _collectView.alpha = 0.6;
-        
-        [_collectView setTitle:[self returnResult] forState:UIControlStateNormal];//判断是否已收藏
+        [_collectView setTitle:@"查询中" forState:UIControlStateNormal];
+        //子线程
+        [self performSelectorInBackground:@selector(selectArr) withObject:nil];
         
         _collectView.titleLabel.numberOfLines = 0;
         [_collectView setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -180,15 +200,21 @@
     return _collectView;
 }
 #pragma mark-判断此页面是否已收藏
--(NSString *)returnResult
+-(void)selectArr
 {
-   NSArray *array = [[DataBaseUtil shareDataBase]selectTable:@"baike" withClassName:@"ListContent" withtextArray:@[@"title",@"url",@"imageData"] withList:@"url" withYouWantSearchContent:_myUrlStr];
-    if (array.count>0) {
-        return @"已收藏";
-    }
-    return @"收藏";
-  
+    NSArray *array = [[DataBaseUtil shareDataBase]selectTable:@"baike" withClassName:@"ListContent" withtextArray:@[@"title",@"url",@"imageUrl"] withList:@"url" withYouWantSearchContent:_myUrlStr];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (array.count>0) {
+            [_collectView setTitle:@"已收藏" forState:UIControlStateNormal];//判断是否已收藏
+        }else{
+            [_collectView setTitle:@"收藏" forState:UIControlStateNormal];
+        }
+    });
+   
+    
+
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

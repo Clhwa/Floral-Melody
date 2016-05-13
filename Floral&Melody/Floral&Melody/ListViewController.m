@@ -49,7 +49,7 @@ static const float kItemSpace = -20.f;
         [self refresh];
     
     //创建数据库
-    [[DataBaseUtil shareDataBase]createTableWithName:@"baike" withTextArray:@[@"title",@"url",@"imageData"]];
+    [[DataBaseUtil shareDataBase]createTableWithName:@"baike" withTextArray:@[@"title",@"url",@"imageUrl"]];
     
     // Do any additional setup after loading the view.
 }
@@ -176,8 +176,7 @@ static const float kItemSpace = -20.f;
 {
     DetailViewController *detail = [[DetailViewController alloc]init];
     ListContent *list = _dataArr[indexPath.item];
-    detail.iden = list.Id;
-    detail.title = list.Name;
+    detail.list = list;
     [self.navigationController pushViewController:detail animated:YES];
 }
 #pragma mark-刷新数据
