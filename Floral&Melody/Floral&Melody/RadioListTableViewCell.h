@@ -12,9 +12,10 @@
 @interface RadioListTableViewCell : UITableViewCell
 @property(nonatomic,strong)UILabel *titleLabel;
 @property(nonatomic,strong)UILabel *musicVisit;
-@property(nonatomic,strong)UIButton *saveButton;
+//@property(nonatomic,strong)UIButton *saveButton;
 @property(nonatomic,strong)UIImageView *imageV;
 @property(nonatomic,strong)UIImageView *bigImageV;
+@property(nonatomic,strong)UIImageView *rightimageV;
 @property(nonatomic,strong)RadioListModel *listModel;
 @property(nonatomic)NSInteger flag;
 

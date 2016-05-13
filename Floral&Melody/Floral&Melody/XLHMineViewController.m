@@ -27,9 +27,6 @@
     self.navigationItem.title = @"我的";
     self.view.backgroundColor = [UIColor whiteColor];
     
-//    self.navigationController.navigationBarHidden = YES;
-//       self.edgesForExtendedLayout = UIRectEdgeNone;
-    
     [self creatColletionView];
     [self initTableView];
     _Images = [NSArray arrayWithObjects:[UIImage imageNamed:@"one"], [UIImage imageNamed:@"two"],[UIImage imageNamed:@"three"],[UIImage imageNamed:@"four"],nil];
@@ -42,7 +39,7 @@
 - (void)createFloralMelody
 {
 //    UIView * lineView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT * 0.81, SCREEN_WIDTH, 1 )];
-//    lineView.backgroundColor = COLOR(77, 77, 77, 1);
+//    lineView.backgroundColor = [UIColor lightGrayColor];
 //    [self.view addSubview:lineView];
     
     UILabel * engLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT * 0.83, SCREEN_WIDTH, SCREEN_HEIGHT * 0.03)];
@@ -114,7 +111,7 @@
     [self.Content replaceObjectAtIndex:3 withObject:clearCacheName];
     
     NSIndexSet *indexS = [[NSIndexSet alloc] initWithIndex:3];
-    [self.tableV reloadSections:indexS withRowAnimation:UITableViewRowAnimationLeft];
+    [self.tableV reloadSections:indexS withRowAnimation:UITableViewRowAnimationNone];
     
 }
 
@@ -206,8 +203,12 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     SaveViewController *save = [[SaveViewController alloc] init];
-    [self.navigationController pushViewController:save animated:YES];
-    NSLog(@"你点了第%ld分区的第%ld个方块",indexPath.section,indexPath.item);
+    save.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:save animated:YES completion:^{
+    
+    }];
+//    [self.navigationController pushViewController:save animated:YES];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -27,13 +27,13 @@
 const CGFloat RPSlidingCellFeatureHeight = 200.0f;
 const CGFloat RPSlidingCellCollapsedHeight = 88.0f;
 const CGFloat RPSlidingCellDetailTextPadding = 20.0f;
-const CGFloat RPSlidingMenuNormalImageCoverAlpha = 0.6f;
+const CGFloat RPSlidingMenuNormalImageCoverAlpha = 0.4f;
 const CGFloat RPSlidingMenuFeaturedImageCoverAlpha = 0.2f;
 
 @interface RPSlidingMenuCell ()
 
 @property (strong, nonatomic) UIView *imageCover;
-@property(nonatomic,strong)CAGradientLayer *layer;
+@property(nonatomic,strong)CAGradientLayer *mylayer;
 
 @end
 
@@ -100,28 +100,29 @@ const CGFloat RPSlidingMenuFeaturedImageCoverAlpha = 0.2f;
     // add a cover that we can fade in a black tint
     self.imageCover = [[UIView alloc] initWithFrame:self.backgroundImageView.frame];
     self.imageCover.backgroundColor = [UIColor blackColor];
-    self.imageCover.alpha = 0.6f;
+    self.imageCover.alpha = 0.4f;
     self.imageCover.autoresizingMask = self.backgroundImageView.autoresizingMask;
     [self.backgroundImageView addSubview:self.imageCover];
     [self.contentView insertSubview:self.backgroundImageView atIndex:0];
     [self.contentView insertSubview:self.imageCover atIndex:1];
     
 #warning 添加渐变
-    self.layer = [CAGradientLayer layer];
+    self.mylayer = [CAGradientLayer layer];
     
     //设置颜色渐变的方向
-    self.layer.startPoint = CGPointMake(0.5, 0);
-    self.layer.endPoint = CGPointMake(0.5, 1);
+    self.mylayer.startPoint = CGPointMake(0.5, 0);
+    self.mylayer.endPoint = CGPointMake(0.5, 1);
     
     //
-    self.layer.bounds = _imageCover.frame;
-    self.layer.position = CGPointMake(_imageCover.frame.size.width/2, _imageCover.frame.size.height/2);
+    self.mylayer.bounds = _imageCover.frame;
+    self.mylayer.position = CGPointMake(_imageCover.frame.size.width/2, _imageCover.frame.size.height/2);
     
     //渐变颜色
-    self.layer.colors = @[(id)[UIColor whiteColor].CGColor,(id)[UIColor whiteColor].CGColor,(id)[UIColor blackColor].CGColor];
-    self.layer.locations = @[@0.2,@0.6,@0.9];
+    self.mylayer.colors = @[(id)[UIColor whiteColor].CGColor,(id)[UIColor whiteColor].CGColor,(id)[UIColor blackColor].CGColor];
+    self.mylayer.locations = @[@0.2,@0.6,@0.9];
     
-    [_imageCover.layer addSublayer:self.layer];
+    [_imageCover.layer addSublayer:self.mylayer];
+//    _imageCover.layer.mask = self.mylayer;
     
 //    self.layer.mask = _backgroundImageView.layer;
 
