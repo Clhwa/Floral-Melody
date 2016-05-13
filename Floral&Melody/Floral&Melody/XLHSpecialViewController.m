@@ -15,6 +15,7 @@
 #import "AFNetworking.h"
 
 #import "WarnLabel.h"
+#import "DataBaseUtil.h"
 
 static NSString * ID = @"cell";
 
@@ -65,6 +66,8 @@ static NSString * ID = @"cell";
     //注册通知跳转页面
     [self registerNotification];
 
+    //数据库
+    [[DataBaseUtil shareDataBase]createTableWithName:@"article" withTextArray:@[@"title",@"url",@"imageUrl"]];
     
     
     /** 打印所有字体*/
@@ -466,9 +469,9 @@ static NSString * ID = @"cell";
     XLHColumnViewController * column = [[XLHColumnViewController alloc] init];
     
     XLHSpecialModal * xlh = [self.dataArray objectAtIndex:indexPath.row];
-    
+    column.titleStr = xlh.title;//主题
     column.urlAddress = xlh.pageUrl;
-    
+    column.imageUrl = xlh.Image;//图片网址
     [self.navigationController pushViewController:column animated:YES];
     
 }

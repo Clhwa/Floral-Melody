@@ -9,9 +9,9 @@
 #import "XLHTOPViewController.h"
 
 @interface XLHTOPViewController ()
-{
+
     
-}
+
 @end
 
 @implementation XLHTOPViewController
@@ -27,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     self.view.backgroundColor = [UIColor whiteColor];
     [self createTableView];
     [self requestData];
@@ -36,6 +37,18 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backImage style:UIBarButtonItemStylePlain target:self action:@selector(popController)];
     
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
+
+//设置主题
+[self setViewControllerTitleWith:@"TOP"];
+}
+#pragma mark-主题
+-(void)setViewControllerTitleWith:(NSString *)title
+{
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 0, 30)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = title;
+    label.font = [UIFont fontWithName:@"HiraginoSansGB-W3" size:18];
+    self.navigationItem.titleView = label;
 }
 
 - (void)popController
@@ -158,6 +171,8 @@
 {
     XLHTOPModal * top = [self.dataArray objectAtIndex:indexPath.row];
     XLHColumnViewController * column = [[XLHColumnViewController alloc] init];
+    column.titleStr = top.title;//主题
+    column.imageUrl = top.smallIcon;//图片
     column.urlAddress = top.pageUrl;
     [self.navigationController pushViewController:column animated:YES];
 }

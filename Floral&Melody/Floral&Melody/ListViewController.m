@@ -43,7 +43,8 @@ static const float kItemSpace = -20.f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    //设置主题
+    [self setViewControllerTitleWith:_titleStr];
     self.view.backgroundColor = [UIColor whiteColor];
     
         [self refresh];
@@ -52,6 +53,17 @@ static const float kItemSpace = -20.f;
     [[DataBaseUtil shareDataBase]createTableWithName:@"baike" withTextArray:@[@"title",@"url",@"imageUrl"]];
     
     // Do any additional setup after loading the view.
+
+
+}
+#pragma mark-主题
+-(void)setViewControllerTitleWith:(NSString *)title
+{
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 0, 30)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = title;
+    label.font = [UIFont fontWithName:@"HiraginoSansGB-W3" size:16];
+    self.navigationItem.titleView = label;
 }
 #pragma mark-滚动后出现
 -(void)appearCollectButton

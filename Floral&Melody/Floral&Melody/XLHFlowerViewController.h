@@ -26,5 +26,5 @@
 
 /** API **/
 @property (nonatomic, strong)NSString * API;
-
+@property(nonatomic,strong)NSString *titleStr;
 @end

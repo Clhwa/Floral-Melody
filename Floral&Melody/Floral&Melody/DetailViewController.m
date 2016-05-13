@@ -28,8 +28,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.navigationItem.title = _list.Name;
+    //设置主题
+    [self setViewControllerTitleWith:_list.Name];
     
     _web = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_web];
@@ -48,6 +48,16 @@
     [self.view addSubview:self.collectView];
     
     // Do any additional setup after loading the view.
+
+}
+#pragma mark-主题
+-(void)setViewControllerTitleWith:(NSString *)title
+{
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 0, 30)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = title;
+    label.font = [UIFont fontWithName:@"HiraginoSansGB-W3" size:16];
+    self.navigationItem.titleView = label;
 }
 #pragma mark-出现
 -(void)appearCollectButton

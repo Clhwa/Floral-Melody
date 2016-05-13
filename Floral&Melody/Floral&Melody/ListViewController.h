@@ -13,5 +13,5 @@
 @property(nonatomic,assign)NSInteger type;
 @property(nonatomic,assign)NSInteger typeId;
 @property(nonatomic,strong)NSString *searchName;
-
+@property(nonatomic,strong)NSString *titleStr;
 @end
