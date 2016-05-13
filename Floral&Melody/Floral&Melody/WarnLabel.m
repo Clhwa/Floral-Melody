@@ -8,8 +8,9 @@
 
 #import "WarnLabel.h"
 
-@implementation WarnLabel
 
+@implementation WarnLabel
+//成功
 +(WarnLabel *)creatWarnLabelWithY:(CGFloat)y withSuperView:(UIView *)view
 {
     static WarnLabel *w = nil;
@@ -22,6 +23,7 @@
     [w appearToDisappear];
     return w;
 }
+
 
 -(instancetype)init
 {

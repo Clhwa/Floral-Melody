@@ -39,7 +39,6 @@
 		3F48945A1CE1FB8F004BF8DB /* LongPressGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4894561CE1FB8F004BF8DB /* LongPressGesture.m */; settings = {ASSET_TAGS = (); }; };
 		3F48945D1CE1FB96004BF8DB /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F48945C1CE1FB96004BF8DB /* ListViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3F4894601CE1FBA5004BF8DB /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F48945F1CE1FBA5004BF8DB /* DetailViewController.m */; settings = {ASSET_TAGS = (); }; };
-		3F4894631CE1FBAE004BF8DB /* MyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4894621CE1FBAE004BF8DB /* MyCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3F4894671CE1FEB7004BF8DB /* XLHMJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4894661CE1FEB7004BF8DB /* XLHMJRefresh.m */; settings = {ASSET_TAGS = (); }; };
 		3F4894691CE204BB004BF8DB /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F4894681CE204BB004BF8DB /* libsqlite3.0.tbd */; };
 		3F4894791CE206BD004BF8DB /* yinyue.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F48946C1CE206BD004BF8DB /* yinyue.png */; settings = {ASSET_TAGS = (); }; };
@@ -121,7 +120,6 @@
 		3FA77E381CE33DEC006949DA /* two.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FA77E341CE33DEC006949DA /* two.png */; settings = {ASSET_TAGS = (); }; };
 		3FA77E3D1CE35235006949DA /* JJCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA77E3C1CE35235006949DA /* JJCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		3FC158911CDDEFDA00D90DB0 /* XLHTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC158901CDDEFDA00D90DB0 /* XLHTipsView.m */; settings = {ASSET_TAGS = (); }; };
-		3FC158941CDDF01100D90DB0 /* UIView+Explode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC158931CDDF01100D90DB0 /* UIView+Explode.m */; settings = {ASSET_TAGS = (); }; };
 		3FC20E151CDB3EDB002E8EF9 /* AFAutoPurgingImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC20DF41CDB3EDB002E8EF9 /* AFAutoPurgingImageCache.m */; settings = {ASSET_TAGS = (); }; };
 		3FC20E161CDB3EDB002E8EF9 /* AFImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC20DF61CDB3EDB002E8EF9 /* AFImageDownloader.m */; settings = {ASSET_TAGS = (); }; };
 		3FC20E171CDB3EDB002E8EF9 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC20DF81CDB3EDB002E8EF9 /* AFNetworkActivityIndicatorManager.m */; settings = {ASSET_TAGS = (); }; };
@@ -247,8 +245,6 @@
 		3F48945C1CE1FB96004BF8DB /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		3F48945E1CE1FBA5004BF8DB /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		3F48945F1CE1FBA5004BF8DB /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		3F4894611CE1FBAE004BF8DB /* MyCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionViewController.h; sourceTree = "<group>"; };
-		3F4894621CE1FBAE004BF8DB /* MyCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewController.m; sourceTree = "<group>"; };
 		3F4894651CE1FEB7004BF8DB /* XLHMJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLHMJRefresh.h; sourceTree = "<group>"; };
 		3F4894661CE1FEB7004BF8DB /* XLHMJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLHMJRefresh.m; sourceTree = "<group>"; };
 		3F4894681CE204BB004BF8DB /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -386,8 +382,6 @@
 		3FA77E3C1CE35235006949DA /* JJCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJCollectionViewCell.m; sourceTree = "<group>"; };
 		3FC1588F1CDDEFDA00D90DB0 /* XLHTipsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLHTipsView.h; sourceTree = "<group>"; };
 		3FC158901CDDEFDA00D90DB0 /* XLHTipsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLHTipsView.m; sourceTree = "<group>"; };
-		3FC158921CDDF01100D90DB0 /* UIView+Explode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Explode.h"; sourceTree = "<group>"; };
-		3FC158931CDDF01100D90DB0 /* UIView+Explode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Explode.m"; sourceTree = "<group>"; };
 		3FC20DF31CDB3EDB002E8EF9 /* AFAutoPurgingImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAutoPurgingImageCache.h; sourceTree = "<group>"; };
 		3FC20DF41CDB3EDB002E8EF9 /* AFAutoPurgingImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAutoPurgingImageCache.m; sourceTree = "<group>"; };
 		3FC20DF51CDB3EDB002E8EF9 /* AFImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageDownloader.h; sourceTree = "<group>"; };
@@ -598,16 +592,6 @@
 			name = Content;
 			sourceTree = "<group>";
 		};
-		3F4894121CE1FA88004BF8DB /* Collection */ = {
-			isa = PBXGroup;
-			children = (
-				3F48944B1CE1FB6B004BF8DB /* Modal */,
-				3F48944A1CE1FB62004BF8DB /* View */,
-				3F4894491CE1FB5D004BF8DB /* Controller */,
-			);
-			name = Collection;
-			sourceTree = "<group>";
-		};
 		3F48942B1CE1FAE5004BF8DB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -694,29 +678,6 @@
 			sourceTree = "<group>";
 		};
 		3F4894481CE1FB58004BF8DB /* Modal */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Modal;
-			sourceTree = "<group>";
-		};
-		3F4894491CE1FB5D004BF8DB /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				3F4894611CE1FBAE004BF8DB /* MyCollectionViewController.h */,
-				3F4894621CE1FBAE004BF8DB /* MyCollectionViewController.m */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		3F48944A1CE1FB62004BF8DB /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		3F48944B1CE1FB6B004BF8DB /* Modal */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -880,8 +841,8 @@
 			isa = PBXGroup;
 			children = (
 				3F947AB21CD8BD6D00111559 /* App */,
-				3F947AB11CD8BD6100111559 /* BaseClasses */,
-				3F947AC21CD8BFCC00111559 /* LaunchClasses */,
+				3F947AB11CD8BD6100111559 /* BaseClasses(空) */,
+				3F947AC21CD8BFCC00111559 /* LaunchClasses(空) */,
 				3F947ABA1CD8BE4800111559 /* XLHSpecialClasses */,
 				3FE7D6671CE1F935007DCE81 /* BFCyclopedia */,
 				3F48946A1CE2064E004BF8DB /* JMAudio */,
@@ -921,7 +882,7 @@
 			path = "Floral&MelodyUITests";
 			sourceTree = "<group>";
 		};
-		3F947AB11CD8BD6100111559 /* BaseClasses */ = {
+		3F947AB11CD8BD6100111559 /* BaseClasses(空) */ = {
 			isa = PBXGroup;
 			children = (
 				3F947AB31CD8BDB000111559 /* XLHBaseViewController.h */,
@@ -929,7 +890,7 @@
 				3F947AB61CD8BDBF00111559 /* XLHBaseView.h */,
 				3F947AB71CD8BDBF00111559 /* XLHBaseView.m */,
 			);
-			name = BaseClasses;
+			name = "BaseClasses(空)";
 			sourceTree = "<group>";
 		};
 		3F947AB21CD8BD6D00111559 /* App */ = {
@@ -999,14 +960,14 @@
 			name = Setting;
 			sourceTree = "<group>";
 		};
-		3F947AC21CD8BFCC00111559 /* LaunchClasses */ = {
+		3F947AC21CD8BFCC00111559 /* LaunchClasses(空) */ = {
 			isa = PBXGroup;
 			children = (
 				3F947AC51CD8BFF000111559 /* Modal */,
 				3F947AC41CD8BFEA00111559 /* View */,
 				3F947AC31CD8BFE200111559 /* Controller */,
 			);
-			name = LaunchClasses;
+			name = "LaunchClasses(空)";
 			sourceTree = "<group>";
 		};
 		3F947AC31CD8BFE200111559 /* Controller */ = {
@@ -1161,8 +1122,6 @@
 				3F5C9A111CD9CCAC00DB1036 /* BFMenuView.m */,
 				3F947B101CD8DBB400111559 /* XLHSpecialMenuView.h */,
 				3F947B111CD8DBB400111559 /* XLHSpecialMenuView.m */,
-				3FC158921CDDF01100D90DB0 /* UIView+Explode.h */,
-				3FC158931CDDF01100D90DB0 /* UIView+Explode.m */,
 				3FC1588F1CDDEFDA00D90DB0 /* XLHTipsView.h */,
 				3FC158901CDDEFDA00D90DB0 /* XLHTipsView.m */,
 				3FE7D65B1CE1C2A5007DCE81 /* XLHArticleView.h */,
@@ -1294,7 +1253,6 @@
 				3F48940F1CE1FA6C004BF8DB /* Classify */,
 				3F4894101CE1FA78004BF8DB /* Flowers */,
 				3F4894111CE1FA80004BF8DB /* Content */,
-				3F4894121CE1FA88004BF8DB /* Collection */,
 				3FE7D6711CE1F96D007DCE81 /* resource */,
 				3F4893F01CE1F9DF004BF8DB /* Tools */,
 			);
@@ -1542,7 +1500,6 @@
 				3FC20E161CDB3EDB002E8EF9 /* AFImageDownloader.m in Sources */,
 				3F947B061CD8C9A300111559 /* MJRefreshBackNormalFooter.m in Sources */,
 				3FC20E551CDB6B1A002E8EF9 /* SDWebImagePrefetcher.m in Sources */,
-				3FC158941CDDF01100D90DB0 /* UIView+Explode.m in Sources */,
 				3F4894091CE1FA30004BF8DB /* FMDatabase.m in Sources */,
 				3F947B0C1CD8C9A300111559 /* MJRefreshConst.m in Sources */,
 				3F1E78F61CDC8AA800837839 /* XLHTOPViewController.m in Sources */,
@@ -1568,7 +1525,6 @@
 				3F947AC81CD8C01500111559 /* XLHLaunchViewController.m in Sources */,
 				3F947B0F1CD8C9A300111559 /* UIView+MJExtension.m in Sources */,
 				3FC20E5A1CDB6B1A002E8EF9 /* UIImageView+HighlightedWebCache.m in Sources */,
-				3F4894631CE1FBAE004BF8DB /* MyCollectionViewController.m in Sources */,
 				3FC20E211CDB3EDB002E8EF9 /* AFURLRequestSerialization.m in Sources */,
 				3F4893FC1CE1F9F5004BF8DB /* NetworkRequestManager.m in Sources */,
 				3F4894AE1CE20787004BF8DB /* JJPlayer.m in Sources */,

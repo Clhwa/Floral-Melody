@@ -28,7 +28,7 @@
 
 #import "XLHTipsView.h"
 
-#import "UIView+Explode.h"
+
 
 #import "objc/runtime.h"
 

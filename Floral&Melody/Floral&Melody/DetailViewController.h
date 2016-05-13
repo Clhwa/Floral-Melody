@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ListContent.h"
 @interface DetailViewController : UIViewController
+@property(nonatomic,strong)ListContent *list;
 
-@property(nonatomic,assign)NSInteger iden;
 
 @end
