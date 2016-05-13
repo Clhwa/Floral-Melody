@@ -21,7 +21,7 @@
 @property(nonatomic,strong)UIActivityIndicatorView *act;
 @property(nonatomic,strong)UIButton *collectView;
 @property(nonatomic,strong)GoToTopButton *button;
-@property(nonatomic,strong)NSString *myUrlStr;
+
 @end
 
 @implementation DetailViewController
@@ -98,8 +98,7 @@
 #pragma mark-加载页面
 -(void)loadWeb
 {
-    _myUrlStr =[NSString stringWithFormat: @"http://101.200.141.66:8080/EncyclopediaDetail?Id=%ld&Type=0",_list.Id];
-    NSURL *url = [NSURL URLWithString:_myUrlStr];
+    NSURL *url = [NSURL URLWithString:_list.url];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [_web loadRequest:request];
 }
@@ -157,13 +156,13 @@
     NSString *str = [NSString string];
     NSString *warnStr = nil;
     if ([self.collectView.titleLabel.text isEqualToString:@"收藏"]) {
-        if([[DataBaseUtil shareDataBase]insertWithTableName:@"baike"withObjectTextArray:@[@"title",@"url",@"imageUrl"] withObjectValueArray:@[_list.Name,_myUrlStr,_list.ImageUrl]]){
+        if([[DataBaseUtil shareDataBase]insertWithTableName:@"baike"withObjectTextArray:@[@"Name",@"url",@"ImageUrl"] withObjectValueArray:@[_list.Name,_list.url,_list.ImageUrl]]){
             b = YES;
         }
         str = @"已收藏";
         warnStr = @"收藏成功";
     }else if ([self.collectView.titleLabel.text isEqualToString:@"已收藏"]){
-        if ([[DataBaseUtil shareDataBase]deleteObjectWithTableName:@"baike" withTextName:@"url" withValue:_myUrlStr]) {
+        if ([[DataBaseUtil shareDataBase]deleteObjectWithTableName:@"baike" withTextName:@"url" withValue:_list.url]) {
             b = YES;
         }
         str = @"收藏";
@@ -212,7 +211,7 @@
 #pragma mark-判断此页面是否已收藏
 -(void)selectArr
 {
-    NSArray *array = [[DataBaseUtil shareDataBase]selectTable:@"baike" withClassName:@"ListContent" withtextArray:@[@"title",@"url",@"imageUrl"] withList:@"url" withYouWantSearchContent:_myUrlStr];
+    NSArray *array = [[DataBaseUtil shareDataBase]selectTable:@"baike" withClassName:@"ListContent" withtextArray:@[@"Name",@"url",@"ImageUrl"] withList:@"url" withYouWantSearchContent:_list.url];
     dispatch_async(dispatch_get_main_queue(), ^{
         if (array.count>0) {
             [_collectView setTitle:@"已收藏" forState:UIControlStateNormal];//判断是否已收藏

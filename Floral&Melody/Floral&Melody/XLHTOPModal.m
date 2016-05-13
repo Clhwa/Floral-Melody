@@ -9,5 +9,8 @@
 #import "XLHTOPModal.h"
 
 @implementation XLHTOPModal
-
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
+    //    NSLog(@"key=%@",key);
+}
 @end

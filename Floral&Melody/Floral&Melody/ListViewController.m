@@ -50,7 +50,7 @@ static const float kItemSpace = -20.f;
         [self refresh];
     
     //创建数据库
-    [[DataBaseUtil shareDataBase]createTableWithName:@"baike" withTextArray:@[@"title",@"url",@"imageUrl"]];
+    [[DataBaseUtil shareDataBase]createTableWithName:@"baike" withTextArray:@[@"Name",@"url",@"ImageUrl"]];
     
     // Do any additional setup after loading the view.
 
@@ -188,6 +188,7 @@ static const float kItemSpace = -20.f;
 {
     DetailViewController *detail = [[DetailViewController alloc]init];
     ListContent *list = _dataArr[indexPath.item];
+    list.url = [NSString stringWithFormat: @"http://101.200.141.66:8080/EncyclopediaDetail?Id=%ld&Type=0",list.Id];
     detail.list = list;
     [self.navigationController pushViewController:detail animated:YES];
 }

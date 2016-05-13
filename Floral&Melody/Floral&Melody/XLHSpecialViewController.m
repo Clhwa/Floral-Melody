@@ -67,8 +67,7 @@ static NSString * ID = @"cell";
     [self registerNotification];
 
     //数据库
-    [[DataBaseUtil shareDataBase]createTableWithName:@"article" withTextArray:@[@"title",@"url",@"imageUrl"]];
-    
+    [[DataBaseUtil shareDataBase]createTableWithName:@"article" withTextArray:@[@"Name",@"url",@"ImageUrl"]];
     
     /** 打印所有字体*/
 //    for(NSString *fontfamilyname in [UIFont familyNames])
