@@ -9,7 +9,10 @@
 #import "XLHSpecialModal.h"
 
 @implementation XLHSpecialModal
-
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
+//    NSLog(@"key=%@",key);
+}
 - (NSString *)getType:(NSString *)type
 {
     NSString * str = @"[1]";

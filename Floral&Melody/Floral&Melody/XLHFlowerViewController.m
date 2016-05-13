@@ -7,7 +7,7 @@
 //
 
 #import "XLHFlowerViewController.h"
-
+#import "WarnLabel.h"
 
 #import "UIImageView+WebCache.h"
 @interface XLHFlowerViewController ()
@@ -31,6 +31,18 @@ static NSString * ID = @"cell";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backImage style:UIBarButtonItemStylePlain target:self action:@selector(popController)];
     
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
+
+//设置主题
+[self setViewControllerTitleWith:_titleStr];
+}
+#pragma mark-主题
+-(void)setViewControllerTitleWith:(NSString *)title
+{
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 0, 30)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = title;
+    label.font = [UIFont fontWithName:@"HiraginoSansGB-W3" size:16];
+    self.navigationItem.titleView = label;
 }
 - (void)popController
 {
@@ -109,7 +121,8 @@ static NSString * ID = @"cell";
     XLHColumnViewController * column = [[XLHColumnViewController alloc] init];
     
     XLHSpecialModal *  xlh = [self.dataArray objectAtIndex:indexPath.row];
-    
+    column.titleStr = xlh.title;//主题
+    column.imageUrl = xlh.Image;//图片
     column.urlAddress = xlh.pageUrl;
     
     [self.navigationController pushViewController:column animated:YES];
@@ -165,7 +178,10 @@ static NSString * ID = @"cell";
         
         [self.tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"专题请求失败");
+        //提示框
+        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
+        warnLab.text = @"专题请求失败";
+//        NSLog(@"专题请求失败");
     }];
     
 }
@@ -212,7 +228,10 @@ static NSString * ID = @"cell";
         [self.tableView reloadData];
         NSLog(@"%ld",self.dataArray.count);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"专题请求失败");
+        //提示框
+        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
+        warnLab.text = @"专题请求失败";
+//        NSLog(@"专题请求失败");
     }];
     
 }
@@ -261,7 +280,10 @@ static NSString * ID = @"cell";
             NSLog(@"%ld",self.dataArray.count);
         });
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"专题请求失败");
+        //提示框
+        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
+        warnLab.text = @"专题请求失败";
+//        NSLog(@"专题请求失败");
     }];
     
 }

@@ -44,12 +44,25 @@
     [self requestData];
 }
 
+#pragma mark-主题
+-(void)setViewControllerTitleWith:(NSString *)title
+{
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 0, 30)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = title;
+    label.font = [UIFont fontWithName:@"HiraginoSansGB-W3" size:18];
+    self.navigationItem.titleView = label;
+}
+
 /** 创建tableView*/
 - (void)createTableView
 {
     
     /** NavigationBar---Title*/
-    self.navigationItem.title = @"视频";
+//    self.navigationItem.title = @"视频";
+    //设置主题
+    [self setViewControllerTitleWith:@"视频"];
+
     
     /*
      * 创建tableView

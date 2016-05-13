@@ -41,6 +41,17 @@
     
     [self requestData];
     
+
+
+}
+#pragma mark-主题
+-(void)setViewControllerTitleWith:(NSString *)title
+{
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 0, 30)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = title;
+    label.font = [UIFont fontWithName:@"HiraginoSansGB-W3" size:18];
+    self.navigationItem.titleView = label;
 }
 
 /** 创建tableView*/
@@ -48,8 +59,9 @@
 {
     
     /** NavigationBar---Title*/
-    self.navigationItem.title = @"文章";
-    
+//    self.navigationItem.title = @"文章";
+    //设置主题
+    [self setViewControllerTitleWith:@"文章"];
     /*
      * 创建tableView
      */
@@ -108,7 +120,8 @@
     XLHColumnViewController * column = [[XLHColumnViewController alloc] init];
     
     XLHSpecialModal * xlh = [self.dataArray objectAtIndex:indexPath.row];
-    
+    column.titleStr = xlh.title;//主题
+    column.imageUrl = xlh.Image;//图片
     column.urlAddress = xlh.pageUrl;
     
     [self.navigationController pushViewController:column animated:YES];

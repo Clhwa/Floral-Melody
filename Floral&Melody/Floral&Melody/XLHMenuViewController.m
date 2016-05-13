@@ -74,7 +74,7 @@
     _tableView.delegate = self;
     
 //    _tableView.backgroundColor = [UIColor redColor];
-    
+    _tableView.scrollEnabled = NO;//不能滚动
     [self.view addSubview:_tableView];
 }
 
@@ -114,12 +114,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     XLHFlowerViewController * xlh = [[XLHFlowerViewController alloc] init];
-    
+    xlh.titleStr = [dataArray objectAtIndex:indexPath.row];//主题
     xlh.API = [apiArray objectAtIndex:indexPath.row];
     
     [self.navigationController pushViewController:xlh animated:YES];
     
-    NSLog(@"11");
+//    NSLog(@"11");
 }
 
 /** Floral&Melody*/

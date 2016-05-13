@@ -15,5 +15,5 @@
 @property(nonatomic,strong)NSString *Text;
 @property(nonatomic,strong)NSString *Name;
 //@property(nonatomic,strong)NSString *AnotherName;
-
+@property(nonatomic,strong)NSString *url;
 @end

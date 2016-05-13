@@ -47,6 +47,9 @@
         _imageV.frame = CGRectMake(SPACE, SPACE, HEIGHT-2*SPACE, HEIGHT-2*SPACE-20);
         _imageV.layer.cornerRadius = 5;
         _imageV.layer.masksToBounds =YES;
+        
+        _imageV.contentMode =  UIViewContentModeScaleAspectFill;
+        _imageV.clipsToBounds = YES;
         //菊花
         _act.center = CGPointMake(_imageV.frame.size.width/2, _imageV.frame.size.height/2);
         

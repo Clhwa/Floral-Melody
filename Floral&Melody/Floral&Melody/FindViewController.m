@@ -46,13 +46,18 @@
     [super viewDidLoad];
    
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = @"百科";
     
+    //设置主题
+    [self setViewControllerTitleWith:@"百科"];
 
     UIImageView *imageV = [[UIImageView alloc]initWithFrame:self.view.bounds];
     imageV.image = [UIImage imageNamed:@"meigui.jpg"];
     imageV.alpha = 0.6;
+    
+    //填充
+    imageV.contentMode =  UIViewContentModeScaleAspectFill;
 
+    
     [self.view addSubview:imageV];
 //    _Images = [NSArray arrayWithObjects:[UIImage imageNamed:@"one"], [UIImage imageNamed:@"two"],[UIImage imageNamed:@"three"],[UIImage imageNamed:@"four"],nil];
     
@@ -64,8 +69,18 @@
 
     
     // Do any additional setup after loading the view.
-}
 
+
+}
+#pragma mark-主题
+-(void)setViewControllerTitleWith:(NSString *)title
+{
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 0, 30)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = title;
+    label.font = [UIFont fontWithName:@"HiraginoSansGB-W3" size:18];
+    self.navigationItem.titleView = label;
+}
 
 #pragma mark-搜索
 -(void)search
@@ -73,7 +88,7 @@
     ListViewController *list = [[ListViewController alloc]init];
     list.isSeek = YES;
     list.searchName = self.s.tf.text;
-    list.title = @"搜查结果";
+    list.titleStr = @"搜查结果";
     [_s appearOrNot];
     _s.hidden = YES;
     [self.navigationController pushViewController:list animated:YES];
@@ -157,7 +172,7 @@
     if (!_disView) {
         _disView = [[DisperseBtn alloc]init];
         _disView.frame = CGRectMake(100, 100, 65, 65);//60<*<80
-        _disView.borderRect = CGRectMake(0, 64, WIDTH, HEIGHT-64-49);
+        _disView.borderRect = CGRectMake(0, -HEIGHT, WIDTH, HEIGHT*3);
         _disView.closeImage = [UIImage imageNamed:@"花叶"];
     }
     return _disView;
@@ -229,6 +244,11 @@
     if (![self.view.subviews containsObject:self.disView]) {
         [self.view addSubview:self.disView];
     }
+    if (btn.tag == 10010+2||btn.tag == 10010+4) {
+        _disView.borderRect = CGRectMake(0, -HEIGHT, WIDTH, HEIGHT*3);
+    }else{
+        _disView.borderRect = CGRectMake(0, 64, WIDTH, HEIGHT-64-49);
+    }
     [self setDisViewButtonsNum:type];
     
     //动画
@@ -277,7 +297,7 @@
         list.type = type.TypeId;
         Content *content = type.contentArr[sender.tag-100086];
         list.typeId = content.TypeId;
-        list.title = content.TypeName;
+        list.titleStr = content.TypeName;
         list.isSeek = NO;
         _s.hidden = YES;
         [self.navigationController pushViewController:list animated:YES];
