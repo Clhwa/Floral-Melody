@@ -63,7 +63,7 @@
     [self addSubview:imgView];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
-    tap.numberOfTapsRequired = 2;
+    tap.numberOfTapsRequired = 1;//改为单击
     [imgView addGestureRecognizer:tap];
 }
 

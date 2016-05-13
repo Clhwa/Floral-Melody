@@ -7,7 +7,7 @@
 //
 
 #import "XLHVideoViewController.h"
-
+#import "WarnLabel.h"
 @interface XLHVideoViewController ()
 {
     NSInteger pageNumber;
@@ -171,7 +171,10 @@
             [self.tableView reloadData];
         });
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"专题请求失败");
+        //提示框
+        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
+        warnLab.text = @"网络请求失败";
+//        NSLog(@"专题请求失败");
     }];
     
 }
@@ -226,7 +229,11 @@
         });
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"专题请求失败");
+        [self.tableView.mj_header endRefreshing];
+        //提示框
+        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
+        warnLab.text = @"网络请求失败";
+//        NSLog(@"专题请求失败");
     }];
     
 }
@@ -279,7 +286,11 @@
         });
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"专题请求失败");
+        [self.tableView.mj_footer endRefreshing];
+        //提示框
+        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:[UIScreen mainScreen].bounds.size.height-64-50 withSuperView:self.view];
+        warnLab.text = @"网络请求失败";
+//        NSLog(@"专题请求失败");
     }];
     
 }

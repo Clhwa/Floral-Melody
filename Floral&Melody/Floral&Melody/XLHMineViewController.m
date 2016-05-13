@@ -65,9 +65,9 @@
     _RadioArr = [[DataBaseUtil shareDataBase] selectTable:@"RadioSave" withClassName:@"RadioListModel" withtextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withList:nil withYouWantSearchContent:nil];
     _AudioArr = [[DataBaseUtil shareDataBase] selectTable:@"RadioSave" withClassName:@"RadioListModel" withtextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withList:nil withYouWantSearchContent:nil];
 
-    _BaikeArr = [[DataBaseUtil shareDataBase] selectTable:@"RadioSave" withClassName:@"RadioListModel" withtextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withList:nil withYouWantSearchContent:nil];
+    _BaikeArr = [[DataBaseUtil shareDataBase] selectTable:@"baike" withClassName:@"ListContent" withtextArray:@[@"Name",@"url",@"ImageUrl"] withList:nil withYouWantSearchContent:nil];
 
-    _articleArr = [[DataBaseUtil shareDataBase] selectTable:@"RadioSave" withClassName:@"RadioListModel" withtextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withList:nil withYouWantSearchContent:nil];
+    _articleArr = [[DataBaseUtil shareDataBase] selectTable:@"article" withClassName:@"ListContent" withtextArray:@[@"Name",@"url",@"ImageUrl"] withList:nil withYouWantSearchContent:nil];
 
     
 #warning 自行补充各自的数据
@@ -262,9 +262,9 @@
     save.flag = indexPath.item;
     save.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:save animated:YES completion:^{
-    
+
     }];
-    
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
