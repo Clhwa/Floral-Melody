@@ -29,14 +29,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
-    back.frame = CGRectMake(20, 25, 20, 20);
-    [self.view addSubview:back];
-    [back setImage:[UIImage imageNamed:@"com_taobao_tae_sdk_web_view_title_bar_back.9"] forState:UIControlStateNormal];
-    [back addTarget:self action:@selector(jumpBack) forControlEvents:UIControlEventTouchDown];
     
     [self creatTableView];
-    
     [self creatTitleLabel];
     NSLog(@"%@",[_BigArrayS objectAtIndex:_flag]);
     
@@ -45,10 +39,19 @@
 }
 -(void)creatTitleLabel
 {
+    //标题
     _titleLable = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width-200)/2, 20, 200, 30)];
     [self.view addSubview:_titleLable];
     _titleLable.textAlignment =NSTextAlignmentCenter;
     _titleLable.text = [self.TitleArr[_flag] stringByAppendingString:@"收藏"];
+    _titleLable.font = [UIFont fontWithName:@"HiraginoSansGB-W3" size:18];
+    
+    //返回按钮
+    UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
+    back.frame = CGRectMake(20, 25, 20, 20);
+    [self.view addSubview:back];
+    [back setImage:[UIImage imageNamed:@"com_taobao_tae_sdk_web_view_title_bar_back.9"] forState:UIControlStateNormal];
+    [back addTarget:self action:@selector(jumpBack) forControlEvents:UIControlEventTouchDown];
     
     
 
@@ -62,7 +65,7 @@
     [self.view addSubview:self.tableV];
     _tableV.delegate = self;
     _tableV.dataSource = self;
-//    _tableV.separatorStyle = UITableViewRowAnimationNone;
+    _tableV.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     
 }

@@ -83,7 +83,7 @@
 -(void)creatSaveButton
 {
     _save = [UIButton buttonWithType:UIButtonTypeCustom];
-    _save.frame = CGRectMake(KWidth-40, 25, 20, 20);
+    _save.frame = CGRectMake(KWidth-45, 25, 25, 25);
     [self.view addSubview:_save];
     if (!_isSave) {
         [_save setImage:[UIImage imageNamed:@"saveWhite"] forState:UIControlStateNormal];
@@ -126,7 +126,7 @@
     
     //返回按钮
     self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.backButton.frame = CGRectMake(20, 25, 20, 20);
+    self.backButton.frame = CGRectMake(20, 25, 23, 23);
     [self.backgroundView addSubview:self.backButton];
     [self.backButton setImage:[UIImage imageNamed:@"abc_ic_ab_back_mtrl_am_alpha"] forState:UIControlStateNormal];
     [self.backButton addTarget:self action:@selector(jumpBack) forControlEvents:UIControlEventTouchDown];

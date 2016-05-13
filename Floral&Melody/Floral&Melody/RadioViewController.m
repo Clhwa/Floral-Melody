@@ -34,7 +34,7 @@ typedef void(^block)();
     self.view.backgroundColor = [UIColor whiteColor];
     _number = 20;
     [self requestMore];
-    self.navigationItem.title = @"电台";
+    
     
     [self collectionView];
 //    [self.collectV addHeaderWithTarget:self action:@selector(refresh)];
@@ -42,8 +42,21 @@ typedef void(^block)();
     header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refresh)];
     _collectV.mj_header = header;
 //    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    //设置主题
+    [self setViewControllerTitleWith:@"电台"];
+
 }
 
+#pragma mark-主题
+-(void)setViewControllerTitleWith:(NSString *)title
+{
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width-64*2, 30)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = title;
+    label.font = [UIFont fontWithName:@"HiraginoSansGB-W3" size:18];
+    self.navigationItem.titleView = label;
+}
 -(void)refresh
 {
     [self requestMore];

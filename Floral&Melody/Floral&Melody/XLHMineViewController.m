@@ -32,7 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"我的";
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self creatColletionView];
@@ -47,8 +47,19 @@
     
    
     
-    
+    //设置主题
+    [self setViewControllerTitleWith:@"我的"];
 }
+#pragma mark-主题
+-(void)setViewControllerTitleWith:(NSString *)title
+{
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width-64*2, 30)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = title;
+    label.font = [UIFont fontWithName:@"HiraginoSansGB-W3" size:18];
+    self.navigationItem.titleView = label;
+}
+
 -(void)getDataArray{
     
     _RadioArr = [[DataBaseUtil shareDataBase] selectTable:@"RadioSave" withClassName:@"RadioListModel" withtextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withList:nil withYouWantSearchContent:nil];
@@ -59,7 +70,7 @@
     _articleArr = [[DataBaseUtil shareDataBase] selectTable:@"RadioSave" withClassName:@"RadioListModel" withtextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withList:nil withYouWantSearchContent:nil];
 
     
-#warning -------自行补充各自的数据
+#warning 自行补充各自的数据
 /*
  
  自行补充各自的数据;
