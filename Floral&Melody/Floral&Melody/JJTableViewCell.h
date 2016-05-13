@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "RadioListModel.h"
 @interface JJTableViewCell : UITableViewCell
-@property(nonatomic,strong)UILabel *titleLabel;
-@property(nonatomic,strong)UILabel *musicVisit;
-@property(nonatomic,strong)UIImageView *imageV;
+@property(nonatomic,strong)UILabel *titleLabel;//title
+@property(nonatomic,strong)UILabel *subTitle;//子title
+@property(nonatomic,strong)UIImageView *imageV;//图片
 
 @property(nonatomic,strong)RadioListModel *listModel;
 @property(nonatomic)NSInteger flag;

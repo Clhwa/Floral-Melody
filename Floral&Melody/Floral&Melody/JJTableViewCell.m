@@ -16,8 +16,8 @@
         self.titleLabel = [[UILabel alloc] init];
         [self.contentView addSubview:self.titleLabel];
         
-        self.musicVisit = [[UILabel alloc] init];
-        [self.contentView addSubview:self.musicVisit];
+        self.subTitle = [[UILabel alloc] init];
+        [self.contentView addSubview:self.subTitle];
         
                 
         self.imageV = [[UIImageView alloc] init];
@@ -35,19 +35,17 @@
     [super layoutSubviews];
     self.imageV.frame = CGRectMake(0, 0, 80, 80);
    
-    self.titleLabel.frame = CGRectMake(85, 10, self.contentView.bounds.size.width-85-60, 30);
-    self.musicVisit.frame = CGRectMake(105, 40, 80, 20);
+    self.titleLabel.frame = CGRectMake(85, 10, self.contentView.bounds.size.width-85-20, 30);
+    self.subTitle.frame = CGRectMake(85, 40, self.contentView.bounds.size.width-85-20, 20);
     
     self.titleLabel.font = [UIFont systemFontOfSize:14];
     
     
-    self.musicVisit.textColor = [UIColor lightGrayColor];
-    self.musicVisit.font =[UIFont systemFontOfSize:12];
+    self.subTitle.textColor = [UIColor lightGrayColor];
+    self.subTitle.font =[UIFont systemFontOfSize:12];
         
     self.titleLabel.text = self.listModel.longTitle;
    
-    
-    self.musicVisit.text = [NSString stringWithFormat:@"%ld",self.listModel.musicVisit];
     
     
     

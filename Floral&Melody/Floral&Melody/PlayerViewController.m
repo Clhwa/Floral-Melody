@@ -10,6 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "JJPlayer.h"
 #import "RadioListModel.h"
+#import "DataBaseUtil.h"
 #define KWidth self.view.bounds.size.width
 #define KHeight self.view.bounds.size.height
 #define ControllerHeight 70
@@ -35,6 +36,9 @@
 @property(nonatomic,strong)UILabel *Titlelabel;
 @property(nonatomic,strong)UILabel *nameLabel;
 
+@property(nonatomic,strong)UIButton *save;//收藏按钮
+@property(nonatomic)BOOL isSave;//是否收藏;
+
 
 //记住音频的时间
 @property(nonatomic,assign)CGFloat sumTime;
@@ -49,7 +53,7 @@
     [self SetBackgroundView];
     [self creatScrollView];
     [self PlayButton];
-    
+    [self creatSaveButton];
     
     NSLog(@"%ld",self.musicArray.count);
 
@@ -57,6 +61,21 @@
     [self reloadMusic];
     NSLog(@"%@",[[_musicArray objectAtIndex:_currentIndex] webview_url]);
    
+}
+-(void)creatSaveButton
+{
+    _save = [UIButton buttonWithType:UIButtonTypeCustom];
+    _save.frame = CGRectMake(KWidth-40, 25, 20, 20);
+    [self.view addSubview:_save];
+    [_save setImage:[UIImage imageNamed:@"saveWhite"] forState:UIControlStateNormal];
+    [_save addTarget:self action:@selector(SaveRadio:) forControlEvents:UIControlEventTouchDown];
+}
+-(void)SaveRadio:(UIButton *)sender
+{
+
+
+
+
 }
 //背景图
 -(void)SetBackgroundView

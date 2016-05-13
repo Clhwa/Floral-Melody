@@ -48,15 +48,13 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"百科";
     
-    //对背景视图设置毛玻璃效果
-    UIVisualEffectView *visualView = [[UIVisualEffectView alloc]initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
-    visualView.frame = [UIScreen mainScreen].bounds;
+
     UIImageView *imageV = [[UIImageView alloc]initWithFrame:self.view.bounds];
     imageV.image = [UIImage imageNamed:@"meigui.jpg"];
+    imageV.alpha = 0.6;
 
-        [imageV addSubview:visualView];
     [self.view addSubview:imageV];
-    
+//    _Images = [NSArray arrayWithObjects:[UIImage imageNamed:@"one"], [UIImage imageNamed:@"two"],[UIImage imageNamed:@"three"],[UIImage imageNamed:@"four"],nil];
     
     
     [self loadData];
@@ -85,6 +83,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     _s.hidden = NO;
+    _s.backgroundColor = [self randomColor];
 }
 
 
@@ -118,6 +117,7 @@
                 }
                
             } withSuperView:self.navigationController.view];
+            _s.backgroundColor = [self randomColor];
         });
             
         }

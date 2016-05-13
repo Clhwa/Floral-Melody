@@ -17,6 +17,7 @@
 #import "GoToTopButton.h"
 #import "UIImageView+WebCache.h"
 #import "XLHMJRefresh.h"
+#import "DataBaseUtil.h"
 #define WIDTH self.view.frame.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 @interface ListViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
@@ -37,7 +38,7 @@
 
 static const float kCellHeight = 120.f;
 static const float kItemSpace = -20.f;
-static const CGFloat kFirstItemTransform = 0.05f;
+//static const CGFloat kFirstItemTransform = 0.05f;
 @implementation ListViewController
 
 - (void)viewDidLoad {
@@ -47,6 +48,8 @@ static const CGFloat kFirstItemTransform = 0.05f;
     
         [self refresh];
     
+    //创建数据库
+    [[DataBaseUtil shareDataBase]createTableWithName:@"baike" withTextArray:@[@"title",@"url",@"imageData"]];
     
     // Do any additional setup after loading the view.
 }
@@ -277,7 +280,7 @@ static const CGFloat kFirstItemTransform = 0.05f;
     if (!_collectionView) {
         StickCollectionViewFlowLayout *layout = [[StickCollectionViewFlowLayout alloc]init];
         _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 64, WIDTH, HEIGHT-64-49) collectionViewLayout:layout];
-        layout.firstItemTransform = kFirstItemTransform;
+//        layout.firstItemTransform = kFirstItemTransform;
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
