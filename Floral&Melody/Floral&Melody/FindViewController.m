@@ -53,7 +53,11 @@
     UIImageView *imageV = [[UIImageView alloc]initWithFrame:self.view.bounds];
     imageV.image = [UIImage imageNamed:@"meigui.jpg"];
     imageV.alpha = 0.6;
+    
+    //填充
+    imageV.contentMode =  UIViewContentModeScaleAspectFill;
 
+    
     [self.view addSubview:imageV];
 //    _Images = [NSArray arrayWithObjects:[UIImage imageNamed:@"one"], [UIImage imageNamed:@"two"],[UIImage imageNamed:@"three"],[UIImage imageNamed:@"four"],nil];
     
@@ -168,7 +172,7 @@
     if (!_disView) {
         _disView = [[DisperseBtn alloc]init];
         _disView.frame = CGRectMake(100, 100, 65, 65);//60<*<80
-        _disView.borderRect = CGRectMake(0, 64, WIDTH, HEIGHT-64-49);
+        _disView.borderRect = CGRectMake(0, -HEIGHT, WIDTH, HEIGHT*3);
         _disView.closeImage = [UIImage imageNamed:@"花叶"];
     }
     return _disView;
@@ -239,6 +243,11 @@
    Type *type = [self.dataArray objectAtIndex:btn.tag-10010];
     if (![self.view.subviews containsObject:self.disView]) {
         [self.view addSubview:self.disView];
+    }
+    if (btn.tag == 10010+2||btn.tag == 10010+4) {
+        _disView.borderRect = CGRectMake(0, -HEIGHT, WIDTH, HEIGHT*3);
+    }else{
+        _disView.borderRect = CGRectMake(0, 64, WIDTH, HEIGHT-64-49);
     }
     [self setDisViewButtonsNum:type];
     

@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = self.radio.title;
+    
     _page = 10;
     [self Request];
     [self creatTableView];
@@ -46,6 +46,17 @@
     
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
 //    self.edgesForExtendedLayout = UIRectEdgeNone;
+    //设置主题
+    [self setViewControllerTitleWith:self.radio.title];
+}
+#pragma mark-主题
+-(void)setViewControllerTitleWith:(NSString *)title
+{
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width-64*2, 30)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = title;
+    label.font = [UIFont fontWithName:@"HiraginoSansGB-W3" size:16];
+    self.navigationItem.titleView = label;
 }
 //刷新
 -(void)refresh
@@ -132,6 +143,8 @@
 {
     //顶部大图
     self.headerV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64,KWidth , HeaderViewHeight)];
+    _headerV.contentMode = UIViewContentModeScaleAspectFill;
+    _headerV.clipsToBounds = YES;
     [self.headerV sd_setImageWithURL:[NSURL URLWithString:self.radio.coverimg]];
     
     //tableView

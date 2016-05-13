@@ -20,6 +20,7 @@
 
 @property(nonatomic,strong)JJPlayer *player;
 @property(nonatomic,strong)AVPlayerItem *PlayItem;
+@property(nonatomic,strong)RadioListModel *radio;
 
 @property(nonatomic,strong)UIImageView *backgroundView;//背景图
 @property(nonatomic,strong)UISlider *musicProgrsee;//进度条
@@ -40,6 +41,7 @@
 @property(nonatomic)BOOL isSave;//是否收藏;
 
 
+
 //记住音频的时间
 @property(nonatomic,assign)CGFloat sumTime;
 
@@ -53,29 +55,56 @@
     [self SetBackgroundView];
     [self creatScrollView];
     [self PlayButton];
-    [self creatSaveButton];
     
-    NSLog(@"%ld",self.musicArray.count);
+//    NSLog(@"%ld",self.musicArray.count);
 
+    
+    //建表
+    [[DataBaseUtil shareDataBase] createTableWithName:@"RadioSave" withTextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"]];
+   
+}
+-(void)viewWillAppear:(BOOL)animated
+{
     //一开始就播放
     [self reloadMusic];
-    NSLog(@"%@",[[_musicArray objectAtIndex:_currentIndex] webview_url]);
-   
+//    NSLog(@"%@",[[_musicArray objectAtIndex:_currentIndex] webview_url]);
+
+  NSArray *SaveArr = [[DataBaseUtil shareDataBase]selectTable:@"RadioSave" withClassName:@"RadioListModel" withtextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withList:@"musicUrl" withYouWantSearchContent:_radio.musicUrl];
+//    NSLog(@"%ld",SaveArr.count);
+
+    if (SaveArr.count>0) {
+        _isSave = YES;
+    }else{
+        _isSave = NO;
+    }
+   [self creatSaveButton];
+    NSLog(@"viewWillAppear");
 }
 -(void)creatSaveButton
 {
     _save = [UIButton buttonWithType:UIButtonTypeCustom];
-    _save.frame = CGRectMake(KWidth-40, 25, 20, 20);
+    _save.frame = CGRectMake(KWidth-45, 25, 25, 25);
     [self.view addSubview:_save];
-    [_save setImage:[UIImage imageNamed:@"saveWhite"] forState:UIControlStateNormal];
+    if (!_isSave) {
+        [_save setImage:[UIImage imageNamed:@"saveWhite"] forState:UIControlStateNormal];
+    }else if (_isSave){
+        [_save setImage:[UIImage imageNamed:@"save_2"] forState:UIControlStateNormal];
+        [[DataBaseUtil shareDataBase] deleteObjectWithTableName:@"RadioSave" withTextName:@"musicUrl" withValue:_radio.musicUrl];
+    }
     [_save addTarget:self action:@selector(SaveRadio:) forControlEvents:UIControlEventTouchDown];
 }
 -(void)SaveRadio:(UIButton *)sender
 {
-
-
-
-
+    if (!_isSave) {
+        [_save setImage:[UIImage imageNamed:@"save_2"] forState:UIControlStateNormal];
+        [[DataBaseUtil shareDataBase] insertWithTableName:@"RadioSave" withObjectTextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withObjectValueArray:@[_radio.coverimg,_radio.musicUrl,_radio.webview_url,_radio.uname,_radio.longTitle,_radio.title]];
+        _isSave = YES;
+    }else if (_isSave){
+    [_save setImage:[UIImage imageNamed:@"saveWhite"] forState:UIControlStateNormal];
+        [[DataBaseUtil shareDataBase] deleteObjectWithTableName:@"RadioSave" withTextName:@"musicUrl" withValue:_radio.musicUrl];
+        _isSave = NO;
+    }
+    
 }
 //背景图
 -(void)SetBackgroundView
@@ -97,7 +126,7 @@
     
     //返回按钮
     self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.backButton.frame = CGRectMake(20, 25, 20, 20);
+    self.backButton.frame = CGRectMake(20, 25, 23, 23);
     [self.backgroundView addSubview:self.backButton];
     [self.backButton setImage:[UIImage imageNamed:@"abc_ic_ab_back_mtrl_am_alpha"] forState:UIControlStateNormal];
     [self.backButton addTarget:self action:@selector(jumpBack) forControlEvents:UIControlEventTouchDown];
@@ -166,8 +195,8 @@
     //把原来的歌曲停掉
     [player pause];
     
-    RadioListModel *radio = [_musicArray objectAtIndex:_currentIndex];
-    _PlayItem = [[AVPlayerItem alloc] initWithURL:[NSURL URLWithString:radio.musicUrl]];
+    _radio = [_musicArray objectAtIndex:_currentIndex];
+    _PlayItem = [[AVPlayerItem alloc] initWithURL:[NSURL URLWithString:_radio.musicUrl]];
     [player setPlayerWithAVPlayerItem:_PlayItem];
     
     [player play];
@@ -179,10 +208,9 @@
         [_start setImage:[UIImage imageNamed:@"ic_action_pause"] forState:UIControlStateNormal];
     }
     //1.背景图
-    [self.backgroundView sd_setImageWithURL:[NSURL URLWithString:radio.coverimg]placeholderImage:[UIImage imageNamed:@"meigui.jpg"]];
+    [self.backgroundView sd_setImageWithURL:[NSURL URLWithString:_radio.coverimg]placeholderImage:[UIImage imageNamed:@"meigui.jpg"]];
     //2.旋转图
-    [_icon sd_setImageWithURL:[NSURL URLWithString:radio.coverimg]];
-    
+    [_icon sd_setImageWithURL:[NSURL URLWithString:_radio.coverimg]];
     
     //3.根据每首歌自己不同的长度，改变音乐进度条的最大值
     
@@ -199,11 +227,11 @@
     }
     
     //5
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:radio.webview_url]]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_radio.webview_url]]];
     
     //6
-    _nameLabel.text = radio.uname;
-    _Titlelabel.text = radio.title;
+    _nameLabel.text = _radio.uname;
+    _Titlelabel.text = _radio.title;
     
     //保证每次切换新歌的时候旋转的图片都从正上方看是旋转
     self.reroatView.transform = CGAffineTransformMakeRotation(0);

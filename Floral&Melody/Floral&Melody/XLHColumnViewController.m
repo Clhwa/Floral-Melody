@@ -46,7 +46,7 @@
     UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
     [button addTarget:self action:@selector(collect:) forControlEvents:UIControlEventTouchUpInside];
-   NSArray *array = [[DataBaseUtil shareDataBase]selectTable:@"article" withClassName:@"XLHSpecialModal" withtextArray:@[@"Name",@"url",@"ImageUrl"] withList:@"url" withYouWantSearchContent:self.urlAddress];
+   NSArray *array = [[DataBaseUtil shareDataBase]selectTable:@"article" withClassName:@"ListContent" withtextArray:@[@"Name",@"url",@"ImageUrl"] withList:@"url" withYouWantSearchContent:self.urlAddress];
     if (array.count>0) {
         [button setBackgroundImage:[UIImage imageNamed:@"收藏01"] forState:UIControlStateNormal];
         _isCollect = YES;

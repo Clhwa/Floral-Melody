@@ -10,7 +10,8 @@
 #import "SaveViewController.h"
 #import "XLHMineViewController.h"
 #import "JJCollectionViewCell.h"
-
+#import "RadioListModel.h"
+#import "DataBaseUtil.h"
 @interface XLHMineViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic)NSInteger flag;
@@ -18,13 +19,20 @@
 @property(nonatomic,strong)NSArray *Title;
 @property(nonatomic,strong)NSMutableArray *Content;
 @property(nonatomic,strong)UITableView *tableV;
+
+@property(nonatomic,strong)NSMutableArray *BigArray;
+@property(nonatomic,strong)NSArray *articleArr;
+@property(nonatomic,strong)NSArray *AudioArr;
+@property(nonatomic,strong)NSArray *BaikeArr;
+@property(nonatomic,strong)NSArray *RadioArr;
+
 @end
 
 @implementation XLHMineViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"我的";
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self creatColletionView];
@@ -35,7 +43,51 @@
     
     [self createFloralMelody];
     
+    
+    
+   
+    
+    //设置主题
+    [self setViewControllerTitleWith:@"我的"];
 }
+#pragma mark-主题
+-(void)setViewControllerTitleWith:(NSString *)title
+{
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width-64*2, 30)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = title;
+    label.font = [UIFont fontWithName:@"HiraginoSansGB-W3" size:18];
+    self.navigationItem.titleView = label;
+}
+
+-(void)getDataArray{
+    
+    _RadioArr = [[DataBaseUtil shareDataBase] selectTable:@"RadioSave" withClassName:@"RadioListModel" withtextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withList:nil withYouWantSearchContent:nil];
+    _AudioArr = [[DataBaseUtil shareDataBase] selectTable:@"RadioSave" withClassName:@"RadioListModel" withtextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withList:nil withYouWantSearchContent:nil];
+
+    _BaikeArr = [[DataBaseUtil shareDataBase] selectTable:@"RadioSave" withClassName:@"RadioListModel" withtextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withList:nil withYouWantSearchContent:nil];
+
+    _articleArr = [[DataBaseUtil shareDataBase] selectTable:@"RadioSave" withClassName:@"RadioListModel" withtextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withList:nil withYouWantSearchContent:nil];
+
+    
+#warning 自行补充各自的数据
+/*
+ 
+ 自行补充各自的数据;
+
+ */
+    
+    
+    _BigArray = [NSMutableArray array];
+    
+    
+    [self.BigArray addObject:_articleArr];
+    [self.BigArray addObject:_AudioArr];
+    [self.BigArray addObject:_BaikeArr];
+    [self.BigArray addObject:_RadioArr];
+
+}
+
 - (void)createFloralMelody
 {
 //    UIView * lineView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT * 0.81, SCREEN_WIDTH, 1 )];
@@ -89,11 +141,12 @@
     
     //注册cell
     [collection registerClass:[JJCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-
-
 }
+#pragma -mark viewWillAppear
 - (void)viewWillAppear:(BOOL)animated{
     [self displayTmpPics];
+    [self getDataArray];
+    
 }
 
 - (void)clearTmpPics{
@@ -196,6 +249,7 @@
     JJCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     cell.imageV.image = _Images[indexPath.row];
     cell.title.text = _Title[indexPath.row];
+    
     cell.content.text = @"333内容";
     return cell;
 }
@@ -203,11 +257,13 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     SaveViewController *save = [[SaveViewController alloc] init];
+    save.BigArrayS = self.BigArray;
+    save.TitleArr = self.Title;
+    save.flag = indexPath.item;
     save.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:save animated:YES completion:^{
     
     }];
-//    [self.navigationController pushViewController:save animated:YES];
     
 }
 - (void)didReceiveMemoryWarning {

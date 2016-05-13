@@ -44,7 +44,6 @@
     self.subTitle.textColor = [UIColor lightGrayColor];
     self.subTitle.font =[UIFont systemFontOfSize:12];
         
-    self.titleLabel.text = self.listModel.longTitle;
    
     
     
