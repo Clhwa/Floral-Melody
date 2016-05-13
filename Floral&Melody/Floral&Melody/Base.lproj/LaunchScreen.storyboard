@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="冬青黑体.otf">
+            <string>HiraginoSansGB-W3</string>
+            <string>HiraginoSansGB-W3</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -15,13 +21,51 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qidong_1.png" translatesAutoresizingMaskIntoConstraints="NO" id="11V-9j-NXS">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Floral&amp;Melody" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfH-FR-Ivh">
+                                <rect key="frame" x="152" y="52" width="296" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="296" id="e2Q-gK-Nr1"/>
+                                    <constraint firstAttribute="height" constant="51" id="i8n-V0-Ad0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSansGB-W3" family="Hiragino Sans GB" pointSize="32"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-花の旋律-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acM-yq-ppU">
+                                <rect key="frame" x="216" y="101" width="168" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="168" id="9di-VV-WVr"/>
+                                    <constraint firstAttribute="height" constant="51" id="Sog-FN-T4r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSansGB-W3" family="Hiragino Sans GB" pointSize="29"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="11V-9j-NXS" secondAttribute="bottom" id="1gZ-PW-Ob4"/>
+                            <constraint firstItem="11V-9j-NXS" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="fS9-t2-0pJ"/>
+                            <constraint firstItem="acM-yq-ppU" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="81" id="ine-Gy-xGq"/>
+                            <constraint firstItem="acM-yq-ppU" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="kuw-3p-zgJ"/>
+                            <constraint firstItem="QfH-FR-Ivh" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="32" id="lHx-RU-GcF"/>
+                            <constraint firstAttribute="trailing" secondItem="11V-9j-NXS" secondAttribute="trailing" id="riO-GY-tAp"/>
+                            <constraint firstItem="11V-9j-NXS" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="sTr-vK-2Rk"/>
+                            <constraint firstItem="QfH-FR-Ivh" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="tZK-nN-z89"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="409" y="318"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="qidong_1.png" width="700" height="1243"/>
+    </resources>
 </document>

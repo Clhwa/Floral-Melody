@@ -30,7 +30,4 @@ extern const CGFloat RPSlidingCellCollapsedHeight;
  */
 @property (strong, nonatomic) UIImageView *backgroundImageView;
 
-
-
-
 @end

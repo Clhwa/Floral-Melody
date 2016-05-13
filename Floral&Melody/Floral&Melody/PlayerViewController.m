@@ -55,29 +55,32 @@
     [self SetBackgroundView];
     [self creatScrollView];
     [self PlayButton];
-    
-//    NSLog(@"%ld",self.musicArray.count);
 
     
     //建表
     [[DataBaseUtil shareDataBase] createTableWithName:@"RadioSave" withTextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"]];
    
 }
+-(void)judge{
+
+    NSArray *SaveArr = [[DataBaseUtil shareDataBase]selectTable:@"RadioSave" withClassName:@"RadioListModel" withtextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withList:@"musicUrl" withYouWantSearchContent:_radio.musicUrl];
+    //    NSLog(@"%ld",SaveArr.count);
+    
+    if (SaveArr.count>0) {
+        _isSave = YES;
+        [_save setImage:[UIImage imageNamed:@"save_2"] forState:UIControlStateNormal];
+    }else{
+        _isSave = NO;
+        [_save setImage:[UIImage imageNamed:@"saveWhite"] forState:UIControlStateNormal];
+    }
+
+}
 -(void)viewWillAppear:(BOOL)animated
 {
     //一开始就播放
     [self reloadMusic];
-//    NSLog(@"%@",[[_musicArray objectAtIndex:_currentIndex] webview_url]);
-
-  NSArray *SaveArr = [[DataBaseUtil shareDataBase]selectTable:@"RadioSave" withClassName:@"RadioListModel" withtextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withList:@"musicUrl" withYouWantSearchContent:_radio.musicUrl];
-//    NSLog(@"%ld",SaveArr.count);
-
-    if (SaveArr.count>0) {
-        _isSave = YES;
-    }else{
-        _isSave = NO;
-    }
-   [self creatSaveButton];
+    [self judge];
+    [self creatSaveButton];
     NSLog(@"viewWillAppear");
 }
 -(void)creatSaveButton
@@ -89,13 +92,13 @@
         [_save setImage:[UIImage imageNamed:@"saveWhite"] forState:UIControlStateNormal];
     }else if (_isSave){
         [_save setImage:[UIImage imageNamed:@"save_2"] forState:UIControlStateNormal];
-        [[DataBaseUtil shareDataBase] deleteObjectWithTableName:@"RadioSave" withTextName:@"musicUrl" withValue:_radio.musicUrl];
     }
     [_save addTarget:self action:@selector(SaveRadio:) forControlEvents:UIControlEventTouchDown];
 }
 -(void)SaveRadio:(UIButton *)sender
 {
     if (!_isSave) {
+        
         [_save setImage:[UIImage imageNamed:@"save_2"] forState:UIControlStateNormal];
         [[DataBaseUtil shareDataBase] insertWithTableName:@"RadioSave" withObjectTextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withObjectValueArray:@[_radio.coverimg,_radio.musicUrl,_radio.webview_url,_radio.uname,_radio.longTitle,_radio.title]];
         _isSave = YES;
@@ -305,6 +308,7 @@
     }
     
     [self reloadMusic];
+    [self judge];
 
 }
 -(void)next:(UIButton *)sender
@@ -316,15 +320,13 @@
     }
     
     [self reloadMusic];
+    [self judge];
 }
 
 
 //返回按钮的方法
 -(void)jumpBack
 {
-    
-//    [self.navigationController popViewControllerAnimated:YES];
-//    self.navigationController.navigationBarHidden = NO;//隐藏导航栏
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];

@@ -13,7 +13,7 @@
 @property(nonatomic,strong)UILabel *subTitle;//子title
 @property(nonatomic,strong)UIImageView *imageV;//图片
 
-@property(nonatomic,strong)RadioListModel *listModel;
-@property(nonatomic)NSInteger flag;
+
+
 
 @end

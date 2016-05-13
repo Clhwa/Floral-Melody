@@ -14,6 +14,7 @@
 		3F0EF1D11CE560310081E150 /* saveWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0EF1D01CE560310081E150 /* saveWhite.png */; settings = {ASSET_TAGS = (); }; };
 		3F0EF1D31CE562190081E150 /* save_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0EF1D21CE562190081E150 /* save_2.png */; settings = {ASSET_TAGS = (); }; };
 		3F0EF1D61CE5B2370081E150 /* JJView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0EF1D51CE5B2370081E150 /* JJView.m */; settings = {ASSET_TAGS = (); }; };
+		3F0EF1D81CE5C8540081E150 /* qidong_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0EF1D71CE5C8540081E150 /* qidong_1.png */; settings = {ASSET_TAGS = (); }; };
 		3F1E78F31CDC495600837839 /* 冬青黑体.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3F1E78F21CDC495600837839 /* 冬青黑体.otf */; settings = {ASSET_TAGS = (); }; };
 		3F1E78F61CDC8AA800837839 /* XLHTOPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E78F51CDC8AA800837839 /* XLHTOPViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3F1E78F91CDC967800837839 /* XLHTOPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E78F81CDC967800837839 /* XLHTOPTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -197,6 +198,7 @@
 		3F0EF1D21CE562190081E150 /* save_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_2.png; sourceTree = "<group>"; };
 		3F0EF1D41CE5B2370081E150 /* JJView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJView.h; sourceTree = "<group>"; };
 		3F0EF1D51CE5B2370081E150 /* JJView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJView.m; sourceTree = "<group>"; };
+		3F0EF1D71CE5C8540081E150 /* qidong_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qidong_1.png; sourceTree = "<group>"; };
 		3F1E78F21CDC495600837839 /* 冬青黑体.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "冬青黑体.otf"; sourceTree = "<group>"; };
 		3F1E78F41CDC8AA800837839 /* XLHTOPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLHTOPViewController.h; sourceTree = "<group>"; };
 		3F1E78F51CDC8AA800837839 /* XLHTOPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLHTOPViewController.m; sourceTree = "<group>"; };
@@ -957,6 +959,7 @@
 		3F947AC11CD8BF1B00111559 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				3F0EF1D71CE5C8540081E150 /* qidong_1.png */,
 				3F947A871CD8BD4100111559 /* Main.storyboard */,
 				3F947A8A1CD8BD4100111559 /* Assets.xcassets */,
 				3F947A8C1CD8BD4100111559 /* LaunchScreen.storyboard */,
@@ -1425,6 +1428,7 @@
 				3FE7D6771CE1F98C007DCE81 /* 置顶1.png in Resources */,
 				3FA77E361CE33DEC006949DA /* four.png in Resources */,
 				3FA77E381CE33DEC006949DA /* two.png in Resources */,
+				3F0EF1D81CE5C8540081E150 /* qidong_1.png in Resources */,
 				3FE7D6661CE1E859007DCE81 /* 返回.png in Resources */,
 				3F48947B1CE206BD004BF8DB /* ic_next.png in Resources */,
 				3F5C9A311CD9EA3D00DB1036 /* arrow - up.png in Resources */,
