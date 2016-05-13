@@ -8,9 +8,19 @@
 
 #import "SaveViewController.h"
 #import "JJTableViewCell.h"
+#import "UIImageView+WebCache.h"
+#import "PlayerViewController.h"
+
 @interface SaveViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *tableV;
 @property(nonatomic,strong)NSMutableArray *dataArray;
+@property(nonatomic,strong)UILabel *titleLable;
+@property(nonatomic,strong)JJTableViewCell *cell;
+
+
+
+
+
 @end
 
 @implementation SaveViewController
@@ -25,13 +35,23 @@
     [back setImage:[UIImage imageNamed:@"com_taobao_tae_sdk_web_view_title_bar_back.9"] forState:UIControlStateNormal];
     [back addTarget:self action:@selector(jumpBack) forControlEvents:UIControlEventTouchDown];
     
-    
     [self creatTableView];
     
+    [self creatTitleLabel];
+    NSLog(@"%@",[_BigArrayS objectAtIndex:_flag]);
     
     
     
+}
+-(void)creatTitleLabel
+{
+    _titleLable = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width-200)/2, 20, 200, 30)];
+    [self.view addSubview:_titleLable];
+    _titleLable.textAlignment =NSTextAlignmentCenter;
+    _titleLable.text = [self.TitleArr[_flag] stringByAppendingString:@"收藏"];
     
+    
+
 }
 -(void)creatTableView
 {
@@ -44,33 +64,97 @@
     _tableV.dataSource = self;
 //    _tableV.separatorStyle = UITableViewRowAnimationNone;
     
+    
 }
 
 #pragma -mark UITableView 的代理方法
 //row个数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _dataArray.count;
+    return [[_BigArrayS objectAtIndex:_flag] count];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
 
+}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     static NSString *identifier = @"cell";
-    JJTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
+    _cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (_cell == nil) {
         
-        cell = [[JJTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        _cell = [[JJTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
-   
-    return cell;
+    switch (_flag) {
+        case 0:{
+            
+        }
+            break;
+        case 1:{
+            
+        }
+            break;
+        case 2:{
+           
+        }
+            break;
+        case 3:{
+        RadioListModel *mo = [[_BigArrayS objectAtIndex:_flag] objectAtIndex:indexPath.row];
+        _cell.titleLabel.text = mo.longTitle;
+        _cell.subTitle.text = mo.uname;
+            
+        [_cell.imageV sd_setImageWithURL:[NSURL URLWithString:mo.coverimg]];
+//        NSLog(@"%@",mo.uname);
+
+                    }
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+    
+    return _cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-       NSLog(@"%ld",indexPath.section);
+    NSLog(@"%ld",indexPath.row);
+    
+    switch (_flag) {
+        case 0:{
+            
+        }
+            break;
+        case 1:{
+            
+        }
+            break;
+        case 2:{
+            
+        }
+            break;
+        case 3:{
+            PlayerViewController  *play = [[PlayerViewController alloc] init];
+            play.musicArray = [_BigArrayS objectAtIndex:_flag];
+            play.currentIndex = indexPath.row;
+            play.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+            [self presentViewController:play animated:YES completion:^{
+                
+            }];
+
+        }
+            break;
+            
+        default:
+            break;
+    }
+
     
 }
 

@@ -61,7 +61,11 @@ typedef void(^block)();
     //设置偏移量
    _collectV.contentInset = UIEdgeInsetsMake(0, 0, -(800), 0);
    
-    NSLog(@"--------------->%f",_collectV.contentInset.bottom);
+//    NSLog(@"--------------->%f",_collectV.contentInset.bottom);
+    
+    
+    
+    
     [_collectV registerClass:[RPSlidingMenuCell class] forCellWithReuseIdentifier:@"cell"];
     
     self.collectV.backgroundColor = [UIColor whiteColor];

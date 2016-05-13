@@ -767,8 +767,8 @@
 				3F48948E1CE2071C004BF8DB /* RadioViewController.m */,
 				3F48948F1CE2071C004BF8DB /* RadioListViewController.h */,
 				3F4894901CE2071C004BF8DB /* RadioListViewController.m */,
-				3F4894911CE2071C004BF8DB /* PlayerViewController.m */,
 				3F4894921CE2071C004BF8DB /* PlayerViewController.h */,
+				3F4894911CE2071C004BF8DB /* PlayerViewController.m */,
 			);
 			name = RadioController;
 			sourceTree = "<group>";
