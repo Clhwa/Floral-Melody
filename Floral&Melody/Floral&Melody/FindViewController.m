@@ -37,7 +37,7 @@
 
 @property(nonatomic,assign)NSInteger typeId;
 
-
+@property(nonatomic,strong)UIImageView *imageV;
 @end
 
 @implementation FindViewController
@@ -50,27 +50,40 @@
     //设置主题
     [self setViewControllerTitleWith:@"百科"];
 
-    UIImageView *imageV = [[UIImageView alloc]initWithFrame:self.view.bounds];
-    imageV.image = [UIImage imageNamed:@"meigui.jpg"];
-    imageV.alpha = 0.6;
+    _imageV = [[UIImageView alloc]initWithFrame:self.view.bounds];
+    [self changeImage];
+    _imageV.alpha = 0.6;
     
     //填充
-    imageV.contentMode =  UIViewContentModeScaleAspectFill;
+    _imageV.contentMode =  UIViewContentModeScaleAspectFill;
 
     
-    [self.view addSubview:imageV];
-//    _Images = [NSArray arrayWithObjects:[UIImage imageNamed:@"one"], [UIImage imageNamed:@"two"],[UIImage imageNamed:@"three"],[UIImage imageNamed:@"four"],nil];
+    [self.view addSubview:_imageV];
+
     
     
     [self loadData];
     
     
-
+//定时器
+    [NSTimer scheduledTimerWithTimeInterval:8 target:self selector:@selector(changeImage) userInfo:nil repeats:YES];
 
     
     // Do any additional setup after loading the view.
 
 
+}
+#pragma mark-定时切换图片
+-(void)changeImage
+{
+    static NSInteger index = 0;
+    NSArray *Images = [NSArray arrayWithObjects:[UIImage imageNamed:@"meigui.jpg"],[UIImage imageNamed:@"one"], [UIImage imageNamed:@"qidong_1"],[UIImage imageNamed:@"three"],[UIImage imageNamed:@"four"],nil];
+    if (index == Images.count) {
+        index = 0;
+    }
+    _imageV.image = Images[index];
+    index++;
+    
 }
 #pragma mark-主题
 -(void)setViewControllerTitleWith:(NSString *)title

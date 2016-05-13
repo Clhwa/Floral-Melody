@@ -16,7 +16,7 @@
 #import "RadioListViewController.h"
 #import "MJRefresh.h"
 #import "XLHMJRefresh.h"
-typedef void(^block)();
+
 @interface RadioViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property(nonatomic,strong)NSMutableArray *dataArray;//数据源数组
 @property(nonatomic,strong)UICollectionView *collectV;
@@ -32,16 +32,15 @@ typedef void(^block)();
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    _number = 20;
-    [self requestMore];
-    
-    
+    _number = 10;
     [self collectionView];
+    
+    
 //    [self.collectV addHeaderWithTarget:self action:@selector(refresh)];
     MJRefreshNormalHeader * header = [[XLHMJRefresh shareXLHMJRefresh] header];
     header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refresh)];
     _collectV.mj_header = header;
-//    self.edgesForExtendedLayout = UIRectEdgeNone;
+
     
     //设置主题
     [self setViewControllerTitleWith:@"电台"];
@@ -76,9 +75,7 @@ typedef void(^block)();
    
 //    NSLog(@"--------------->%f",_collectV.contentInset.bottom);
     
-    
-    
-    
+
     [_collectV registerClass:[RPSlidingMenuCell class] forCellWithReuseIdentifier:@"cell"];
     
     self.collectV.backgroundColor = [UIColor whiteColor];
@@ -106,7 +103,7 @@ typedef void(^block)();
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_dataArray.count>0) {
-        //    NSLog(@"你点击了第%ld个分区的第%ld个小方块",indexPath.section,indexPath.row);
+        
         RadioListViewController *list = [[RadioListViewController alloc] init];
         list.radio = [self.dataArray objectAtIndex:indexPath.row];
         [self.navigationController pushViewController:list animated:YES];
@@ -117,20 +114,18 @@ typedef void(^block)();
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-//    NSLog(@"%f", _collectV.contentOffset.y);
-//    NSLog(@"contentSize.height==%f",_collectV.contentSize.height);
-    
-//    //可滚动区域
+    //可滚动区域
     CGFloat contentsizeH = scrollView.contentSize.height - _collectV.bounds.size.height;
 //    NSLog(@"contentsizeH=%f",contentsizeH);
-////    //上拉到底部的高度
+    //上拉到底部的高度
     self.conentOffsetY = scrollView.contentOffset.y - contentsizeH;
 //    NSLog(@"------->%f",_conentOffsetY);
-    if (_conentOffsetY >-720 && !self.isrefresh) {
-        self.isrefresh = YES;
+    if (_conentOffsetY >-720+64 && !self.isrefresh) {
+        
         _number = _number+10;
         [self requestMore];
         NSLog(@"加载更多------");
+        self.isrefresh = YES;
 
     }
 }
@@ -138,7 +133,6 @@ typedef void(^block)();
 -(void)requestMore
 {
    
-    //(2)发送post
     NSString *str1 = @"http://api2.pianke.me/ting/radio_list";
     
     NSURL *url1 = [NSURL URLWithString:str1];
@@ -178,7 +172,8 @@ typedef void(^block)();
                 
             [self.collectV reloadData];
             [_collectV.mj_header endRefreshing];
-
+                _collectV.contentOffset = CGPointMake(0, 0);
+            
             });
         }else{
             NSLog(@"%@",error);
