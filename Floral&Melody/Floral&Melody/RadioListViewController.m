@@ -10,8 +10,12 @@
 #import "RadioListTableViewCell.h"
 #import "PlayerViewController.h"
 #import "UIImageView+WebCache.h"
-#import "MJRefresh.h"
+//#import "MJRefresh.h"
 #import "XLHMJRefresh.h"
+
+#import "LBProgressHUD.h"//菊花
+#import "WarnLabel.h"
+
 #define KWidth self.view.bounds.size.width
 #define KHeight self.view.bounds.size.height
 #define HeaderViewHeight 150
@@ -72,6 +76,8 @@
 }
 -(void)requestMoreValue
 {
+     [LBProgressHUD showHUDto:self.view animated:YES];//开始菊花
+    
     _page =_page +10;
     NSLog(@"%ld",_page);
     
@@ -129,14 +135,28 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 [self.tableV reloadData];
+                
+                [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
             });
         }else
         {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
+                //提示框
+                WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200+64 withSuperView:self.view];
+                warnLab.text = @"网络请求失败";
+            });
             NSLog(@"%@",error);
         }
     }];
     //启动
     [task resume];
+    
+}
+-(void)removeAct
+{
+    [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
     
 }
 -(void)creatTableView
@@ -159,6 +179,8 @@
 }
 -(void)Request
 {
+     [LBProgressHUD showHUDto:self.view animated:YES];//开始菊花
+    
     //(2)发送post
     NSString *str = @"http://api2.pianke.me/ting/radio_detail";
     
@@ -216,10 +238,18 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 [self.tableV reloadData];
+                
+                [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
             });
         }else
         {
-        
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
+                //提示框
+                WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200+64 withSuperView:self.view];
+                warnLab.text = @"网络请求失败";
+               
+            });
             NSLog(@"%@",error);
         }
     }

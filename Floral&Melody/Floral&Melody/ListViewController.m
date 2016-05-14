@@ -7,12 +7,14 @@
 //
 
 #import "ListViewController.h"
+
+#import "LBProgressHUD.h"  //菊花
 #import "NetworkRequestManager.h"
 #import "ListContent.h"
 #import "DetailViewController.h"
 #import "StickCollectionViewFlowLayout.h"
 #import "StickCollectionViewCell.h"
-#import "MJRefresh.h"
+
 #import "WarnLabel.h"
 #import "GoToTopButton.h"
 #import "UIImageView+WebCache.h"
@@ -25,7 +27,7 @@
     BOOL isRefresh;
 }
 @property(nonatomic,strong)UILabel *numberLab;
-@property(nonatomic,strong)UIActivityIndicatorView *act;
+//@property(nonatomic,strong)UIActivityIndicatorView *act;
 @property(nonatomic,assign)NSInteger page;
 @property(nonatomic,assign)NSInteger number;
 @property(nonatomic,strong)UICollectionView* collectionView;
@@ -126,7 +128,8 @@ static const float kItemSpace = -20.f;
 -(void)jugeWhichURLToloadData
 {
     //菊花
-    [self.act startAnimating];
+//    [self.act startAnimating];
+    [LBProgressHUD showHUDto:self.view animated:YES];//开始菊花
     if (_isSeek) {
         [self seekViewLoadData];
     }else{
@@ -137,7 +140,7 @@ static const float kItemSpace = -20.f;
 -(void)refresh
 {
     _warnStr = @"加载成功";
-    _mycenterY = 200.0;
+    _mycenterY = 200.0+64;
     isRefresh = YES;
     _page = 1;
     [self jugeWhichURLToloadData];
@@ -212,10 +215,17 @@ static const float kItemSpace = -20.f;
             [_collectionView.mj_header endRefreshing];
             [_collectionView.mj_footer endRefreshing];
         }
-        [_act stopAnimating];
-        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
+//        [_act stopAnimating];
+        [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
+        
+        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200+64 withSuperView:self.view];
         warnLab.text = _warnStr;
     });
+}
+-(void)removeAct
+{
+    [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+    
 }
 #pragma mark-解析数据成功
 -(void)analyzingData:(NSData *)data
@@ -253,7 +263,8 @@ static const float kItemSpace = -20.f;
                 [self addTableView];
             }
             
-            [_act stopAnimating];
+//            [_act stopAnimating];
+            [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
             
             [_collectionView.mj_header endRefreshing];
             [_collectionView.mj_footer endRefreshing];
@@ -310,16 +321,16 @@ static const float kItemSpace = -20.f;
     }
     return _numberLab;
 }
--(UIActivityIndicatorView *)act
-{
-    if (!_act) {
-        _act = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        [self.view addSubview:_act];
-        _act.center = CGPointMake(self.view.frame.size.width/2, 200);
-        _act.color = [UIColor lightGrayColor];
-    }
-    return _act;
-}
+//-(UIActivityIndicatorView *)act
+//{
+//    if (!_act) {
+//        _act = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+//        [self.view addSubview:_act];
+//        _act.center = CGPointMake(self.view.frame.size.width/2, 200);
+//        _act.color = [UIColor lightGrayColor];
+//    }
+//    return _act;
+//}
 -(NSMutableArray *)dataArr
 {
     if (!_dataArr) {

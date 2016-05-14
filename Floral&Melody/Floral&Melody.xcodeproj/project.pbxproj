@@ -180,6 +180,7 @@
 		3FE7D6771CE1F98C007DCE81 /* 置顶1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE7D6731CE1F98C007DCE81 /* 置顶1.png */; settings = {ASSET_TAGS = (); }; };
 		3FE7D6781CE1F98C007DCE81 /* hua3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE7D6741CE1F98C007DCE81 /* hua3.png */; settings = {ASSET_TAGS = (); }; };
 		3FF108681CE48D56003061E9 /* 搜索3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FF108671CE48D56003061E9 /* 搜索3.png */; settings = {ASSET_TAGS = (); }; };
+		3FF77E431CE6BCCD00254408 /* LBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF77E421CE6BCCD00254408 /* LBProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
 		3FFE43C11CE2BBF2007823E4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE43C01CE2BBF2007823E4 /* MBProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -504,6 +505,8 @@
 		3FE7D6731CE1F98C007DCE81 /* 置顶1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "置顶1.png"; sourceTree = "<group>"; };
 		3FE7D6741CE1F98C007DCE81 /* hua3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hua3.png; sourceTree = "<group>"; };
 		3FF108671CE48D56003061E9 /* 搜索3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "搜索3.png"; sourceTree = "<group>"; };
+		3FF77E411CE6BCCD00254408 /* LBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LBProgressHUD.h; path = LBProgressHUD/LBProgressHUD.h; sourceTree = "<group>"; };
+		3FF77E421CE6BCCD00254408 /* LBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LBProgressHUD.m; path = LBProgressHUD/LBProgressHUD.m; sourceTree = "<group>"; };
 		3FFE43BF1CE2BBF2007823E4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		3FFE43C01CE2BBF2007823E4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -576,6 +579,8 @@
 				3F4893F61CE1F9F5004BF8DB /* GoToTopButton.m */,
 				3F4893F71CE1F9F5004BF8DB /* NetworkRequestManager.h */,
 				3F4893F81CE1F9F5004BF8DB /* NetworkRequestManager.m */,
+				3FF77E411CE6BCCD00254408 /* LBProgressHUD.h */,
+				3FF77E421CE6BCCD00254408 /* LBProgressHUD.m */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -1551,6 +1556,7 @@
 				3F48940B1CE1FA30004BF8DB /* FMDatabasePool.m in Sources */,
 				3F947AFF1CD8C9A300111559 /* MJRefreshComponent.m in Sources */,
 				3F48944E1CE1FB79004BF8DB /* ListContent.m in Sources */,
+				3FF77E431CE6BCCD00254408 /* LBProgressHUD.m in Sources */,
 				3FC20E1C1CDB3EDB002E8EF9 /* UIRefreshControl+AFNetworking.m in Sources */,
 				3FFE43C11CE2BBF2007823E4 /* MBProgressHUD.m in Sources */,
 				3F4894601CE1FBA5004BF8DB /* DetailViewController.m in Sources */,

@@ -8,8 +8,10 @@
 
 #import "XLHColumnViewController.h"
 #import "DataBaseUtil.h"
+#import "LBProgressHUD.h"
+#import "WarnLabel.h"
 
-@interface XLHColumnViewController ()
+@interface XLHColumnViewController ()<WKNavigationDelegate>
 @property(nonatomic,assign)BOOL isCollect;
 @end
 
@@ -24,6 +26,9 @@
     [self.view addSubview:self.webView];
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_urlAddress]]];
     
+    //代理
+    self.webView.navigationDelegate = self;
+    
     //设置收藏按钮
     [self setCollectButton];
     
@@ -32,6 +37,29 @@
     
     //通知
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addLeftButton) name:@"kAddLeftButtonWithColumn" object:nil];
+}
+#pragma mark-代理方法
+-(void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation
+{
+     [LBProgressHUD showHUDto:self.view animated:YES];//开始菊花
+}
+-(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
+{
+    [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
+}
+-(void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error
+{
+    [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
+    //提示框
+    WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200+64 withSuperView:self.view];
+    warnLab.text = @"网页加载失败";
+}
+-(void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error
+{
+    [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
+    //提示框
+    WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200+64 withSuperView:self.view];
+    warnLab.text = @"网页加载失败";
 }
 #pragma mark-添加返回按钮
 -(void)addLeftButton
@@ -56,6 +84,11 @@
     label.font = [UIFont fontWithName:@"HiraginoSansGB-W3" size:16];
     self.navigationItem.titleView = label;
 }
+-(void)removeAct
+{
+    [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+    
+}
 #pragma mark-设置收藏
 -(void)setCollectButton
 {
@@ -79,13 +112,18 @@
         if ([[DataBaseUtil shareDataBase]deleteObjectWithTableName:@"article" withTextName:@"url" withValue:_urlAddress]) {
             _isCollect = NO;
             [button setBackgroundImage:[UIImage imageNamed:@"收藏02"] forState:UIControlStateNormal];
+            //提示框
+            WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:[UIScreen mainScreen].bounds.size.height/2 withSuperView:self.view];
+            warnLab.text = @"取消收藏";
         }
     }else{
         //收藏
         if ([[DataBaseUtil shareDataBase]insertWithTableName:@"article" withObjectTextArray:@[@"Name",@"url",@"ImageUrl"] withObjectValueArray:@[_titleStr,_urlAddress,_imageUrl]]) {
             [button setBackgroundImage:[UIImage imageNamed:@"收藏01"] forState:UIControlStateNormal];
              _isCollect = YES;
-            
+            //提示框
+            WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:[UIScreen mainScreen].bounds.size.height/2 withSuperView:self.view];
+            warnLab.text = @"网页收藏成功";
         }
     }
     

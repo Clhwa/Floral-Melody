@@ -7,7 +7,8 @@
 //
 
 #import "XLHTOPViewController.h"
-
+#import "LBProgressHUD.h"
+#import "WarnLabel.h"
 @interface XLHTOPViewController ()
 
     
@@ -79,6 +80,8 @@
 /** 请求数据*/
 - (void)requestData
 {
+     [LBProgressHUD showHUDto:self.view animated:YES];//开始菊花
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     [manager GET:@"http://ec.htxq.net/servlet/SysArticleServlet?action=topContents&currentPageIndex=0&pageSize=15&(null)=" parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -102,15 +105,28 @@
                  
                  [self.dataArray addObject:top];
              }
+             dispatch_async(dispatch_get_main_queue(), ^{
              [self.tableView reloadData];
+             
+             [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
+              });
          }
          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull   error) {
+             dispatch_async(dispatch_get_main_queue(), ^{
+            [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
              
+             WarnLabel *warn = [WarnLabel creatWarnLabelWithY:200+64 withSuperView:self.view];
+             warn.text = @"网络请求失败";
+                  });
              NSLog(@"%@",error);  //这里打印错误信息
              
          }];
 }
-
+-(void)removeAct
+{
+    [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+    
+}
 #pragma mark - tableView datasouce
 /** cell的个数*/
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
