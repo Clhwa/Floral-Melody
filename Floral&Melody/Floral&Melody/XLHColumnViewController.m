@@ -7,7 +7,6 @@
 //
 
 #import "XLHColumnViewController.h"
-
 #import "DataBaseUtil.h"
 #import "LBProgressHUD.h"
 #import "WarnLabel.h"

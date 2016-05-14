@@ -8,7 +8,12 @@
 
 #import "XLHVideoViewController.h"
 
+
+#import "VideoPlayerViewController.h"
+
+
 #import "LBProgressHUD.h"
+
 #import "WarnLabel.h"
 
 @interface XLHVideoViewController ()
@@ -37,14 +42,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
     self.view.backgroundColor = [UIColor whiteColor];
     [self initNSInteger];
     
     [self createTableView];
     [self createMJRefresh];
     [self requestData];
+    
 }
 
 #pragma mark-主题
@@ -66,7 +70,6 @@
     //设置主题
     [self setViewControllerTitleWith:@"视频"];
 
-    
     /*
      * 创建tableView
      */
@@ -122,13 +125,21 @@
 /** cell ---> selected*/
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XLHColumnViewController * column = [[XLHColumnViewController alloc] init];
+//    XLHColumnViewController * column = [[XLHColumnViewController alloc] init];
+//    
+//    XLHSpecialModal * xlh = [self.dataArray objectAtIndex:indexPath.row];
+//    
+//    column.urlAddress = xlh.pageUrl;
+//    
+//    [self.navigationController pushViewController:column animated:YES];
     
+    VideoPlayerViewController *video = [[VideoPlayerViewController alloc] init];
     XLHSpecialModal * xlh = [self.dataArray objectAtIndex:indexPath.row];
+    video.videoURl = xlh.pageUrl;
+    NSLog(@"%@",xlh.pageUrl);
+    [self.view addSubview:video.view];
     
-    column.urlAddress = xlh.pageUrl;
     
-    [self.navigationController pushViewController:column animated:YES];
 }
 #pragma mark - requestData
 /** 请求数据*/
