@@ -84,8 +84,6 @@
 		3F5C9A491CDA317000DB1036 /* XLHArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C9A481CDA317000DB1036 /* XLHArticleViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3F5C9A4C1CDA318600DB1036 /* XLHVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C9A4B1CDA318600DB1036 /* XLHVideoViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3F6633FD1CE4BDD900AB2F67 /* meigui.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F6633FC1CE4BDD900AB2F67 /* meigui.jpg */; settings = {ASSET_TAGS = (); }; };
-		3F750D9E1CE618EF008C8483 /* XLHVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F750D9B1CE618EF008C8483 /* XLHVideoPlayer.m */; settings = {ASSET_TAGS = (); }; };
-		3F750D9F1CE618EF008C8483 /* XLHFullViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F750D9D1CE618EF008C8483 /* XLHFullViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3F750DAB1CE61C66008C8483 /* 已收藏.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F750DA31CE61C66008C8483 /* 已收藏.png */; settings = {ASSET_TAGS = (); }; };
 		3F750DAC1CE61C66008C8483 /* 未收藏.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F750DA41CE61C66008C8483 /* 未收藏.png */; settings = {ASSET_TAGS = (); }; };
 		3F750DAD1CE61C66008C8483 /* 分享.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F750DA51CE61C66008C8483 /* 分享.png */; settings = {ASSET_TAGS = (); }; };
@@ -327,10 +325,6 @@
 		3F5C9A4A1CDA318600DB1036 /* XLHVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLHVideoViewController.h; sourceTree = "<group>"; };
 		3F5C9A4B1CDA318600DB1036 /* XLHVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLHVideoViewController.m; sourceTree = "<group>"; };
 		3F6633FC1CE4BDD900AB2F67 /* meigui.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = meigui.jpg; sourceTree = "<group>"; };
-		3F750D9A1CE618EF008C8483 /* XLHVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLHVideoPlayer.h; sourceTree = "<group>"; };
-		3F750D9B1CE618EF008C8483 /* XLHVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLHVideoPlayer.m; sourceTree = "<group>"; };
-		3F750D9C1CE618EF008C8483 /* XLHFullViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLHFullViewController.h; sourceTree = "<group>"; };
-		3F750D9D1CE618EF008C8483 /* XLHFullViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLHFullViewController.m; sourceTree = "<group>"; };
 		3F750DA31CE61C66008C8483 /* 已收藏.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已收藏.png"; sourceTree = "<group>"; };
 		3F750DA41CE61C66008C8483 /* 未收藏.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未收藏.png"; sourceTree = "<group>"; };
 		3F750DA51CE61C66008C8483 /* 分享.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分享.png"; sourceTree = "<group>"; };
@@ -869,10 +863,6 @@
 				3F750DA81CE61C66008C8483 /* 播放.png */,
 				3F750DA91CE61C66008C8483 /* 暂停.png */,
 				3F750DAA1CE61C66008C8483 /* 进度.png */,
-				3F750D9A1CE618EF008C8483 /* XLHVideoPlayer.h */,
-				3F750D9B1CE618EF008C8483 /* XLHVideoPlayer.m */,
-				3F750D9C1CE618EF008C8483 /* XLHFullViewController.h */,
-				3F750D9D1CE618EF008C8483 /* XLHFullViewController.m */,
 				3F1FB7BA1CE6B8A30090E002 /* VideoPlayerViewController.h */,
 				3F1FB7BB1CE6B8A30090E002 /* VideoPlayerViewController.m */,
 			);
@@ -1555,7 +1545,6 @@
 				3F4894331CE1FB04004BF8DB /* Type.m in Sources */,
 				3FC20E151CDB3EDB002E8EF9 /* AFAutoPurgingImageCache.m in Sources */,
 				3FC20E1D1CDB3EDB002E8EF9 /* UIWebView+AFNetworking.m in Sources */,
-				3F750D9E1CE618EF008C8483 /* XLHVideoPlayer.m in Sources */,
 				3F4893FB1CE1F9F5004BF8DB /* GoToTopButton.m in Sources */,
 				3F947ACF1CD8C35200111559 /* WHC_NavigationController.m in Sources */,
 				3F48940B1CE1FA30004BF8DB /* FMDatabasePool.m in Sources */,
@@ -1584,7 +1573,6 @@
 				3F1FB7BC1CE6B8A30090E002 /* VideoPlayerViewController.m in Sources */,
 				3FC20E161CDB3EDB002E8EF9 /* AFImageDownloader.m in Sources */,
 				3F947B061CD8C9A300111559 /* MJRefreshBackNormalFooter.m in Sources */,
-				3F750D9F1CE618EF008C8483 /* XLHFullViewController.m in Sources */,
 				3FC20E551CDB6B1A002E8EF9 /* SDWebImagePrefetcher.m in Sources */,
 				3F4894091CE1FA30004BF8DB /* FMDatabase.m in Sources */,
 				3F947B0C1CD8C9A300111559 /* MJRefreshConst.m in Sources */,

@@ -22,7 +22,7 @@
 
 @property(nonatomic,strong)NSMutableArray *BigArray;
 @property(nonatomic,strong)NSArray *articleArr;
-@property(nonatomic,strong)NSArray *AudioArr;
+@property(nonatomic,strong)NSArray *VideoArr;
 @property(nonatomic,strong)NSArray *BaikeArr;
 @property(nonatomic,strong)NSArray *RadioArr;
 
@@ -63,7 +63,8 @@
 -(void)getDataArray{
     
     _RadioArr = [[DataBaseUtil shareDataBase] selectTable:@"RadioSave" withClassName:@"RadioListModel" withtextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withList:nil withYouWantSearchContent:nil];
-    _AudioArr = [[DataBaseUtil shareDataBase] selectTable:@"RadioSave" withClassName:@"RadioListModel" withtextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withList:nil withYouWantSearchContent:nil];
+    
+    _VideoArr = [[DataBaseUtil shareDataBase]selectTable:@"video" withClassName:@"XLHSpecialModal" withtextArray:@[@"Image",@"title",@"content",@"videoUrl"] withList:nil withYouWantSearchContent:nil];
 
     _BaikeArr = [[DataBaseUtil shareDataBase] selectTable:@"baike" withClassName:@"ListContent" withtextArray:@[@"Name",@"url",@"ImageUrl",@"Text"] withList:nil withYouWantSearchContent:nil];
 
@@ -77,12 +78,11 @@
 
  */
     
-    
     _BigArray = [NSMutableArray array];
     
     
     [self.BigArray addObject:_articleArr];
-    [self.BigArray addObject:_AudioArr];
+    [self.BigArray addObject:_VideoArr];
     [self.BigArray addObject:_BaikeArr];
     [self.BigArray addObject:_RadioArr];
 
@@ -229,10 +229,28 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 3) {
-        [self alertForCleanCache];
-    }
+    switch (indexPath.section) {
+        case 0:{
+        
+        }
+        break;
+        case 1:{
+            
+        }
+            break;
+        case 2:{
+            
+        }
+            break;
+        case 3:{
+            [self alertForCleanCache];
 
+        }
+            break;
+            
+        default:
+            break;
+    }
     NSLog(@"%ld",indexPath.section);
 
 }
@@ -250,7 +268,9 @@
     cell.imageV.image = _Images[indexPath.row];
     cell.title.text = _Title[indexPath.row];
     
-    cell.content.text = @"333内容";
+//    cell.content.text = @"333内容";
+    cell.content.text = [NSString stringWithFormat:@"%ld内容",[[_BigArray objectAtIndex:indexPath.item] count]];
+    
     return cell;
 }
 

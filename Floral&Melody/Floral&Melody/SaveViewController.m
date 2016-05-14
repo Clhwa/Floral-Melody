@@ -15,6 +15,11 @@
 
 
 
+
+
+#import "VideoPlayerViewController.h"
+#import "XLHSpecialModal.h"
+
 #import "DetailViewController.h"
 #import "XLHColumnViewController.h"
 
@@ -23,9 +28,6 @@
 @property(nonatomic,strong)NSMutableArray *dataArray;
 @property(nonatomic,strong)UILabel *titleLable;
 @property(nonatomic,strong)JJTableViewCell *cell;
-
-
-
 
 
 @end
@@ -40,9 +42,22 @@
     [self creatTableView];
     [self creatTitleLabel];
 //    NSLog(@"%@",[_BigArrayS objectAtIndex:_flag]);
+    if ([[_BigArrayS objectAtIndex:_flag] count]==0) {
+        [self creatLabel];
+    }
     
     
-    
+}
+-(void)creatLabel
+{
+
+    UILabel *la = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-200)/2, 200, 200, 60)];
+    [self.view addSubview:la];
+    la.numberOfLines = 2;
+    la.textAlignment = NSTextAlignmentCenter;
+    la.text = @"亲,你的收藏夹还没有内容哦!赶快去收藏吧!!";
+
+
 }
 -(void)creatTitleLabel
 {
@@ -109,7 +124,10 @@
         }
             break;
         case 1:{
-            
+            XLHSpecialModal *list = _BigArrayS[_flag][indexPath.row];
+            _cell.titleLabel.text = list.title;
+            _cell.subTitle.text = list.content;
+            [_cell.imageV sd_setImageWithURL:[NSURL URLWithString:list.Image]];
         }
             break;
         case 2:{
@@ -159,6 +177,14 @@
         }
             break;
         case 1:{
+            VideoPlayerViewController *Video = [[VideoPlayerViewController alloc] init];
+            Video.model = _BigArrayS[_flag][indexPath.row];;
+            
+            Video.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+            [self presentViewController:Video animated:YES completion:^{
+                
+            }];
+
             
         }
             break;
@@ -181,8 +207,6 @@
             [self presentViewController:play animated:YES completion:^{
             
             }];
-        
-
         }
             break;
             
@@ -190,7 +214,6 @@
             break;
     }
 
-    
 }
 
 -(void)jumpBack

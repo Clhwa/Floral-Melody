@@ -8,9 +8,7 @@
 
 #import "XLHVideoViewController.h"
 
-
 #import "VideoPlayerViewController.h"
-
 
 #import "LBProgressHUD.h"
 
@@ -125,21 +123,11 @@
 /** cell ---> selected*/
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    XLHColumnViewController * column = [[XLHColumnViewController alloc] init];
-//    
-//    XLHSpecialModal * xlh = [self.dataArray objectAtIndex:indexPath.row];
-//    
-//    column.urlAddress = xlh.pageUrl;
-//    
-//    [self.navigationController pushViewController:column animated:YES];
     
-    VideoPlayerViewController *video = [[VideoPlayerViewController alloc] init];
+    VideoPlayerViewController *video = [VideoPlayerViewController new];
     XLHSpecialModal * xlh = [self.dataArray objectAtIndex:indexPath.row];
-    video.videoURl = xlh.pageUrl;
-    NSLog(@"%@",xlh.pageUrl);
-    [self.view addSubview:video.view];
-    
-    
+    video.model = xlh;
+    [self presentViewController:video animated:NO completion:nil];
 }
 #pragma mark - requestData
 /** 请求数据*/
@@ -181,6 +169,10 @@
             xlh.userName = [[dic valueForKey:@"author"] valueForKey:@"userName"];
             xlh.identifier = [[dic valueForKey:@"author"] valueForKey:@"identity"];
             xlh.userIcon = [[dic valueForKey:@"author"] valueForKey:@"headImg"];
+            
+            xlh.videoUrl = [dic valueForKey:@"videoUrl"];
+            
+//            NSLog(@"%@",xlh.videoUrl);
             [self.dataArray addObject:xlh];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -241,6 +233,7 @@
             xlh.userName = [[dic valueForKey:@"author"] valueForKey:@"userName"];
             xlh.identifier = [[dic valueForKey:@"author"] valueForKey:@"identity"];
             xlh.userIcon = [[dic valueForKey:@"author"] valueForKey:@"headImg"];
+            xlh.videoUrl = [dic valueForKey:@"videoUrl"];
             [self.dataArray addObject:xlh];
         }
         
@@ -307,6 +300,7 @@
             xlh.userName = [[dic valueForKey:@"author"] valueForKey:@"userName"];
             xlh.identifier = [[dic valueForKey:@"author"] valueForKey:@"identity"];
             xlh.userIcon = [[dic valueForKey:@"author"] valueForKey:@"headImg"];
+            xlh.videoUrl = [dic valueForKey:@"videoUrl"];
             [self.dataArray addObject:xlh];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -405,8 +399,6 @@
     [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
     
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
