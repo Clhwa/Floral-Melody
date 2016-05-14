@@ -31,7 +31,7 @@
                                     <constraint firstAttribute="width" constant="296" id="e2Q-gK-Nr1"/>
                                     <constraint firstAttribute="height" constant="51" id="i8n-V0-Ad0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HiraginoSansGB-W3" family="Hiragino Sans GB" pointSize="32"/>
+                                <fontDescription key="fontDescription" name="HiraginoSansGB-W3" family="Hiragino Sans GB" pointSize="27"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -41,7 +41,7 @@
                                     <constraint firstAttribute="width" constant="168" id="9di-VV-WVr"/>
                                     <constraint firstAttribute="height" constant="51" id="Sog-FN-T4r"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HiraginoSansGB-W3" family="Hiragino Sans GB" pointSize="29"/>
+                                <fontDescription key="fontDescription" name="HiraginoSansGB-W3" family="Hiragino Sans GB" pointSize="27"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </label>

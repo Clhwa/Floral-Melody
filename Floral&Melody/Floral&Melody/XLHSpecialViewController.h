@@ -28,8 +28,6 @@
 
 #import "XLHTipsView.h"
 
-
-
 #import "objc/runtime.h"
 
 #import "XLHMJRefresh.h"
