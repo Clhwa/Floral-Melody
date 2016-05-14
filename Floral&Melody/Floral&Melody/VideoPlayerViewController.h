@@ -1,15 +1,16 @@
 //
 //  VideoPlayerViewController.h
-//  Floral&Melody
+//  happysharing
 //
-//  Created by lanou on 16/5/14.
-//  Copyright © 2016年 西兰花. All rights reserved.
+//  Created by dengchongkang on 16/3/2.
+//  Copyright © 2016年 jackTang. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import "XLHVideoPlayer.h"
-
+#import "XLHSpecialModal.h"
+#import "DataBaseUtil.h"
 @interface VideoPlayerViewController : UIViewController
-@property(nonatomic,strong)NSString *videoURl;
+@property(nonatomic,strong)XLHSpecialModal *model;
+
+
 @end

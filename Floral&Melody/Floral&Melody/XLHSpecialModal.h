@@ -34,6 +34,9 @@
 /** reader **/
 @property (nonatomic, assign)NSInteger reader;
 
+//mp4视频
+@property(nonatomic,strong)NSString *videoUrl;
+
 /** time **/
 @property (nonatomic, strong)NSString * time;
 

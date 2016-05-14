@@ -83,6 +83,7 @@
     [self creatSaveButton];
     NSLog(@"viewWillAppear");
 }
+#pragma  -mark收藏按钮
 -(void)creatSaveButton
 {
     _save = [UIButton buttonWithType:UIButtonTypeCustom];
