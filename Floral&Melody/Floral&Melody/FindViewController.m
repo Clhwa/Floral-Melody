@@ -8,18 +8,19 @@
 
 #import "FindViewController.h"
 
+#import "LBProgressHUD.h" //菊花
 #import "NetworkRequestManager.h"
 
 #import "Type.h"
 #import "Content.h"
-#import "UIImageView+WebCache.h"
+//#import "UIImageView+WebCache.h"
 #import "ListViewController.h"
 #import "WarnLabel.h"
 #import "SearchView.h"
 #import "WarnEnableEmptyLabel.h"
 
-#import "DBSphereView.h"
-#import "DisperseBtn.h"
+#import "DBSphereView.h" //云
+#import "DisperseBtn.h" //花叶
 
 #define WIDTH self.view.frame.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
@@ -32,7 +33,7 @@
 @property(nonatomic,strong)SearchView *s;
 
 @property(nonatomic,strong)NSMutableArray *dataArray;
-@property(nonatomic,strong)UIActivityIndicatorView *act;
+//@property(nonatomic,strong)UIActivityIndicatorView *act;
 
 
 @property(nonatomic,assign)NSInteger typeId;
@@ -118,7 +119,10 @@
 #pragma mark- 请求数据
 -(void)loadData
 {
-    [self.act startAnimating];//菊花
+//    [self.act startAnimating];
+    //菊花
+    [LBProgressHUD showHUDto:self.view animated:YES];
+    
     [NetworkRequestManager createPostRequestWithUrl:@"http://101.200.141.66:8080/EncyclopediaCategory" withBody:nil finish:^(NSData *data) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 //        NSLog(@"%@",dic);
@@ -132,7 +136,10 @@
         dispatch_async(dispatch_get_main_queue(), ^{
 
             [self.view addSubview:self.sphereView];//云
-            [self.act stopAnimating];
+//            [self.act stopAnimating];
+            //菊花
+            [LBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            
             [self performSelector:@selector(buttonPressed:) withObject:(UIButton*)[self.view viewWithTag:10010+2] afterDelay:0.7];
             
             //添加搜索框
@@ -154,7 +161,9 @@
         dispatch_async(dispatch_get_main_queue(), ^{
         WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:myCenterY withSuperView:self.view];
         warnLab.text = @"网络请求失败";
-        [self.act stopAnimating];
+//        [self.act stopAnimating];
+             [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+            
             //再次请求数据
             [self performSelector:@selector(loadData) withObject:nil afterDelay:2];
             });
@@ -162,16 +171,16 @@
 }
 
 #pragma mark-懒加载
--(UIActivityIndicatorView *)act
-{
-    if (!_act) {
-        _act = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        [self.view addSubview:_act];
-        _act.center = CGPointMake(self.view.frame.size.width/2, myCenterY);
-        _act.color = [UIColor lightGrayColor];
-    }
-    return _act;
-}
+//-(UIActivityIndicatorView *)act
+//{
+//    if (!_act) {
+//        _act = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+//        [self.view addSubview:_act];
+//        _act.center = CGPointMake(self.view.frame.size.width/2, myCenterY);
+//        _act.color = [UIColor lightGrayColor];
+//    }
+//    return _act;
+//}
 -(NSMutableArray *)dataArray
 {
     if (!_dataArray) {

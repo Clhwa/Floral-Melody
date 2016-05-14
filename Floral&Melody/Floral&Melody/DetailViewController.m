@@ -12,13 +12,14 @@
 #import "WarnLabel.h"
 #import "GoToTopButton.h"
 #import "XLHMJRefresh.h"
+#import "LBProgressHUD.h" //菊花
 
 #define WIDTH self.view.frame.size.width
 #define HEIGHT self.view.frame.size.height
 @interface DetailViewController ()<UIScrollViewDelegate,UIWebViewDelegate>
 
 @property(nonatomic,strong)UIWebView *web;
-@property(nonatomic,strong)UIActivityIndicatorView *act;
+//@property(nonatomic,strong)UIActivityIndicatorView *act;
 @property(nonatomic,strong)UIButton *collectView;
 @property(nonatomic,strong)GoToTopButton *button;
 
@@ -123,12 +124,14 @@
 #pragma mark-代理方法
 -(void)webViewDidStartLoad:(UIWebView *)webView
 {
-    [self.act startAnimating];
+//    [self.act startAnimating];
+    [LBProgressHUD showHUDto:self.view animated:YES];//开始菊花
 }
 -(void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [_web.scrollView.mj_header endRefreshing];
-    [_act stopAnimating];
+//    [_act stopAnimating];
+    [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
     WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
     warnLab.text = @"网页加载成功";
     [self performSelector:@selector(appearCollectButton) withObject:nil afterDelay:0.8];
@@ -136,7 +139,8 @@
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     [_web.scrollView.mj_header endRefreshing];
-    [_act stopAnimating];
+//    [_act stopAnimating];
+    [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
     //提示框
     WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
         warnLab.text = @"加载失败了,亲";
@@ -152,16 +156,16 @@
     }
     return _button;
 }
--(UIActivityIndicatorView *)act
-{
-    if (!_act) {
-        _act = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        [self.view addSubview:_act];
-        _act.center = CGPointMake(self.view.frame.size.width/2, 200);
-        _act.color = [UIColor lightGrayColor];
-    }
-    return _act;
-}
+//-(UIActivityIndicatorView *)act
+//{
+//    if (!_act) {
+//        _act = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+//        [self.view addSubview:_act];
+//        _act.center = CGPointMake(self.view.frame.size.width/2, 200);
+//        _act.color = [UIColor lightGrayColor];
+//    }
+//    return _act;
+//}
 #pragma makr-收藏
 -(void)collect
 {
