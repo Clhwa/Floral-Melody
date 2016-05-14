@@ -9,8 +9,9 @@
 #import "XLHColumnViewController.h"
 
 #import "DataBaseUtil.h"
+#import "LBProgressHUD.h"
 
-@interface XLHColumnViewController ()
+@interface XLHColumnViewController ()<WKNavigationDelegate>
 @property(nonatomic,assign)BOOL isCollect;
 @end
 
@@ -25,6 +26,9 @@
     [self.view addSubview:self.webView];
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_urlAddress]]];
     
+    //代理
+    self.webView.navigationDelegate = self;
+    
     //设置收藏按钮
     [self setCollectButton];
     
@@ -33,6 +37,23 @@
     
     //通知
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addLeftButton) name:@"kAddLeftButtonWithColumn" object:nil];
+}
+#pragma mark-代理方法
+-(void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation
+{
+     [LBProgressHUD showHUDto:self.view animated:YES];//开始菊花
+}
+-(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
+{
+    [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+}
+-(void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error
+{
+    [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+}
+-(void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error
+{
+    [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
 }
 #pragma mark-添加返回按钮
 -(void)addLeftButton

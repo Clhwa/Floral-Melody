@@ -9,6 +9,7 @@
 #import "XLHArticleViewController.h"
 
 #import "WarnLabel.h"
+#import "LBProgressHUD.h"
 
 @interface XLHArticleViewController ()
 {
@@ -132,6 +133,8 @@
 /** 请求数据*/
 - (void)requestData
 {
+     [LBProgressHUD showHUDto:self.view animated:YES];//开始菊花
+    
     //初始化manager
     AFHTTPSessionManager * AFManager = [AFHTTPSessionManager manager];
     
@@ -169,7 +172,12 @@
             [self.dataArray addObject:xlh];
         }
         [self.tableView reloadData];
+        
+        [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+        
         //提示框
         WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
         warnLab.text = @"网络请求失败";
@@ -181,6 +189,8 @@
 /** update刷新数据 */
 - (void)updateRequest
 {
+     [LBProgressHUD showHUDto:self.view animated:YES];//开始菊花
+    
     //初始化manager
     AFHTTPSessionManager * AFManager = [AFHTTPSessionManager manager];
     
@@ -220,11 +230,16 @@
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
+            
+            [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+            
             NSLog(@"%ld",self.dataArray.count);
             [self.tableView.mj_header endRefreshing];
             pageNumber = 0;
         });
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+        
         [self.tableView.mj_header endRefreshing];
         //提示框
         WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
@@ -237,7 +252,8 @@
 /** loadMore*/
 - (void)loadMoreRequest
 {
-
+[LBProgressHUD showHUDto:self.view animated:YES];//开始菊花
+    
     //初始化manager
     AFHTTPSessionManager * AFManager = [AFHTTPSessionManager manager];
     
@@ -277,9 +293,14 @@
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
+            
+            [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+            
             [self.tableView.mj_footer endRefreshing];
         });
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+        
         [self.tableView.mj_footer endRefreshing];
         //提示框
         WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:[UIScreen mainScreen].bounds.size.height-64-50 withSuperView:self.view];

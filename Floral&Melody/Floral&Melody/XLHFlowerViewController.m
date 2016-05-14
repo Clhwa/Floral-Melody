@@ -7,6 +7,8 @@
 //
 
 #import "XLHFlowerViewController.h"
+
+#import "LBProgressHUD.h"
 #import "WarnLabel.h"
 
 #import "UIImageView+WebCache.h"
@@ -139,6 +141,8 @@ static NSString * ID = @"cell";
 /** 请求数据*/
 - (void)requestData
 {
+     [LBProgressHUD showHUDto:self.view animated:YES];//开始菊花
+    
     //初始化manager
     AFHTTPSessionManager * AFManager = [AFHTTPSessionManager manager];
     
@@ -177,7 +181,12 @@ static NSString * ID = @"cell";
         }
         
         [self.tableView reloadData];
+        
+        [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+        
         //提示框
         WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
         warnLab.text = @"网络请求失败";

@@ -16,6 +16,7 @@
 
 #import "WarnLabel.h"
 #import "DataBaseUtil.h"
+#import "LBProgressHUD.h"
 
 static NSString * ID = @"cell";
 
@@ -92,6 +93,8 @@ static NSString * ID = @"cell";
 /** 请求数据*/
 - (void)requestData
 {
+     [LBProgressHUD showHUDto:self.view animated:YES];//开始菊花
+    
     //初始化manager
     AFHTTPSessionManager * AFManager = [AFHTTPSessionManager manager];
     
@@ -130,9 +133,13 @@ static NSString * ID = @"cell";
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
+            
+            [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
         });
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+        
         //提示框
         WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
         warnLab.text = @"专题请求失败";
@@ -143,6 +150,8 @@ static NSString * ID = @"cell";
 /** update刷新数据 */
 - (void)updateRequest
 {
+     [LBProgressHUD showHUDto:self.view animated:YES];//开始菊花
+    
     //初始化manager
     AFHTTPSessionManager * AFManager = [AFHTTPSessionManager manager];
     
@@ -182,13 +191,18 @@ static NSString * ID = @"cell";
         }
     
         dispatch_async(dispatch_get_main_queue(), ^{
+            [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+            
            [self.tableView.mj_header endRefreshing];
+            
             [self.tableView reloadData];
             pageNumber = 0;
         });
  
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+        
         [self.tableView.mj_header endRefreshing];
         //提示框
         WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
@@ -200,6 +214,8 @@ static NSString * ID = @"cell";
 /** loadMore*/
 - (void)loadMoreRequest
 {
+     [LBProgressHUD showHUDto:self.view animated:YES];//开始菊花
+    
       pageNumber = pageNumber + 1;
     //初始化manager
     AFHTTPSessionManager * AFManager = [AFHTTPSessionManager manager];
@@ -239,12 +255,16 @@ static NSString * ID = @"cell";
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+            
             [self.tableView reloadData];
             NSLog(@"%ld",self.dataArray.count);
             [self.tableView.mj_footer endRefreshing];
         });
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+        
         //结束
         [self.tableView.mj_footer endRefreshing];
         //提示

@@ -68,6 +68,8 @@ static CGFloat toastWidth = 70;
     self = [super initWithFrame:frame];
     if (self)
     {
+        self.alpha = 0.7;//透明度修改
+        
         self.tipText = TIP_DEFULT_TEXT;
         
         _toast = [[UIView alloc] initWithFrame:CGRectMake((self.frame.size.width - toastWidth) / 2, (self.frame.size.height - toastWidth) / 2 , toastWidth, toastWidth)];

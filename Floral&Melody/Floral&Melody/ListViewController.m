@@ -14,7 +14,7 @@
 #import "DetailViewController.h"
 #import "StickCollectionViewFlowLayout.h"
 #import "StickCollectionViewCell.h"
-//#import "MJRefresh.h"
+
 #import "WarnLabel.h"
 #import "GoToTopButton.h"
 #import "UIImageView+WebCache.h"
