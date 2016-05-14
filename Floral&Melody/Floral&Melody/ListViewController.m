@@ -25,6 +25,7 @@
 @interface ListViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 {
     BOOL isRefresh;
+    BOOL b;
 }
 @property(nonatomic,strong)UILabel *numberLab;
 //@property(nonatomic,strong)UIActivityIndicatorView *act;
@@ -57,6 +58,18 @@ static const float kItemSpace = -20.f;
     // Do any additional setup after loading the view.
 
 
+}
+#pragma mark-屏幕出现
+-(void)viewDidAppear:(BOOL)animated
+{
+    if (!b) {
+        b = YES;
+    }else{
+        [UIView animateWithDuration:0.15 animations:^{
+            _collectionView.frame = CGRectMake(0, 0, WIDTH, HEIGHT-64-49+64);
+        }];
+        
+    }
 }
 #pragma mark-主题
 -(void)setViewControllerTitleWith:(NSString *)title
