@@ -123,9 +123,8 @@
     XLHColumnViewController * column = [[XLHColumnViewController alloc] init];
     
     XLHSpecialModal * xlh = [self.dataArray objectAtIndex:indexPath.row];
-    column.titleStr = xlh.title;//主题
-    column.imageUrl = xlh.Image;//图片
-    column.urlAddress = xlh.pageUrl;
+    column.xlh = xlh;//主题
+    
     
     [self.navigationController pushViewController:column animated:YES];
 }

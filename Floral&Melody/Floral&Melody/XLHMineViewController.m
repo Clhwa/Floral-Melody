@@ -65,9 +65,9 @@
     _RadioArr = [[DataBaseUtil shareDataBase] selectTable:@"RadioSave" withClassName:@"RadioListModel" withtextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withList:nil withYouWantSearchContent:nil];
     _AudioArr = [[DataBaseUtil shareDataBase] selectTable:@"RadioSave" withClassName:@"RadioListModel" withtextArray:@[@"coverimg",@"musicUrl",@"webview_url",@"uname",@"longTitle",@"title"] withList:nil withYouWantSearchContent:nil];
 
-    _BaikeArr = [[DataBaseUtil shareDataBase] selectTable:@"baike" withClassName:@"ListContent" withtextArray:@[@"Name",@"url",@"ImageUrl"] withList:nil withYouWantSearchContent:nil];
+    _BaikeArr = [[DataBaseUtil shareDataBase] selectTable:@"baike" withClassName:@"ListContent" withtextArray:@[@"Name",@"url",@"ImageUrl",@"Text"] withList:nil withYouWantSearchContent:nil];
 
-    _articleArr = [[DataBaseUtil shareDataBase] selectTable:@"article" withClassName:@"ListContent" withtextArray:@[@"Name",@"url",@"ImageUrl"] withList:nil withYouWantSearchContent:nil];
+    _articleArr = [[DataBaseUtil shareDataBase] selectTable:@"article" withClassName:@"XLHSpecialModal" withtextArray:@[@"title",@"pageUrl",@"Image",@"content"] withList:nil withYouWantSearchContent:nil];
 
     
 #warning 自行补充各自的数据

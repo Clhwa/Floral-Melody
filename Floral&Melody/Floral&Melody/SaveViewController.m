@@ -14,6 +14,7 @@
 #import "RadioViewController.h"
 
 
+
 #import "DetailViewController.h"
 #import "XLHColumnViewController.h"
 
@@ -101,10 +102,10 @@
     }
     switch (_flag) {
         case 0:{
-            ListContent *list = _BigArrayS[_flag][indexPath.row];
-            _cell.titleLabel.text = list.Name;
-            _cell.subTitle.text = list.url;
-            [_cell.imageV sd_setImageWithURL:[NSURL URLWithString:list.ImageUrl]];
+            XLHSpecialModal *list = _BigArrayS[_flag][indexPath.row];
+            _cell.titleLabel.text = list.title;
+            _cell.subTitle.text = list.content;
+            [_cell.imageV sd_setImageWithURL:[NSURL URLWithString:list.Image]];
         }
             break;
         case 1:{
@@ -114,7 +115,7 @@
         case 2:{
             ListContent *list = _BigArrayS[_flag][indexPath.row];
             _cell.titleLabel.text = list.Name;
-            _cell.subTitle.text = list.url;
+            _cell.subTitle.text = list.Text;
             [_cell.imageV sd_setImageWithURL:[NSURL URLWithString:list.ImageUrl]];
         }
             break;
@@ -146,10 +147,10 @@
         case 0:{
             //文章
             XLHColumnViewController *column = [[XLHColumnViewController alloc]init];
-            ListContent *list = _BigArrayS[_flag][indexPath.row];
-            column.imageUrl = list.ImageUrl;
-            column.urlAddress = list.url;
-            column.titleStr = list.Name;
+            XLHSpecialModal *list = _BigArrayS[_flag][indexPath.row];
+            column.xlh = list;
+            
+            
             UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:column];
             [self presentViewController:nav animated:YES completion:^{
                 [[NSNotificationCenter defaultCenter]postNotificationName:@"kAddLeftButtonWithColumn" object:self userInfo:nil];

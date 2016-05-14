@@ -20,6 +20,7 @@
 		3F1E78F91CDC967800837839 /* XLHTOPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E78F81CDC967800837839 /* XLHTOPTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		3F1E78FC1CDCC41A00837839 /* XLHTOPModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E78FB1CDCC41A00837839 /* XLHTOPModal.m */; settings = {ASSET_TAGS = (); }; };
 		3F1FB7BC1CE6B8A30090E002 /* VideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1FB7BB1CE6B8A30090E002 /* VideoPlayerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		3F2A10B41CE7548200888AB4 /* FirstTimeLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2A10B31CE7548200888AB4 /* FirstTimeLoginView.m */; settings = {ASSET_TAGS = (); }; };
 		3F3DCD5E1CE096F4004B5A60 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F3DCD5D1CE096F4004B5A60 /* play.png */; settings = {ASSET_TAGS = (); }; };
 		3F4893F91CE1F9F5004BF8DB /* DataBaseUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4893F21CE1F9F5004BF8DB /* DataBaseUtil.m */; settings = {ASSET_TAGS = (); }; };
 		3F4893FA1CE1F9F5004BF8DB /* WarnLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4893F41CE1F9F5004BF8DB /* WarnLabel.m */; settings = {ASSET_TAGS = (); }; };
@@ -222,6 +223,8 @@
 		3F1E78FB1CDCC41A00837839 /* XLHTOPModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLHTOPModal.m; sourceTree = "<group>"; };
 		3F1FB7BA1CE6B8A30090E002 /* VideoPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayerViewController.h; sourceTree = "<group>"; };
 		3F1FB7BB1CE6B8A30090E002 /* VideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayerViewController.m; sourceTree = "<group>"; };
+		3F2A10B21CE7548200888AB4 /* FirstTimeLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTimeLoginView.h; sourceTree = "<group>"; };
+		3F2A10B31CE7548200888AB4 /* FirstTimeLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTimeLoginView.m; sourceTree = "<group>"; };
 		3F3DCD5D1CE096F4004B5A60 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		3F4893F11CE1F9F5004BF8DB /* DataBaseUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseUtil.h; sourceTree = "<group>"; };
 		3F4893F21CE1F9F5004BF8DB /* DataBaseUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseUtil.m; sourceTree = "<group>"; };
@@ -645,6 +648,8 @@
 		3F48942C1CE1FAEE004BF8DB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3F2A10B21CE7548200888AB4 /* FirstTimeLoginView.h */,
+				3F2A10B31CE7548200888AB4 /* FirstTimeLoginView.m */,
 				3F4894381CE1FB1E004BF8DB /* SearchView.h */,
 				3F4894391CE1FB1E004BF8DB /* SearchView.m */,
 				3F48943A1CE1FB1E004BF8DB /* WarnEnableEmptyLabel.h */,
@@ -1605,6 +1610,7 @@
 				3F1E78F91CDC967800837839 /* XLHTOPTableViewCell.m in Sources */,
 				3FC20E1E1CDB3EDB002E8EF9 /* AFHTTPSessionManager.m in Sources */,
 				3F947AC81CD8C01500111559 /* XLHLaunchViewController.m in Sources */,
+				3F2A10B41CE7548200888AB4 /* FirstTimeLoginView.m in Sources */,
 				3F947B0F1CD8C9A300111559 /* UIView+MJExtension.m in Sources */,
 				3FC20E5A1CDB6B1A002E8EF9 /* UIImageView+HighlightedWebCache.m in Sources */,
 				3FC20E211CDB3EDB002E8EF9 /* AFURLRequestSerialization.m in Sources */,

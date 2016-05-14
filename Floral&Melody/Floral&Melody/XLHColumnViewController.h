@@ -7,13 +7,12 @@
 //
 
 #import "XLHBaseViewController.h"
-
+#import "XLHSpecialModal.h"
 @import WebKit;
 
 @interface XLHColumnViewController : XLHBaseViewController
 
 @property (nonatomic,strong)WKWebView *webView;
-@property(nonatomic,strong)NSString *imageUrl;
-@property (nonatomic , strong)NSString * urlAddress;
-@property(nonatomic,strong)NSString *titleStr;
+@property(nonatomic,strong)XLHSpecialModal *xlh;
+
 @end

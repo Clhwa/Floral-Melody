@@ -184,7 +184,7 @@
     NSString *str = [NSString string];
     NSString *warnStr = nil;
     if ([self.collectView.titleLabel.text isEqualToString:@"收藏"]) {
-        if([[DataBaseUtil shareDataBase]insertWithTableName:@"baike"withObjectTextArray:@[@"Name",@"url",@"ImageUrl"] withObjectValueArray:@[_list.Name,_list.url,_list.ImageUrl]]){
+        if([[DataBaseUtil shareDataBase]insertWithTableName:@"baike"withObjectTextArray:@[@"Name",@"url",@"ImageUrl",@"Text"] withObjectValueArray:@[_list.Name,_list.url,_list.ImageUrl,_list.Text]]){
             b = YES;
         }
         str = @"已收藏";
@@ -239,7 +239,7 @@
 #pragma mark-判断此页面是否已收藏
 -(void)selectArr
 {
-    NSArray *array = [[DataBaseUtil shareDataBase]selectTable:@"baike" withClassName:@"ListContent" withtextArray:@[@"Name",@"url",@"ImageUrl"] withList:@"url" withYouWantSearchContent:_list.url];
+    NSArray *array = [[DataBaseUtil shareDataBase]selectTable:@"baike" withClassName:@"ListContent" withtextArray:@[@"Name",@"url",@"ImageUrl",@"Text"] withList:@"url" withYouWantSearchContent:_list.url];
     dispatch_async(dispatch_get_main_queue(), ^{
         if (array.count>0) {
             [_collectView setTitle:@"已收藏" forState:UIControlStateNormal];//判断是否已收藏
