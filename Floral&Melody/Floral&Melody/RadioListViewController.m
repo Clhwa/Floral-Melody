@@ -21,6 +21,9 @@
 #define HeaderViewHeight 150
 
 @interface RadioListViewController ()<UITableViewDataSource,UITableViewDelegate>
+{
+    BOOL mybool;//用来修复bug
+}
 @property(nonatomic,strong)UIImageView *headerV;
 @property(nonatomic,strong)UITableView *tableV;
 @property(nonatomic,strong)NSMutableArray *dataArray;
@@ -128,8 +131,8 @@
                 [radio setValuesForKeysWithDictionary:dic];
                 [self.dataArray addObject:radio];
             }
-            NSLog(@"%ld",self.dataArray.count);
-            NSLog(@"%@",[[self.dataArray objectAtIndex:0] title]);
+//            NSLog(@"%ld",self.dataArray.count);
+//            NSLog(@"%@",[[self.dataArray objectAtIndex:0] title]);
             
             //ui刷新回到主线程
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -168,7 +171,7 @@
     [self.headerV sd_setImageWithURL:[NSURL URLWithString:self.radio.coverimg]];
     
     //tableView
-    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KWidth, KHeight-49)];
+    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, KWidth, KHeight-49-64)];
     self.tableV.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.tableV];
     _tableV.delegate = self;
@@ -176,6 +179,18 @@
     
     _tableV.tableHeaderView = _headerV;
     
+}
+#pragma mark-屏幕出现
+-(void)viewDidAppear:(BOOL)animated
+{
+//    NSLog(@"y==%f",_tableV.frame.origin.y);
+    if (!mybool) {
+        mybool = YES;
+    }else{
+          [UIView animateWithDuration:0.15 animations:^{
+        _tableV.frame = CGRectMake(0, 0, KWidth, KHeight-49);
+                }];
+    }
 }
 -(void)Request
 {
@@ -231,8 +246,8 @@
                 
                 
             }
-            NSLog(@"%ld",self.dataArray.count);
-            NSLog(@"%@",[[self.dataArray objectAtIndex:0] title]);
+//            NSLog(@"%ld",self.dataArray.count);
+//            NSLog(@"%@",[[self.dataArray objectAtIndex:0] title]);
             
             //ui刷新回到主线程
             dispatch_async(dispatch_get_main_queue(), ^{
