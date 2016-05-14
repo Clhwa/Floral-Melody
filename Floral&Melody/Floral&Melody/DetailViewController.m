@@ -131,8 +131,9 @@
 {
     [_web.scrollView.mj_header endRefreshing];
 //    [_act stopAnimating];
-    [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
-    WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
+    [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
+    
+    WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200+64 withSuperView:self.view];
     warnLab.text = @"网页加载成功";
     [self performSelector:@selector(appearCollectButton) withObject:nil afterDelay:0.8];
 }
@@ -140,12 +141,17 @@
 {
     [_web.scrollView.mj_header endRefreshing];
 //    [_act stopAnimating];
-    [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+    [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
     //提示框
-    WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
+    WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200+64 withSuperView:self.view];
         warnLab.text = @"加载失败了,亲";
 
     [self performSelector:@selector(appearCollectButton) withObject:nil afterDelay:0.8];
+}
+-(void)removeAct
+{
+    [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+    
 }
 #pragma mark-懒加载
 -(GoToTopButton *)button

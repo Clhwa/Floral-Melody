@@ -179,22 +179,28 @@ static NSString * ID = @"cell";
             xlh.userIcon = [[dic valueForKey:@"author"] valueForKey:@"headImg"];
             [self.dataArray addObject:xlh];
         }
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
         
-        [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
-        
+        [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
+         });
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+        dispatch_async(dispatch_get_main_queue(), ^{
+        [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
         
         //提示框
-        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
+        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200+64 withSuperView:self.view];
         warnLab.text = @"网络请求失败";
+             });
 //        NSLog(@"专题请求失败");
     }];
     
 }
-
+-(void)removeAct
+{
+    [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+    
+}
 /** update刷新数据 *//*
 - (void)updateRequest
 {
@@ -238,7 +244,7 @@ static NSString * ID = @"cell";
         NSLog(@"%ld",self.dataArray.count);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //提示框
-        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
+        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200+64 withSuperView:self.view];
         warnLab.text = @"网络请求失败";
 //        NSLog(@"专题请求失败");
     }];
@@ -290,7 +296,7 @@ static NSString * ID = @"cell";
         });
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //提示框
-        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
+        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200+64 withSuperView:self.view];
         warnLab.text = @"网络请求失败";
 //        NSLog(@"专题请求失败");
     }];

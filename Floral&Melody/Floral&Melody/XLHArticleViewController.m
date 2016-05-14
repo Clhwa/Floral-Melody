@@ -171,21 +171,28 @@
             xlh.userIcon = [[dic valueForKey:@"author"] valueForKey:@"headImg"];
             [self.dataArray addObject:xlh];
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
         
-        [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
-        
+        [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
+         });
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+        dispatch_async(dispatch_get_main_queue(), ^{
+        [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
         
         //提示框
-        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
+        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200+64 withSuperView:self.view];
         warnLab.text = @"网络请求失败";
+             });
 //        NSLog(@"专题请求失败");
     }];
     
 }
-
+-(void)removeAct
+{
+    [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+    
+}
 /** update刷新数据 */
 - (void)updateRequest
 {
@@ -231,19 +238,22 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
             
-            [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+            [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
             
             NSLog(@"%ld",self.dataArray.count);
             [self.tableView.mj_header endRefreshing];
             pageNumber = 0;
         });
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+        dispatch_async(dispatch_get_main_queue(), ^{
+        [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
         
         [self.tableView.mj_header endRefreshing];
         //提示框
-        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
+        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200+64 withSuperView:self.view];
         warnLab.text = @"网络请求失败";
+             });
+        
 //        NSLog(@"专题请求失败");
     }];
     
@@ -294,17 +304,19 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
             
-            [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+            [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
             
             [self.tableView.mj_footer endRefreshing];
         });
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+        dispatch_async(dispatch_get_main_queue(), ^{
+        [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
         
         [self.tableView.mj_footer endRefreshing];
         //提示框
         WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:[UIScreen mainScreen].bounds.size.height-64-50 withSuperView:self.view];
         warnLab.text = @"网络请求失败";
+         });
 //        NSLog(@"专题请求失败");
     }];
     

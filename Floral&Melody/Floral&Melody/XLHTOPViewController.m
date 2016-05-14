@@ -105,20 +105,28 @@
                  
                  [self.dataArray addObject:top];
              }
+             dispatch_async(dispatch_get_main_queue(), ^{
              [self.tableView reloadData];
              
-             [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+             [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
+              });
          }
          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull   error) {
-             [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+             dispatch_async(dispatch_get_main_queue(), ^{
+            [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
              
-             WarnLabel *warn = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
+             WarnLabel *warn = [WarnLabel creatWarnLabelWithY:200+64 withSuperView:self.view];
              warn.text = @"网络请求失败";
+                  });
              NSLog(@"%@",error);  //这里打印错误信息
              
          }];
 }
-
+-(void)removeAct
+{
+    [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+    
+}
 #pragma mark - tableView datasouce
 /** cell的个数*/
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

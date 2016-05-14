@@ -25,7 +25,7 @@
 #define WIDTH self.view.frame.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 
-#define myCenterY 200
+#define myCenterY 200+64
 @interface FindViewController ()
 @property (nonatomic,strong) DBSphereView *sphereView;
 
@@ -137,8 +137,8 @@
 
             [self.view addSubview:self.sphereView];//云
 //            [self.act stopAnimating];
-            //菊花
-            [LBProgressHUD hideAllHUDsForView:self.view animated:YES];
+  
+            [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
             
             [self performSelector:@selector(buttonPressed:) withObject:(UIButton*)[self.view viewWithTag:10010+2] afterDelay:0.7];
             
@@ -162,14 +162,18 @@
         WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:myCenterY withSuperView:self.view];
         warnLab.text = @"网络请求失败";
 //        [self.act stopAnimating];
-             [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
             
+             [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
             //再次请求数据
             [self performSelector:@selector(loadData) withObject:nil afterDelay:2];
             });
     }];
 }
-
+-(void)removeAct
+{
+    [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+   
+}
 #pragma mark-懒加载
 //-(UIActivityIndicatorView *)act
 //{

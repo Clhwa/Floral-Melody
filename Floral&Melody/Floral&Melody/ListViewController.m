@@ -140,7 +140,7 @@ static const float kItemSpace = -20.f;
 -(void)refresh
 {
     _warnStr = @"加载成功";
-    _mycenterY = 200.0;
+    _mycenterY = 200.0+64;
     isRefresh = YES;
     _page = 1;
     [self jugeWhichURLToloadData];
@@ -216,10 +216,16 @@ static const float kItemSpace = -20.f;
             [_collectionView.mj_footer endRefreshing];
         }
 //        [_act stopAnimating];
-        [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
-        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
+        [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
+        
+        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200+64 withSuperView:self.view];
         warnLab.text = _warnStr;
     });
+}
+-(void)removeAct
+{
+    [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+    
 }
 #pragma mark-解析数据成功
 -(void)analyzingData:(NSData *)data
@@ -258,7 +264,7 @@ static const float kItemSpace = -20.f;
             }
             
 //            [_act stopAnimating];
-            [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+            [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
             
             [_collectionView.mj_header endRefreshing];
             [_collectionView.mj_footer endRefreshing];

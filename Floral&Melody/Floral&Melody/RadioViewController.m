@@ -7,6 +7,7 @@
 //
 
 #import "RadioViewController.h"
+#import "LBProgressHUD.h" //菊花
 #import "AFNetworking.h"
 #import "RadioModel.h"
 #import "RPSlidingMenuCell.h"
@@ -14,9 +15,9 @@
 #import "NetworkRequestManager.h"
 #import "UIImageView+WebCache.h"
 #import "RadioListViewController.h"
-#import "MJRefresh.h"
+//#import "MJRefresh.h"
 #import "XLHMJRefresh.h"
-
+#import "WarnLabel.h"
 @interface RadioViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property(nonatomic,strong)NSMutableArray *dataArray;//数据源数组
 @property(nonatomic,strong)UICollectionView *collectV;
@@ -133,6 +134,8 @@
 -(void)requestMore
 {
    
+     [LBProgressHUD showHUDto:self.view animated:YES];//开始菊花
+    
     NSString *str1 = @"http://api2.pianke.me/ting/radio_list";
     
     NSURL *url1 = [NSURL URLWithString:str1];
@@ -171,16 +174,35 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 
             [self.collectV reloadData];
+                
+                [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
+                
             [_collectV.mj_header endRefreshing];
-                _collectV.contentOffset = CGPointMake(0, 0);
-            
+                static BOOL b = YES;
+                if (b) {
+                    _collectV.contentOffset = CGPointMake(0, 0);
+                    b = NO;
+                }
+                
+
             });
         }else{
+             dispatch_async(dispatch_get_main_queue(), ^{
+            [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
+                 //提示框
+                 WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200+64 withSuperView:self.view];
+                 warnLab.text = @"网络请求失败";
             NSLog(@"%@",error);
+             });
         }
     }];
     //启动
     [task resume];
+}
+-(void)removeAct
+{
+    [LBProgressHUD hideAllHUDsForView:self.view animated:YES];//停止菊花
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
