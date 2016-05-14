@@ -248,7 +248,7 @@ static NSString * ID = @"cell";
         //结束
         [self.tableView.mj_footer endRefreshing];
         //提示
-        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
+        WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:[UIScreen mainScreen].bounds.size.height-64-50 withSuperView:self.view];
         warnLab.text = @"专题请求失败";
 //        NSLog(@"专题请求失败");
     }];

@@ -11,5 +11,5 @@
 #import "XLHVideoPlayer.h"
 
 @interface VideoPlayerViewController : UIViewController
-
+@property(nonatomic,strong)NSString *videoURl;
 @end

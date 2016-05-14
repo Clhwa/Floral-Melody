@@ -47,8 +47,26 @@
     //添加收藏按钮
     [self.view addSubview:self.collectView];
     
+    
+    //通知
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addLeftButton) name:@"kAddLeftButton" object:nil];
+    
     // Do any additional setup after loading the view.
 
+}
+#pragma mark-present添加返回按钮
+-(void)addLeftButton
+{
+    //返回按钮
+    UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
+    back.frame = CGRectMake(20, 25, 20, 20);
+    [back setImage:[UIImage imageNamed:@"com_taobao_tae_sdk_web_view_title_bar_back.9"] forState:UIControlStateNormal];
+    [back addTarget:self action:@selector(jumpBack) forControlEvents:UIControlEventTouchDown];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:back];
+}
+-(void)jumpBack
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark-主题
 -(void)setViewControllerTitleWith:(NSString *)title

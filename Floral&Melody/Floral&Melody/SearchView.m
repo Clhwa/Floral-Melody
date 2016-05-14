@@ -53,18 +53,12 @@
 #pragma makr-动画路径
 -(void)drawAnimationPath
 {
-    //修改button形状
-//    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-//    UIBezierPath *path = [UIBezierPath bezierPath];
+  
     CGFloat searchButtonWidth = _leftButton.frame.size.width;
     CGFloat searchButtonHeight = _leftButton.frame.size.height;
-//    [path moveToPoint:CGPointMake(searchButtonWidth, 0)];
+
     CGFloat arcCenterY = searchButtonHeight * 0.5;
-//    [path addLineToPoint:CGPointMake(searchButtonWidth-(BUTTON_WIDTH-arcCenterY), 0)];
-//    [path addArcWithCenter:CGPointMake(searchButtonWidth-(BUTTON_WIDTH-arcCenterY) ,  arcCenterY) radius:arcCenterY startAngle: 0 endAngle: M_PI_2 clockwise:NO];
-//    [path addLineToPoint:CGPointMake(searchButtonWidth, searchButtonWidth)];
-//    shapeLayer.path = path.CGPath;
-//    _leftButton.layer.mask = shapeLayer;
+
     
     
     //动画路径设置(从一个小layer到另一个大layer)
@@ -207,7 +201,7 @@
         _tf.returnKeyType = UIReturnKeySearch;
         _tf.clearButtonMode = UITextFieldViewModeAlways;
         _tf.backgroundColor = [UIColor whiteColor];
-        _tf.placeholder = @"请输入搜索内容";
+        _tf.placeholder = @"请输入你要搜索的植物";
         _tf.delegate = self;
     }
     return _tf;

@@ -180,13 +180,13 @@ static NSString * ID = @"cell";
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //提示框
         WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
-        warnLab.text = @"专题请求失败";
+        warnLab.text = @"网络请求失败";
 //        NSLog(@"专题请求失败");
     }];
     
 }
 
-/** update刷新数据 */
+/** update刷新数据 *//*
 - (void)updateRequest
 {
     //初始化manager
@@ -230,13 +230,13 @@ static NSString * ID = @"cell";
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //提示框
         WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
-        warnLab.text = @"专题请求失败";
+        warnLab.text = @"网络请求失败";
 //        NSLog(@"专题请求失败");
     }];
     
 }
-
-/** loadMore*/
+*/
+/** loadMore*//*
 - (void)loadMoreRequest
 {
     //初始化manager
@@ -282,12 +282,12 @@ static NSString * ID = @"cell";
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //提示框
         WarnLabel *warnLab = [WarnLabel creatWarnLabelWithY:200 withSuperView:self.view];
-        warnLab.text = @"专题请求失败";
+        warnLab.text = @"网络请求失败";
 //        NSLog(@"专题请求失败");
     }];
     
 }
-
+*/
 
 - (NSMutableArray *)dataArray
 {

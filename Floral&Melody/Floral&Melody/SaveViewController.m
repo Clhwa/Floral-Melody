@@ -10,7 +10,12 @@
 #import "JJTableViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "PlayerViewController.h"
+
 #import "RadioViewController.h"
+
+
+#import "DetailViewController.h"
+#import "XLHColumnViewController.h"
 
 @interface SaveViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *tableV;
@@ -33,7 +38,7 @@
     
     [self creatTableView];
     [self creatTitleLabel];
-    NSLog(@"%@",[_BigArrayS objectAtIndex:_flag]);
+//    NSLog(@"%@",[_BigArrayS objectAtIndex:_flag]);
     
     
     
@@ -46,6 +51,7 @@
     _titleLable.textAlignment =NSTextAlignmentCenter;
     _titleLable.text = [self.TitleArr[_flag] stringByAppendingString:@"收藏"];
     _titleLable.font = [UIFont fontWithName:@"HiraginoSansGB-W3" size:18];
+
     
     //返回按钮
     UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -61,7 +67,7 @@
 {
     
     //tableView
-    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 60, self.view.bounds.size.width, self.view.bounds.size.height-30)];
+    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 60, self.view.bounds.size.width, self.view.bounds.size.height-60)];
     self.tableV.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.tableV];
     _tableV.delegate = self;
@@ -95,7 +101,10 @@
     }
     switch (_flag) {
         case 0:{
-            
+            ListContent *list = _BigArrayS[_flag][indexPath.row];
+            _cell.titleLabel.text = list.Name;
+            _cell.subTitle.text = list.url;
+            [_cell.imageV sd_setImageWithURL:[NSURL URLWithString:list.ImageUrl]];
         }
             break;
         case 1:{
@@ -103,7 +112,10 @@
         }
             break;
         case 2:{
-           
+            ListContent *list = _BigArrayS[_flag][indexPath.row];
+            _cell.titleLabel.text = list.Name;
+            _cell.subTitle.text = list.url;
+            [_cell.imageV sd_setImageWithURL:[NSURL URLWithString:list.ImageUrl]];
         }
             break;
         case 3:{
@@ -132,7 +144,17 @@
     
     switch (_flag) {
         case 0:{
-            
+            //文章
+            XLHColumnViewController *column = [[XLHColumnViewController alloc]init];
+            ListContent *list = _BigArrayS[_flag][indexPath.row];
+            column.imageUrl = list.ImageUrl;
+            column.urlAddress = list.url;
+            column.titleStr = list.Name;
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:column];
+            [self presentViewController:nav animated:YES completion:^{
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"kAddLeftButtonWithColumn" object:self userInfo:nil];
+            }];
+
         }
             break;
         case 1:{
@@ -140,7 +162,14 @@
         }
             break;
         case 2:{
-            
+            //百科
+            DetailViewController *detail = [[DetailViewController alloc]init];
+            ListContent *list = _BigArrayS[_flag][indexPath.row];
+            detail.list = list;
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:detail];
+            [self presentViewController:nav animated:YES completion:^{
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"kAddLeftButton" object:self userInfo:nil];
+            }];
         }
             break;
         case 3:{
