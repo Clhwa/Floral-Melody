@@ -11,7 +11,7 @@
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 @interface FirstTimeLoginView : UIView<UIScrollViewDelegate>
 
-@property(nonatomic,strong)NSArray *imageArray;//图片数组
 
+-(id)initWithFrame:(CGRect)frame withImageArray:(NSArray *)imageArray;
 
 @end

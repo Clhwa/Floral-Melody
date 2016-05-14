@@ -12,13 +12,14 @@
 @property(nonatomic,strong)UIButton *button;
 @property(nonatomic,strong)UIScrollView *scroll;
 @property(nonatomic,strong) UIPageControl *page;
+@property(nonatomic,strong)NSArray *imageArray;//图片数组
 @end
 
 @implementation FirstTimeLoginView
 
 #pragma -mark 第一种方法
 //第二种方法是用viewConreoller代替,把引导图viewConreoller设置为根视图
--(id)initWithFrame:(CGRect)frame
+-(id)initWithFrame:(CGRect)frame withImageArray:(NSArray *)imageArray
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -26,7 +27,7 @@
         [self addSubview:_scroll];
         _page = [[UIPageControl alloc]init];
         [self addSubview:_page];
-        
+        _imageArray = imageArray;
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
 
     }
@@ -62,7 +63,7 @@
                         //分页
             _page.frame = CGRectMake(0, HEIGHT-60, WIDTH, 30);
             _page.numberOfPages = _imageArray.count;
-            _page.currentPageIndicatorTintColor = [UIColor blueColor];
+            _page.currentPageIndicatorTintColor = [UIColor colorWithRed:29/255.0 green:138/255.0 blue:198/255.0 alpha:1];
             _page.pageIndicatorTintColor = [UIColor whiteColor];
             [_page addTarget:self action:@selector(touchPage:) forControlEvents:UIControlEventValueChanged];
             
@@ -92,7 +93,7 @@
         [self removeFromSuperview];
     }];
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-//    [user setValue:@"有了" forKey:@"标记"];
+    [user setValue:@"有了" forKey:@"标记"];
 }
 
 //滚动
