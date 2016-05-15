@@ -280,6 +280,8 @@
     save.BigArrayS = self.BigArray;
     save.TitleArr = self.Title;
     save.flag = indexPath.item;
+    
+    
     save.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:save animated:YES completion:^{
 

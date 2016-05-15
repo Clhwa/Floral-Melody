@@ -1406,7 +1406,7 @@
 				TargetAttributes = {
 					3F947A7A1CD8BD4100111559 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = GZ476CBX77;
+						DevelopmentTeam = VK599C3QYX;
 					};
 					3F947A931CD8BD4100111559 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -1777,12 +1777,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "Floral&Melody/PrefixHeader.h";
 				INFOPLIST_FILE = "Floral&Melody/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.GraduationProjectByClhwa.Floral-Melody";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.GraduatiokokoFloral-Melody";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = "-Wno-deprecated-declarations";
@@ -1793,12 +1794,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "Floral&Melody/PrefixHeader.h";
 				INFOPLIST_FILE = "Floral&Melody/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.GraduationProjectByClhwa.Floral-Melody";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.GraduatiokokoFloral-Melody";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = "-Wno-deprecated-declarations";

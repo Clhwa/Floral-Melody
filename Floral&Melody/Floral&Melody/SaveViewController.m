@@ -36,6 +36,7 @@
     [self creatTableView];
     [self creatTitleLabel];
 //    NSLog(@"%@",[_BigArrayS objectAtIndex:_flag]);
+    NSLog(@"%ld",_flag);
     if ([[_BigArrayS objectAtIndex:_flag] count]==0) {
         [self creatLabel];
     }
