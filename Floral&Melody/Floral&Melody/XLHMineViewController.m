@@ -66,9 +66,9 @@
     
     _VideoArr = [[DataBaseUtil shareDataBase]selectTable:@"video" withClassName:@"XLHSpecialModal" withtextArray:@[@"Image",@"title",@"content",@"videoUrl"] withList:nil withYouWantSearchContent:nil];
 
-    _BaikeArr = [[DataBaseUtil shareDataBase] selectTable:@"baike" withClassName:@"ListContent" withtextArray:@[@"Name",@"url",@"ImageUrl"] withList:nil withYouWantSearchContent:nil];
+    _BaikeArr = [[DataBaseUtil shareDataBase] selectTable:@"baike" withClassName:@"ListContent" withtextArray:@[@"Name",@"url",@"ImageUrl",@"Text"] withList:nil withYouWantSearchContent:nil];
 
-    _articleArr = [[DataBaseUtil shareDataBase] selectTable:@"article" withClassName:@"ListContent" withtextArray:@[@"Name",@"url",@"ImageUrl"] withList:nil withYouWantSearchContent:nil];
+    _articleArr = [[DataBaseUtil shareDataBase] selectTable:@"article" withClassName:@"XLHSpecialModal" withtextArray:@[@"title",@"pageUrl",@"Image",@"content"] withList:nil withYouWantSearchContent:nil];
 
     
 #warning 自行补充各自的数据

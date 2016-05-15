@@ -24,7 +24,7 @@
     
     self.webView = [[WKWebView alloc]initWithFrame:self.view.bounds];
     [self.view addSubview:self.webView];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_urlAddress]]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_xlh.pageUrl]]];
     
     //代理
     self.webView.navigationDelegate = self;
@@ -33,7 +33,7 @@
     [self setCollectButton];
     
     //设置主题
-    [self setViewControllerTitleWith:_titleStr];
+    [self setViewControllerTitleWith:_xlh.title];
     
     //通知
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addLeftButton) name:@"kAddLeftButtonWithColumn" object:nil];
@@ -95,7 +95,7 @@
     UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
     [button addTarget:self action:@selector(collect:) forControlEvents:UIControlEventTouchUpInside];
-   NSArray *array = [[DataBaseUtil shareDataBase]selectTable:@"article" withClassName:@"ListContent" withtextArray:@[@"Name",@"url",@"ImageUrl"] withList:@"url" withYouWantSearchContent:self.urlAddress];
+   NSArray *array = [[DataBaseUtil shareDataBase]selectTable:@"article" withClassName:@"XLHSpecialModal" withtextArray:@[@"title",@"pageUrl",@"Image",@"content"] withList:@"pageUrl" withYouWantSearchContent:_xlh.pageUrl];
     if (array.count>0) {
         [button setBackgroundImage:[UIImage imageNamed:@"收藏01"] forState:UIControlStateNormal];
         _isCollect = YES;
@@ -109,7 +109,7 @@
 {
     if (_isCollect) {
         //取消收藏
-        if ([[DataBaseUtil shareDataBase]deleteObjectWithTableName:@"article" withTextName:@"url" withValue:_urlAddress]) {
+        if ([[DataBaseUtil shareDataBase]deleteObjectWithTableName:@"article" withTextName:@"pageUrl" withValue:_xlh.pageUrl]) {
             _isCollect = NO;
             [button setBackgroundImage:[UIImage imageNamed:@"收藏02"] forState:UIControlStateNormal];
             //提示框
@@ -118,7 +118,7 @@
         }
     }else{
         //收藏
-        if ([[DataBaseUtil shareDataBase]insertWithTableName:@"article" withObjectTextArray:@[@"Name",@"url",@"ImageUrl"] withObjectValueArray:@[_titleStr,_urlAddress,_imageUrl]]) {
+        if ([[DataBaseUtil shareDataBase]insertWithTableName:@"article" withObjectTextArray:@[@"title",@"pageUrl",@"Image",@"content"] withObjectValueArray:@[_xlh.title,_xlh.pageUrl,_xlh.Image,_xlh.content]]) {
             [button setBackgroundImage:[UIImage imageNamed:@"收藏01"] forState:UIControlStateNormal];
              _isCollect = YES;
             //提示框

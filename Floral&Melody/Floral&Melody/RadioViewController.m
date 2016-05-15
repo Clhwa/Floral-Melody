@@ -51,7 +51,7 @@
 #pragma mark-主题
 -(void)setViewControllerTitleWith:(NSString *)title
 {
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width-64*2, 30)];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 0, 30)];
     label.textAlignment = NSTextAlignmentCenter;
     label.text = title;
     label.font = [UIFont fontWithName:@"HiraginoSansGB-W3" size:18];

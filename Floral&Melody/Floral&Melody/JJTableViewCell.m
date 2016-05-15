@@ -33,8 +33,10 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    self.imageV.frame = CGRectMake(0, 0, 80, 80);
-   
+    self.imageV.frame = CGRectMake(0, 2.5, 80, 75);
+    _imageV.contentMode =  UIViewContentModeScaleAspectFill;
+    _imageV.clipsToBounds = YES;
+    
     self.titleLabel.frame = CGRectMake(85, 10, self.contentView.bounds.size.width-85-20, 30);
     self.subTitle.frame = CGRectMake(85, 40, self.contentView.bounds.size.width-85-20, 20);
     

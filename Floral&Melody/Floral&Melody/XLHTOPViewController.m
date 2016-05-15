@@ -187,9 +187,10 @@
 {
     XLHTOPModal * top = [self.dataArray objectAtIndex:indexPath.row];
     XLHColumnViewController * column = [[XLHColumnViewController alloc] init];
-    column.titleStr = top.title;//主题
-    column.imageUrl = top.smallIcon;//图片
-    column.urlAddress = top.pageUrl;
+    column.xlh.title = top.title;//主题
+    column.xlh.Image = top.smallIcon;//图片
+    column.xlh.pageUrl = top.pageUrl;
+
     [self.navigationController pushViewController:column animated:YES];
 }
 - (void)didReceiveMemoryWarning {

@@ -17,6 +17,8 @@
 #import "RadioViewController.h"
 
 #import "XLHMineViewController.h"
+
+#import "FirstTimeLoginView.h"
 @interface AppDelegate ()
 
 @end
@@ -66,6 +68,13 @@
     
     tabbar.viewControllers = array;
 
+    //引导图
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *str = [user objectForKey:@"标记"];
+    if ([str isEqualToString:@"有了"]==NO) {
+        FirstTimeLoginView *first = [[FirstTimeLoginView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) withImageArray:[NSArray arrayWithObjects:[UIImage imageNamed:@"meigui.jpg"],[UIImage imageNamed:@"one"], [UIImage imageNamed:@"qidong_1"],[UIImage imageNamed:@"three"],[UIImage imageNamed:@"four"],nil]];
+        [tabbar.view addSubview:first];
+    }
     
     /** Set rootViewController **/
     self.window.rootViewController = tabbar;

@@ -68,7 +68,7 @@ static NSString * ID = @"cell";
     [self registerNotification];
 
     //数据库
-    [[DataBaseUtil shareDataBase]createTableWithName:@"article" withTextArray:@[@"Name",@"url",@"ImageUrl"]];
+    [[DataBaseUtil shareDataBase]createTableWithName:@"article" withTextArray:@[@"title",@"pageUrl",@"Image",@"content"]];
     
     /** 打印所有字体*/
 //    for(NSString *fontfamilyname in [UIFont familyNames])
@@ -498,9 +498,8 @@ static NSString * ID = @"cell";
     XLHColumnViewController * column = [[XLHColumnViewController alloc] init];
     
     XLHSpecialModal * xlh = [self.dataArray objectAtIndex:indexPath.row];
-    column.titleStr = xlh.title;//主题
-    column.urlAddress = xlh.pageUrl;
-    column.imageUrl = xlh.Image;//图片网址
+
+    column.xlh = xlh;
     [self.navigationController pushViewController:column animated:YES];
     
 }
