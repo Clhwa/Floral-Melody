@@ -19,12 +19,13 @@
 @property(nonatomic,strong)NSArray *Title;
 @property(nonatomic,strong)NSMutableArray *Content;
 @property(nonatomic,strong)UITableView *tableV;
-
+@property(nonatomic,strong)UICollectionView *collection;
 @property(nonatomic,strong)NSMutableArray *BigArray;
 @property(nonatomic,strong)NSArray *articleArr;
 @property(nonatomic,strong)NSArray *VideoArr;
 @property(nonatomic,strong)NSArray *BaikeArr;
 @property(nonatomic,strong)NSArray *RadioArr;
+
 
 @end
 
@@ -43,12 +44,10 @@
     
     [self createFloralMelody];
     
-    
-    
-   
-    
     //设置主题
     [self setViewControllerTitleWith:@"我的"];
+    
+    
 }
 #pragma mark-主题
 -(void)setViewControllerTitleWith:(NSString *)title
@@ -69,14 +68,6 @@
     _BaikeArr = [[DataBaseUtil shareDataBase] selectTable:@"baike" withClassName:@"ListContent" withtextArray:@[@"Name",@"url",@"ImageUrl",@"Text"] withList:nil withYouWantSearchContent:nil];
 
     _articleArr = [[DataBaseUtil shareDataBase] selectTable:@"article" withClassName:@"XLHSpecialModal" withtextArray:@[@"title",@"pageUrl",@"Image",@"content"] withList:nil withYouWantSearchContent:nil];
-
-    
-#warning 自行补充各自的数据
-/*
- 
- 自行补充各自的数据;
-
- */
     
     _BigArray = [NSMutableArray array];
     
@@ -85,6 +76,12 @@
     [self.BigArray addObject:_VideoArr];
     [self.BigArray addObject:_BaikeArr];
     [self.BigArray addObject:_RadioArr];
+    
+    //UI刷新回到主线程
+    dispatch_async(dispatch_get_main_queue(), ^{
+         [self.collection reloadData];
+    });
+   
 
 }
 
@@ -132,20 +129,22 @@
     flowLayout.minimumInteritemSpacing = 10;
     flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     
-    UICollectionView *collection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, Kwidth, KHeight-49-200) collectionViewLayout:flowLayout];
-    [self.view addSubview:collection];
+    _collection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, Kwidth, KHeight-49-200) collectionViewLayout:flowLayout];
+    [self.view addSubview:_collection];
     
-    collection.dataSource = self;
-    collection.delegate = self;
-    collection.backgroundColor = [UIColor whiteColor];
+    _collection.dataSource = self;
+    _collection.delegate = self;
+    _collection.backgroundColor = [UIColor whiteColor];
     
     //注册cell
-    [collection registerClass:[JJCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    [_collection registerClass:[JJCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
 }
 #pragma -mark viewWillAppear
 - (void)viewWillAppear:(BOOL)animated{
     [self displayTmpPics];
-    [self getDataArray];
+    [NSThread detachNewThreadSelector:@selector(getDataArray) toTarget:self withObject:nil];
+//    [self getDataArray];
+    
     
 }
 
