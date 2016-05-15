@@ -252,13 +252,13 @@
     if (btn.tag == 10010) {
         return  CGPointMake(space, 64+space);//左上方
     }else if (btn.tag == 10010+1){
-        return CGPointMake(WIDTH/2, 64+space);//上中
+        return CGPointMake(space, HEIGHT/2-space);//左中
     }else if (btn.tag == 10010+2){
         return CGPointMake(WIDTH/2, HEIGHT/2-50);//中间
     }else if (btn.tag == 10010+3){
         return CGPointMake(WIDTH-space, 64+space);//右上
     }else if (btn.tag == 10010+4){
-        return CGPointMake(WIDTH-space, HEIGHT/2);//右中
+        return CGPointMake(WIDTH-space, HEIGHT/2+space);//右中
     }
     return CGPointZero;
 }
@@ -270,7 +270,7 @@
     if (![self.view.subviews containsObject:self.disView]) {
         [self.view addSubview:self.disView];
     }
-    if (btn.tag == 10010+2||btn.tag == 10010+4) {
+    if (btn.tag == 10010+1||btn.tag == 10010+2||btn.tag == 10010+4) {
         _disView.borderRect = CGRectMake(0, -HEIGHT, WIDTH, HEIGHT*3);
     }else{
         _disView.borderRect = CGRectMake(0, 64, WIDTH, HEIGHT-64-49);

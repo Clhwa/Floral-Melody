@@ -29,7 +29,10 @@
 @property(nonatomic,strong)UILabel *titleLable;
 @property(nonatomic,strong)JJTableViewCell *cell;
 
-
+@property(nonatomic,strong)NSMutableArray *deleteArr;//删除数组
+@property(nonatomic,strong)UIButton *allSelectbutton;
+@property(nonatomic,assign)BOOL isAllSelect;
+@property(nonatomic,strong)UIButton *deleteButton;
 @end
 
 @implementation SaveViewController
@@ -46,8 +49,159 @@
         [self creatLabel];
     }
     
+    //删除按钮
+    UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [deleteButton setTitle:@"删除" forState:UIControlStateNormal];
+    [deleteButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [deleteButton addTarget:self action:@selector(deleteCollection:) forControlEvents:UIControlEventTouchUpInside];
+    deleteButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    deleteButton.frame = CGRectMake(self.view.bounds.size.width-30-20, 25, 30, 20);
+    [self.view addSubview:deleteButton];
+    
+    self.tableV.allowsMultipleSelectionDuringEditing = YES;
+}
+#pragma mark-数组懒加载
+-(NSMutableArray *)deleteArr
+{
+    if (!_deleteArr) {
+        _deleteArr = [NSMutableArray array];
+    }
+   return _deleteArr;
+}
+#pragma mark-删除
+-(void)deleteCollection:(UIButton *)deleteButton
+{
+    if (_deleteArr.count>0) {
+        [_deleteArr removeAllObjects];
+    }
+    [self.tableV setEditing:YES animated:YES];
+    
+    [deleteButton setTitle:@"取消" forState:UIControlStateNormal];
+    [deleteButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [deleteButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //弹出全选和删除
+    [self createAllselectButton];
+}
+#pragma mark-全选按钮
+-(void)createAllselectButton
+{
+    CGRect rect = self.tableV.frame;
+    rect.size.height = rect.size.height-50;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.tableV.frame = rect;
+        self.allSelectbutton.transform = CGAffineTransformMakeTranslation(0, -40);
+        self.deleteButton.transform = CGAffineTransformMakeTranslation(0, -40);
+    }];
     
 }
+#pragma mark-执行删除的按钮的懒加载
+-(UIButton *)deleteButton
+{
+    if (!_deleteButton) {
+        _deleteButton = [[UIButton alloc]initWithFrame:CGRectMake(self.view.bounds.size.width-20-(self.view.bounds.size.width-60)/2, self.view.bounds.size.height, (self.view.bounds.size.width-60)/2, 30)];
+        _deleteButton.layer.cornerRadius = 5;
+        _deleteButton.layer.masksToBounds = YES;
+        _deleteButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        _deleteButton.layer.borderWidth = 1;
+        [self.view addSubview:_deleteButton];
+        [_deleteButton setTitle:@"删除" forState:UIControlStateNormal];
+        [_deleteButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [_deleteButton addTarget:self action:@selector(deleteSelectArr) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _deleteButton;
+}
+#pragma mark-执行删除的按钮
+-(void)deleteSelectArr
+{
+    for (JJTableViewCell *cell in self.deleteArr) {
+    NSIndexPath *indexPath = [self.tableV indexPathForCell:cell];
+        NSLog(@"%@",cell.titleLabel.text);
+        [[_BigArrayS objectAtIndex:_flag]removeObjectAtIndex:indexPath.row];
+        [self.tableV deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        //从数据库中删除
+        
+    }
+    [self.deleteArr removeAllObjects];
+
+}
+#pragma mark-从数据库中删除
+-(void)deleteFromSql
+{
+    if (_flag == 2) {
+        //百科
+//        [[DataBaseUtil shareDataBase]deleteObjectWithTableName:@"baike" withTextName:@"url" withValue:_list.url];//获取model
+    }
+
+}
+#pragma mark-全选按钮懒加载
+-(UIButton *)allSelectbutton
+{
+    if (!_allSelectbutton) {
+        _allSelectbutton = [[UIButton alloc]initWithFrame:CGRectMake(20, self.view.bounds.size.height, (self.view.bounds.size.width-60)/2, 30)];
+        _allSelectbutton.layer.cornerRadius = 5;
+        _allSelectbutton.layer.masksToBounds = YES;
+        _allSelectbutton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        _allSelectbutton.layer.borderWidth = 1;
+        [_allSelectbutton setTitle:@"全选" forState:UIControlStateNormal];
+        [_allSelectbutton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [_allSelectbutton addTarget:self action:@selector(allSelect:) forControlEvents:UIControlEventTouchUpInside];
+        _isAllSelect = YES;
+        [self.view addSubview:_allSelectbutton];
+    }
+    return _allSelectbutton;
+}
+#pragma mark-全选
+-(void)allSelect:(UIButton *)but
+{
+    if (self.deleteArr.count>0) {
+        [self.deleteArr removeAllObjects];
+    }
+    NSArray *arr = [_BigArrayS objectAtIndex:_flag];
+    for (int i = 0; i<arr.count; i++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        UITableViewCell *cell = [self.tableV cellForRowAtIndexPath:indexPath];
+        if (_isAllSelect) {
+            [self.tableV selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
+            
+            [self.deleteArr addObject:cell];
+        }else{
+            [self.tableV deselectRowAtIndexPath:indexPath animated:YES];
+            
+        }
+        
+    }
+    if (_isAllSelect) {
+        [_allSelectbutton setTitle:@"清空" forState:UIControlStateNormal];
+    }else{
+        [_allSelectbutton setTitle:@"全选" forState:UIControlStateNormal];
+    }
+    
+    _isAllSelect = !_isAllSelect;
+    
+    
+    
+}
+#pragma mark-取消
+//取消
+-(void)cancel:(UIButton *)deleteButton
+{
+    
+    [self.tableV setEditing:NO animated:YES];
+    
+    [deleteButton setTitle:@"删除" forState:UIControlStateNormal];
+    [deleteButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [deleteButton addTarget:self action:@selector(deleteCollection:) forControlEvents:UIControlEventTouchUpInside];
+    
+    CGRect rect = self.tableV.frame;
+    rect.size.height = rect.size.height+50;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.tableV.frame = rect;
+        self.allSelectbutton.transform = CGAffineTransformIdentity;
+        self.deleteButton.transform = CGAffineTransformIdentity;
+    }];
+}
+
 -(void)creatLabel
 {
 
@@ -156,11 +310,23 @@
     
     return _cell;
 }
-
+#pragma mark-点击取消
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.tableV.editing) {
+        JJTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [self.deleteArr removeObject:cell];
+    }
+}
+#pragma mark-点击cell
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"%ld",indexPath.row);
-    
+    //判断是否删除
+    if (self.tableV.editing) {
+         JJTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [self.deleteArr addObject:cell];
+    }else{
     switch (_flag) {
         case 0:{
             //文章
@@ -213,7 +379,7 @@
         default:
             break;
     }
-
+    }
 }
 
 -(void)jumpBack
