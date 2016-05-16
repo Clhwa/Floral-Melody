@@ -1834,11 +1834,7 @@
 				GCC_PREFIX_HEADER = "Floral&Melody/PrefixHeader.h";
 				INFOPLIST_FILE = "Floral&Melody/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-
-				PRODUCT_BUNDLE_IDENTIFIER = com.floralmelody;
-
-				PRODUCT_BUNDLE_IDENTIFIER = graduatiokokofloral;
-
+				PRODUCT_BUNDLE_IDENTIFIER = com.floral.melody;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = "-Wno-deprecated-declarations";
@@ -1856,11 +1852,7 @@
 				GCC_PREFIX_HEADER = "Floral&Melody/PrefixHeader.h";
 				INFOPLIST_FILE = "Floral&Melody/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-
-				PRODUCT_BUNDLE_IDENTIFIER = com.floralmelody;
-
-				PRODUCT_BUNDLE_IDENTIFIER = graduatiokokofloral;
-
+				PRODUCT_BUNDLE_IDENTIFIER = com.floral.melody;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = "-Wno-deprecated-declarations";
