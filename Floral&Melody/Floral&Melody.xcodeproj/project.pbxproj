@@ -58,7 +58,6 @@
 		3F4894831CE206BD004BF8DB /* ic_action_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4894761CE206BD004BF8DB /* ic_action_play.png */; settings = {ASSET_TAGS = (); }; };
 		3F4894841CE206BD004BF8DB /* ic_action_next.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4894771CE206BD004BF8DB /* ic_action_next.png */; settings = {ASSET_TAGS = (); }; };
 		3F4894851CE206BD004BF8DB /* ic_action_previous.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4894781CE206BD004BF8DB /* ic_action_previous.png */; settings = {ASSET_TAGS = (); }; };
-		3F4894881CE206EA004BF8DB /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F4894861CE206EA004BF8DB /* 4.jpg */; settings = {ASSET_TAGS = (); }; };
 		3F4894891CE206EA004BF8DB /* com_taobao_tae_sdk_web_view_title_bar_back.9.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4894871CE206EA004BF8DB /* com_taobao_tae_sdk_web_view_title_bar_back.9.png */; settings = {ASSET_TAGS = (); }; };
 		3F4894941CE2071C004BF8DB /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F48948E1CE2071C004BF8DB /* RadioViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3F4894951CE2071C004BF8DB /* RadioListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4894901CE2071C004BF8DB /* RadioListViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -287,7 +286,6 @@
 		3F4894761CE206BD004BF8DB /* ic_action_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_action_play.png; sourceTree = "<group>"; };
 		3F4894771CE206BD004BF8DB /* ic_action_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_action_next.png; sourceTree = "<group>"; };
 		3F4894781CE206BD004BF8DB /* ic_action_previous.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_action_previous.png; sourceTree = "<group>"; };
-		3F4894861CE206EA004BF8DB /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
 		3F4894871CE206EA004BF8DB /* com_taobao_tae_sdk_web_view_title_bar_back.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = com_taobao_tae_sdk_web_view_title_bar_back.9.png; sourceTree = "<group>"; };
 		3F48948B1CE2071C004BF8DB /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
 		3F48948E1CE2071C004BF8DB /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
@@ -750,7 +748,6 @@
 				3F0EF1D21CE562190081E150 /* save_2.png */,
 				3F0EF1D01CE560310081E150 /* saveWhite.png */,
 				3F046F4F1CE4CF9000E51167 /* xiangyou.png */,
-				3F4894861CE206EA004BF8DB /* 4.jpg */,
 				3F4894871CE206EA004BF8DB /* com_taobao_tae_sdk_web_view_title_bar_back.9.png */,
 				3F48946C1CE206BD004BF8DB /* yinyue.png */,
 				3F48946D1CE206BD004BF8DB /* swith.png */,
@@ -1471,7 +1468,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F750DB01CE61C66008C8483 /* 播放.png in Resources */,
-				3F4894881CE206EA004BF8DB /* 4.jpg in Resources */,
 				3F750DB21CE61C66008C8483 /* 进度.png in Resources */,
 				3F6633FD1CE4BDD900AB2F67 /* meigui.jpg in Resources */,
 				3FBF692B1CE86FC400FFA971 /* 我的.png in Resources */,

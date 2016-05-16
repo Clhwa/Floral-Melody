@@ -127,6 +127,9 @@
 }
 -(void)collect:(UIButton *)button
 {
+    if (_xlh.pageUrl.length == 0) {
+        return;
+    }
     if (_isCollect) {
         //取消收藏
         if ([[DataBaseUtil shareDataBase]deleteObjectWithTableName:@"article" withTextName:@"pageUrl" withValue:_xlh.pageUrl]) {
