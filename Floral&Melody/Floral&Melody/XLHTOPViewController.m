@@ -106,6 +106,7 @@
                  [self.dataArray addObject:top];
              }
              dispatch_async(dispatch_get_main_queue(), ^{
+                
              [self.tableView reloadData];
              
              [self performSelector:@selector(removeAct) withObject:nil afterDelay:0.2];//停止菊花
@@ -187,10 +188,11 @@
 {
     XLHTOPModal * top = [self.dataArray objectAtIndex:indexPath.row];
     XLHColumnViewController * column = [[XLHColumnViewController alloc] init];
+    column.xlh = [[XLHSpecialModal alloc] init];
     column.xlh.title = top.title;//主题
     column.xlh.Image = top.smallIcon;//图片
     column.xlh.pageUrl = top.pageUrl;
-
+    column.xlh.content = @"";
     [self.navigationController pushViewController:column animated:YES];
 }
 - (void)didReceiveMemoryWarning {
