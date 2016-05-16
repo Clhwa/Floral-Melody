@@ -68,7 +68,7 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
  */
 - (id)initWithNamespace:(NSString *)ns;
 
-#warning 清除缓存的方法
+//#warning 清除缓存的方法
 - (float)checkTmpSize;
 /**
  * Add a read-only cache path to search for images pre-cached by SDImageCache

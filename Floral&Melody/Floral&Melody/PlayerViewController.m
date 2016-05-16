@@ -212,7 +212,7 @@
         [_start setImage:[UIImage imageNamed:@"ic_action_pause"] forState:UIControlStateNormal];
     }
     //1.背景图
-    [self.backgroundView sd_setImageWithURL:[NSURL URLWithString:_radio.coverimg]placeholderImage:[UIImage imageNamed:@"meigui.jpg"]];
+    [self.backgroundView sd_setImageWithURL:[NSURL URLWithString:_radio.coverimg]placeholderImage:[UIImage imageNamed:@"占位花"]];
     //2.旋转图
     [_icon sd_setImageWithURL:[NSURL URLWithString:_radio.coverimg]];
     
