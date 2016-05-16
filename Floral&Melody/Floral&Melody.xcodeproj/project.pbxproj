@@ -182,7 +182,6 @@
 		3FD3176B1CE3256E00056CA1 /* DBSphereView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3176A1CE3256E00056CA1 /* DBSphereView.m */; settings = {ASSET_TAGS = (); }; };
 		3FD3176F1CE3365000056CA1 /* 花叶.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD3176E1CE3365000056CA1 /* 花叶.png */; settings = {ASSET_TAGS = (); }; };
 		3FD317781CE3624800056CA1 /* BFTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD317771CE3624800056CA1 /* BFTitleButton.m */; settings = {ASSET_TAGS = (); }; };
-		3FE1FD651CE9C05C00FD708A /* 单线花朵.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE1FD641CE9C05C00FD708A /* 单线花朵.png */; settings = {ASSET_TAGS = (); }; };
 		3FE7D65D1CE1C2A5007DCE81 /* XLHArticleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE7D65C1CE1C2A5007DCE81 /* XLHArticleView.m */; settings = {ASSET_TAGS = (); }; };
 		3FE7D6601CE1C2FD007DCE81 /* XLHArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE7D65F1CE1C2FD007DCE81 /* XLHArticleTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		3FE7D6661CE1E859007DCE81 /* 返回.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE7D6651CE1E859007DCE81 /* 返回.png */; settings = {ASSET_TAGS = (); }; };
@@ -510,7 +509,6 @@
 		3FD3176E1CE3365000056CA1 /* 花叶.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "花叶.png"; sourceTree = "<group>"; };
 		3FD317761CE3624800056CA1 /* BFTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFTitleButton.h; sourceTree = "<group>"; };
 		3FD317771CE3624800056CA1 /* BFTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFTitleButton.m; sourceTree = "<group>"; };
-		3FE1FD641CE9C05C00FD708A /* 单线花朵.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "单线花朵.png"; sourceTree = "<group>"; };
 		3FE7D65B1CE1C2A5007DCE81 /* XLHArticleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLHArticleView.h; sourceTree = "<group>"; };
 		3FE7D65C1CE1C2A5007DCE81 /* XLHArticleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLHArticleView.m; sourceTree = "<group>"; };
 		3FE7D65E1CE1C2FD007DCE81 /* XLHArticleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLHArticleTableViewCell.h; sourceTree = "<group>"; };
@@ -1362,7 +1360,6 @@
 		3FE7D6711CE1F96D007DCE81 /* resource */ = {
 			isa = PBXGroup;
 			children = (
-				3FE1FD641CE9C05C00FD708A /* 单线花朵.png */,
 				3FD3176E1CE3365000056CA1 /* 花叶.png */,
 				3FF108671CE48D56003061E9 /* 搜索3.png */,
 				3F6633FC1CE4BDD900AB2F67 /* meigui.jpg */,
@@ -1524,7 +1521,6 @@
 				3F5487451CE9760800B9C867 /* one-t.png in Resources */,
 				3F54874F1CE9ACAF00B9C867 /* 启动图.png in Resources */,
 				3FBF34981CE962F300F9091C /* four.png in Resources */,
-				3FE1FD651CE9C05C00FD708A /* 单线花朵.png in Resources */,
 				3F54874C1CE99AAA00B9C867 /* 我的S.png in Resources */,
 				3F4894801CE206BD004BF8DB /* yin.png in Resources */,
 				3F5C94481CE5AE9900698CB1 /* 收藏02.png in Resources */,
@@ -1838,9 +1834,9 @@
 				GCC_PREFIX_HEADER = "Floral&Melody/PrefixHeader.h";
 				INFOPLIST_FILE = "Floral&Melody/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.asdjkl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.floral.melody;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d900a766-0407-417e-b0bc-09d65def2714";
+				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = "-Wno-deprecated-declarations";
 			};
 			name = Debug;
@@ -1856,9 +1852,9 @@
 				GCC_PREFIX_HEADER = "Floral&Melody/PrefixHeader.h";
 				INFOPLIST_FILE = "Floral&Melody/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.asdjkl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.floral.melody;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d900a766-0407-417e-b0bc-09d65def2714";
+				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = "-Wno-deprecated-declarations";
 			};
 			name = Release;
