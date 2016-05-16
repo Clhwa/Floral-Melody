@@ -32,11 +32,12 @@
     
     for (int i = 0; i< btns.count; i++) {
         UIButton *btn = btns[i];
-        btn.bounds = CGRectMake(0, 0, kButtonW * 0.8, kButtonW * 0.8);
+        btn.bounds = CGRectMake(0, 0, kButtonW * 0.8, 35);//修改大小
+//        btn.backgroundColor = [UIColor blueColor];
         btn.center = kCenter;
 #pragma mark-修改
-        btn.layer.cornerRadius = btn.frame.size.width/2;
-        btn.layer.masksToBounds = YES;
+//        btn.layer.cornerRadius = btn.frame.size.width/2;
+//        btn.layer.masksToBounds = YES;
         btn.titleLabel.font = [UIFont systemFontOfSize:17];
         
         [self addSubview:btn];
