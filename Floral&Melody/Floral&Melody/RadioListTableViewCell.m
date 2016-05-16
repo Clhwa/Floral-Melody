@@ -56,7 +56,7 @@
     
 
      self.titleLabel.text = self.listModel.longTitle;
-     [self.imageV sd_setImageWithURL:[NSURL URLWithString:self.listModel.coverimg] placeholderImage:[UIImage imageNamed:@"meigui.jpg"]];
+     [self.imageV sd_setImageWithURL:[NSURL URLWithString:self.listModel.coverimg] placeholderImage:[UIImage imageNamed:@"占位花"]];
  
      self.musicVisit.text = [NSString stringWithFormat:@"%ld",self.listModel.musicVisit];
      self.bigImageV.image = [UIImage imageNamed:@"yin"];

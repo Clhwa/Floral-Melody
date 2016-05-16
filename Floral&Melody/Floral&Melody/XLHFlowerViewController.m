@@ -96,7 +96,7 @@ static NSString * ID = @"cell";
     cell.identifierLabel.text = xlh.identifier;
     cell.timeLabel.text = xlh.time;
     cell.readerLabel.text =  [NSString stringWithFormat:@"%ld", xlh.reader];
-    [cell.ImageView sd_setImageWithURL:[NSURL URLWithString:xlh.Image] placeholderImage:[UIImage imageNamed:@"piaobaoying"] options:SDWebImageDelayPlaceholder progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+    [cell.ImageView sd_setImageWithURL:[NSURL URLWithString:xlh.Image] placeholderImage:[UIImage imageNamed:@"占位花"] options:SDWebImageDelayPlaceholder progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         

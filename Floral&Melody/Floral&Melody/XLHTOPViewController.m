@@ -149,7 +149,7 @@
         XLHTOPModal *top = [self.dataArray objectAtIndex:indexPath.row];
         cell.titleLabel.text = top.title;
         cell.topLabel.text = [@"TOP " stringByAppendingString:[NSString stringWithFormat:@"%ld",indexPath.row + 1]];
-        [cell.ImageView sd_setImageWithURL:[NSURL URLWithString:top.smallIcon] placeholderImage:[UIImage imageNamed:@"piaobaoying"] options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        [cell.ImageView sd_setImageWithURL:[NSURL URLWithString:top.smallIcon] placeholderImage:[UIImage imageNamed:@"占位花"] options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize) {
             
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             
@@ -167,7 +167,7 @@
         XLHTOPModal *top = [self.dataArray objectAtIndex:indexPath.row];
         cell.OtherTitleLabel.text = top.title;
         cell.OtherTopLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row + 1];
-        [cell.OtherImageView sd_setImageWithURL:[NSURL URLWithString:top.smallIcon] placeholderImage:[UIImage imageNamed:@"piaobaoying"] options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        [cell.OtherImageView sd_setImageWithURL:[NSURL URLWithString:top.smallIcon] placeholderImage:[UIImage imageNamed:@"占位花"] options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize) {
             
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             

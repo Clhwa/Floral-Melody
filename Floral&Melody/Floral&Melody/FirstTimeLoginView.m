@@ -63,8 +63,9 @@
                         //分页
             _page.frame = CGRectMake(0, HEIGHT-60, WIDTH, 30);
             _page.numberOfPages = _imageArray.count;
-            _page.currentPageIndicatorTintColor = [UIColor colorWithRed:29/255.0 green:138/255.0 blue:198/255.0 alpha:1];
-            _page.pageIndicatorTintColor = [UIColor whiteColor];
+//            _page.currentPageIndicatorTintColor = [UIColor colorWithRed:29/255.0 green:138/255.0 blue:198/255.0 alpha:1];
+            _page.currentPageIndicatorTintColor = [UIColor whiteColor];
+            _page.pageIndicatorTintColor = [UIColor lightGrayColor];
             [_page addTarget:self action:@selector(touchPage:) forControlEvents:UIControlEventValueChanged];
             
             //按钮
