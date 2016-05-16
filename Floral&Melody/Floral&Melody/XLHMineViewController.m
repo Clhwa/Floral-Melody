@@ -25,7 +25,7 @@
 @property(nonatomic,strong)NSArray *VideoArr;
 @property(nonatomic,strong)NSArray *BaikeArr;
 @property(nonatomic,strong)NSArray *RadioArr;
-
+@property(nonatomic,strong)UIView *xlhView;
 
 @end
 
@@ -42,7 +42,7 @@
    self.Title = [NSMutableArray arrayWithObjects:@"文章",@"视频",@"百科",@"电台", nil];
     self.Content = [NSMutableArray arrayWithObjects:@"关于应用", @"关注我们",@"版权声明",@"清理缓存",@"当前版本     V1.0.1",nil];
     
-    [self createFloralMelody];
+//    [self createFloralMelody];
     
     //设置主题
     [self setViewControllerTitleWith:@"我的"];
@@ -85,38 +85,38 @@
 
 }
 
-- (void)createFloralMelody
-{
-//    UIView * lineView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT * 0.81, SCREEN_WIDTH, 1 )];
-//    lineView.backgroundColor = [UIColor lightGrayColor];
-//    [self.view addSubview:lineView];
-    
-    UILabel * engLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT * 0.83, SCREEN_WIDTH, SCREEN_HEIGHT * 0.03)];
-    [self.view addSubview:engLabel];
-    engLabel.text = @"Floral&Melody";
-    engLabel.textAlignment = 1;
-    [engLabel setTextColor:[UIColor blackColor]];
-    [engLabel setFont:[UIFont systemFontOfSize:13]];
-    
-    UILabel * chineseLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT * 0.88, SCREEN_WIDTH, SCREEN_HEIGHT * 0.03)];
-    [self.view addSubview:chineseLabel];
-    chineseLabel.text = @"- 花の旋律 -";
-    chineseLabel.textAlignment = 1;
-    [chineseLabel setTextColor:[UIColor blackColor]];
-    [chineseLabel setFont:[UIFont systemFontOfSize:13]];
-    
-    
-}
+//- (void)createFloralMelody
+//{
+//    
+//    _xlhView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT * 0.03*2)];
+//    UILabel * engLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT * 0.03)];
+//    [self.view addSubview:engLabel];
+//    engLabel.text = @"Floral&Melody";
+//    engLabel.textAlignment = 1;
+//    [engLabel setTextColor:[UIColor blackColor]];
+//    [engLabel setFont:[UIFont systemFontOfSize:13]];
+//    
+//    UILabel * chineseLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT * 0.03, SCREEN_WIDTH, SCREEN_HEIGHT * 0.03)];
+//    [self.view addSubview:chineseLabel];
+//    chineseLabel.text = @"- 花の旋律 -";
+//    chineseLabel.textAlignment = 1;
+//    [chineseLabel setTextColor:[UIColor blackColor]];
+//    [chineseLabel setFont:[UIFont systemFontOfSize:13]];
+//    [_xlhView addSubview:engLabel];
+//    [_xlhView addSubview:chineseLabel];
+//    
+//}
 
 -(void)initTableView
 {
-    _tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 210, Kwidth,400)];
+    _tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 210, Kwidth,KHeight-210-49)];
     [self.view addSubview: _tableV];
     _tableV.delegate = self;
     _tableV.dataSource = self;
     _tableV.showsVerticalScrollIndicator = NO;
     _tableV.separatorStyle = UITableViewCellAccessoryNone;
     _tableV.scrollEnabled = NO;
+//    _tableV.tableFooterView = _xlhView;
     
 
 }
@@ -222,7 +222,7 @@
     }
     cell.detailTextLabel.text = _Content[indexPath.section];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
+    
     return cell;
 }
 
