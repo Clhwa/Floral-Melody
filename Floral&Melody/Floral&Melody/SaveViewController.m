@@ -117,20 +117,35 @@
     for (JJTableViewCell *cell in self.deleteArr) {
     NSIndexPath *indexPath = [self.tableV indexPathForCell:cell];
         NSLog(@"%@",cell.titleLabel.text);
+        //从数据库中删除
+        [self deleteFromSqlWithIndex:indexPath.row];
+        //从数组删除
         [[_BigArrayS objectAtIndex:_flag]removeObjectAtIndex:indexPath.row];
         [self.tableV deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        //从数据库中删除
         
     }
     [self.deleteArr removeAllObjects];
 
 }
 #pragma mark-从数据库中删除
--(void)deleteFromSql
+-(void)deleteFromSqlWithIndex:(NSInteger)index
 {
     if (_flag == 2) {
         //百科
-//        [[DataBaseUtil shareDataBase]deleteObjectWithTableName:@"baike" withTextName:@"url" withValue:_list.url];//获取model
+        ListContent *list = [[_BigArrayS objectAtIndex:_flag]objectAtIndex:index];
+        [[DataBaseUtil shareDataBase]deleteObjectWithTableName:@"baike" withTextName:@"url" withValue:list.url];//获取model
+    }else if (_flag == 0){
+        //文章
+        XLHSpecialModal *model = [[_BigArrayS objectAtIndex:_flag]objectAtIndex:index];
+        [[DataBaseUtil shareDataBase]deleteObjectWithTableName:@"article" withTextName:@"pageUrl" withValue:model.pageUrl];
+    }else if (_flag == 1){
+        //视频
+        XLHSpecialModal *model = [[_BigArrayS objectAtIndex:_flag]objectAtIndex:index];
+        [[DataBaseUtil shareDataBase] deleteObjectWithTableName:@"video" withTextName:@"videoUrl" withValue:model.videoUrl];
+    }else if (_flag == 3){
+        //电台
+        RadioListModel *radio = [[_BigArrayS objectAtIndex:_flag]objectAtIndex:index];
+        [[DataBaseUtil shareDataBase] deleteObjectWithTableName:@"RadioSave" withTextName:@"musicUrl" withValue:radio.musicUrl];
     }
 
 }
