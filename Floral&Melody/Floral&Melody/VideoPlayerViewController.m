@@ -72,7 +72,7 @@
 
 //当前viewcontroller是否支持转屏
 - (BOOL)shouldAutorotate{
-    return YES;
+    return NO;
 }
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
     if ([NSStringFromClass([[[window subviews]lastObject] class]) isEqualToString:@"UITransitionView"]) {

@@ -34,6 +34,7 @@
     XLHSpecialViewController * Specialxlh = [[XLHSpecialViewController alloc] init];
     
     UINavigationController * SpecialNav = [[UINavigationController alloc] initWithRootViewController:Specialxlh];
+    SpecialNav.tabBarItem.image = [UIImage imageNamed:@"专题"];
     
     SpecialNav.tabBarItem.title = @"专题";
     
@@ -44,6 +45,7 @@
     UINavigationController * FindNav = [[UINavigationController alloc] initWithRootViewController:FindVC];
 
     FindNav.tabBarItem.title = @"百科";
+    FindNav.tabBarItem.image = [UIImage imageNamed:@"百科"];
     
 #pragma mark - JMRadio
     RadioViewController * JMVC = [[RadioViewController alloc] init];
@@ -51,6 +53,7 @@
     UINavigationController * JMNav = [[UINavigationController alloc] initWithRootViewController:JMVC];
     
     JMNav.tabBarItem.title = @"电台";
+    JMNav.tabBarItem.image = [UIImage imageNamed:@"电台"];
 
 #pragma mark - Mine
     XLHMineViewController * mine = [[XLHMineViewController alloc] init];
@@ -58,7 +61,7 @@
     UINavigationController * mineNav = [[UINavigationController alloc] initWithRootViewController:mine];
     
     mineNav.tabBarItem.title = @"我的";
-    
+    mineNav.tabBarItem.image = [UIImage imageNamed:@"我的"];
     
     
 #pragma mark - tabbarController

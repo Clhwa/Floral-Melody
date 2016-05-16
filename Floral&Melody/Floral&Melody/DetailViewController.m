@@ -53,8 +53,28 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addLeftButton) name:@"kAddLeftButton" object:nil];
     
     // Do any additional setup after loading the view.
+    [self creatBackButton];
 
 }
+
+-(void)creatBackButton
+{
+    
+    //返回按钮
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton.frame = CGRectMake(20, 25, 23, 23);
+    [backButton setImage:[UIImage imageNamed:@"com_taobao_tae_sdk_web_view_title_bar_back.9"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(jumpBackJM) forControlEvents:UIControlEventTouchDown];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    
+}
+//返回按钮的方法
+-(void)jumpBackJM
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 
 #pragma mark-present添加返回按钮
 -(void)addLeftButton
