@@ -17,7 +17,9 @@
 #define WIDTH self.view.frame.size.width
 #define HEIGHT self.view.frame.size.height
 @interface DetailViewController ()<UIScrollViewDelegate,UIWebViewDelegate>
-
+{
+    UIButton *backButton;
+}
 @property(nonatomic,strong)UIWebView *web;
 //@property(nonatomic,strong)UIActivityIndicatorView *act;
 @property(nonatomic,strong)UIButton *collectView;
@@ -61,7 +63,7 @@
 {
     
     //返回按钮
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     backButton.frame = CGRectMake(20, 25, 23, 23);
     [backButton setImage:[UIImage imageNamed:@"com_taobao_tae_sdk_web_view_title_bar_back.9"] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(jumpBackJM) forControlEvents:UIControlEventTouchDown];
@@ -79,12 +81,13 @@
 #pragma mark-present添加返回按钮
 -(void)addLeftButton
 {
-    //返回按钮
-    UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
-    back.frame = CGRectMake(20, 25, 20, 20);
-    [back setImage:[UIImage imageNamed:@"com_taobao_tae_sdk_web_view_title_bar_back.9"] forState:UIControlStateNormal];
-    [back addTarget:self action:@selector(jumpBack) forControlEvents:UIControlEventTouchDown];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:back];
+//    //返回按钮
+//    UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
+//    back.frame = CGRectMake(20, 25, 20, 20);
+//    [back setImage:[UIImage imageNamed:@"com_taobao_tae_sdk_web_view_title_bar_back.9"] forState:UIControlStateNormal];
+//    [back addTarget:self action:@selector(jumpBack) forControlEvents:UIControlEventTouchDown];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:back];
+    [backButton addTarget:self action:@selector(jumpBack) forControlEvents:UIControlEventTouchUpInside];
 }
 -(void)jumpBack
 {
