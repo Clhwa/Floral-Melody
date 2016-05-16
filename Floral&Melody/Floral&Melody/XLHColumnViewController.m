@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    NSLog(@"%@",_xlh.pageUrl);
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.webView = [[WKWebView alloc]initWithFrame:self.view.bounds];
