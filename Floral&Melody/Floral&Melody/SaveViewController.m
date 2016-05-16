@@ -225,7 +225,7 @@
     [self.view addSubview:la];
     la.numberOfLines = 2;
     la.textAlignment = NSTextAlignmentCenter;
-    la.text = @"亲,你的收藏夹还没有内容哦!赶快去收藏吧!!";
+    la.text = @"您的收藏夹空空如也，快去挑选您喜欢的栏目吧~";
 
 
 }

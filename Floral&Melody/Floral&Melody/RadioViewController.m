@@ -94,7 +94,9 @@
     if (_dataArray.count>0) {
         cell.textLabel.text = [[self.dataArray objectAtIndex:indexPath.item] title];
         cell.detailTextLabel.text = [[self.dataArray objectAtIndex:indexPath.item] desc];
-        [cell.backgroundImageView sd_setImageWithURL:[NSURL URLWithString:[[self.dataArray objectAtIndex:indexPath.item] coverimg]]];
+       [cell.backgroundImageView sd_setImageWithURL:[NSURL URLWithString:[[self.dataArray objectAtIndex:indexPath.item] coverimg]]];
+    
+        
         //    NSLog(@"%@",[[self.dataArray objectAtIndex:indexPath.item] title]);
     }
     

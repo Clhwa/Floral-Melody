@@ -105,7 +105,7 @@ const CGFloat RPSlidingMenuFeaturedImageCoverAlpha = 0.1f;
     [self.contentView insertSubview:self.imageCover atIndex:1];
     
     
-#warning 添加渐变
+#pragma -mark layer
         self.mylayer = [CAGradientLayer layer];
     
         //设置颜色渐变的方向
@@ -148,7 +148,7 @@ const CGFloat RPSlidingMenuFeaturedImageCoverAlpha = 0.1f;
     // scale title as it collapses but keep origin x the same and the y location proportional to view height.  Also fade in alpha
     self.textLabel.transform = CGAffineTransformMakeScale(scaleAndAlpha, scaleAndAlpha);
 //    self.textLabel.center = self.contentView.center;
-#warning --改了textLabel的大小
+//textLabel的大小
     self.textLabel.center = CGPointMake(self.contentView.center.x, self.contentView.center.y+60);
 
     // keep detail just under text label

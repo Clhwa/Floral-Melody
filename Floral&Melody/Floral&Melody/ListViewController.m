@@ -194,7 +194,7 @@ static const float kItemSpace = -20.f;
    ListContent *content = _dataArr[indexPath.row];
     [cell.act startAnimating];
     //开始加载
-    [cell.imageV sd_setImageWithURL:[NSURL URLWithString:content.ImageUrl] placeholderImage:[UIImage imageNamed:@"hua3"] options:SDWebImageProgressiveDownload completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [cell.imageV sd_setImageWithURL:[NSURL URLWithString:content.ImageUrl] placeholderImage:[UIImage imageNamed:@"占位花"] options:SDWebImageProgressiveDownload completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         [cell.act stopAnimating];
     }];
 

@@ -135,7 +135,7 @@
     engLabel.textAlignment = 1;
     [engLabel setTextColor:[UIColor blackColor]];
     [engLabel setFont:[UIFont systemFontOfSize:13]];
-    
+
     UILabel * chineseLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT * 0.88, SCREEN_WIDTH, SCREEN_HEIGHT * 0.03)];
     [self.view addSubview:chineseLabel];
     chineseLabel.text = @"- 花の旋律 -";
