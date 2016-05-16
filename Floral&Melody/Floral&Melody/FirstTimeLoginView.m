@@ -7,7 +7,8 @@
 //
 
 #import "FirstTimeLoginView.h"
-
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+#define HEIGHT [UIScreen mainScreen].bounds.size.height
 @interface FirstTimeLoginView ()
 @property(nonatomic,strong)UIButton *button;
 @property(nonatomic,strong)UIScrollView *scroll;
@@ -68,16 +69,15 @@
             [_page addTarget:self action:@selector(touchPage:) forControlEvents:UIControlEventValueChanged];
             
             //按钮
-    _button.frame = CGRectMake(0, HEIGHT*0.8, 120, 40);
+    _button.frame = CGRectMake(0, HEIGHT*0.6, 120, 40);
     _button.center = CGPointMake(WIDTH/2, _button.center.y);
     
     [_button setTitle:@"进入应用" forState:UIControlStateNormal];
-            _button.backgroundColor = [UIColor cyanColor];
-            _button.layer.cornerRadius = 7;
+               _button.layer.cornerRadius = 7;
             _button.layer.masksToBounds = YES;
     [_button addTarget:self action:@selector(flagFirstLogin) forControlEvents:UIControlEventTouchUpInside];
     
-//            _button.showsTouchWhenHighlighted = YES;
+
  
 }
 -(void)flagFirstLogin
