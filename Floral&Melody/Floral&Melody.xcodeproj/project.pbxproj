@@ -13,7 +13,6 @@
 		3F046F501CE4CF9000E51167 /* xiangyou.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F046F4F1CE4CF9000E51167 /* xiangyou.png */; settings = {ASSET_TAGS = (); }; };
 		3F0EF1D11CE560310081E150 /* saveWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0EF1D01CE560310081E150 /* saveWhite.png */; settings = {ASSET_TAGS = (); }; };
 		3F0EF1D31CE562190081E150 /* save_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0EF1D21CE562190081E150 /* save_2.png */; settings = {ASSET_TAGS = (); }; };
-		3F0EF1D61CE5B2370081E150 /* JJView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0EF1D51CE5B2370081E150 /* JJView.m */; settings = {ASSET_TAGS = (); }; };
 		3F0EF1D81CE5C8540081E150 /* qidong_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0EF1D71CE5C8540081E150 /* qidong_1.png */; settings = {ASSET_TAGS = (); }; };
 		3F1E78F31CDC495600837839 /* 冬青黑体.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3F1E78F21CDC495600837839 /* 冬青黑体.otf */; settings = {ASSET_TAGS = (); }; };
 		3F1E78F61CDC8AA800837839 /* XLHTOPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E78F51CDC8AA800837839 /* XLHTOPViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -67,7 +66,6 @@
 		3F4894A21CE20764004BF8DB /* RPSlidingMenuLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4894A01CE20764004BF8DB /* RPSlidingMenuLayout.m */; settings = {ASSET_TAGS = (); }; };
 		3F4894A91CE20770004BF8DB /* RadioListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4894A41CE20770004BF8DB /* RadioListModel.m */; settings = {ASSET_TAGS = (); }; };
 		3F4894AA1CE20770004BF8DB /* RadioModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4894A61CE20770004BF8DB /* RadioModel.m */; settings = {ASSET_TAGS = (); }; };
-		3F4894AB1CE20770004BF8DB /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4894A81CE20770004BF8DB /* Author.m */; settings = {ASSET_TAGS = (); }; };
 		3F4894AE1CE20787004BF8DB /* JJPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4894AD1CE20787004BF8DB /* JJPlayer.m */; settings = {ASSET_TAGS = (); }; };
 		3F4894B21CE209FB004BF8DB /* XLHMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4894B11CE209FB004BF8DB /* XLHMineViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3F5487421CE9760800B9C867 /* three-t.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F54873E1CE9760800B9C867 /* three-t.png */; settings = {ASSET_TAGS = (); }; };
@@ -220,8 +218,6 @@
 		3F046F4F1CE4CF9000E51167 /* xiangyou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiangyou.png; sourceTree = "<group>"; };
 		3F0EF1D01CE560310081E150 /* saveWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saveWhite.png; sourceTree = "<group>"; };
 		3F0EF1D21CE562190081E150 /* save_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_2.png; sourceTree = "<group>"; };
-		3F0EF1D41CE5B2370081E150 /* JJView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJView.h; sourceTree = "<group>"; };
-		3F0EF1D51CE5B2370081E150 /* JJView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJView.m; sourceTree = "<group>"; };
 		3F0EF1D71CE5C8540081E150 /* qidong_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qidong_1.png; sourceTree = "<group>"; };
 		3F1E78F21CDC495600837839 /* 冬青黑体.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "冬青黑体.otf"; sourceTree = "<group>"; };
 		3F1E78F41CDC8AA800837839 /* XLHTOPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLHTOPViewController.h; sourceTree = "<group>"; };
@@ -311,8 +307,6 @@
 		3F4894A41CE20770004BF8DB /* RadioListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioListModel.m; sourceTree = "<group>"; };
 		3F4894A51CE20770004BF8DB /* RadioModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioModel.h; sourceTree = "<group>"; };
 		3F4894A61CE20770004BF8DB /* RadioModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioModel.m; sourceTree = "<group>"; };
-		3F4894A71CE20770004BF8DB /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Author.h; sourceTree = "<group>"; };
-		3F4894A81CE20770004BF8DB /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Author.m; sourceTree = "<group>"; };
 		3F4894AC1CE20787004BF8DB /* JJPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJPlayer.h; sourceTree = "<group>"; };
 		3F4894AD1CE20787004BF8DB /* JJPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJPlayer.m; sourceTree = "<group>"; };
 		3F4894B01CE209FB004BF8DB /* XLHMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLHMineViewController.h; sourceTree = "<group>"; };
@@ -570,8 +564,6 @@
 				3F046F4D1CE4AFB700E51167 /* JJTableViewCell.m */,
 				3FA77E3B1CE35235006949DA /* JJCollectionViewCell.h */,
 				3FA77E3C1CE35235006949DA /* JJCollectionViewCell.m */,
-				3F0EF1D41CE5B2370081E150 /* JJView.h */,
-				3F0EF1D51CE5B2370081E150 /* JJView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -812,8 +804,6 @@
 				3F4894A41CE20770004BF8DB /* RadioListModel.m */,
 				3F4894A51CE20770004BF8DB /* RadioModel.h */,
 				3F4894A61CE20770004BF8DB /* RadioModel.m */,
-				3F4894A71CE20770004BF8DB /* Author.h */,
-				3F4894A81CE20770004BF8DB /* Author.m */,
 			);
 			name = RadioModal;
 			sourceTree = "<group>";
@@ -1640,11 +1630,9 @@
 				3FD317781CE3624800056CA1 /* BFTitleButton.m in Sources */,
 				3FC20E501CDB6B1A002E8EF9 /* SDWebImageCompat.m in Sources */,
 				3F046F461CE4377200E51167 /* SaveViewController.m in Sources */,
-				3F0EF1D61CE5B2370081E150 /* JJView.m in Sources */,
 				3F4894A21CE20764004BF8DB /* RPSlidingMenuLayout.m in Sources */,
 				3F4894571CE1FB8F004BF8DB /* StickCollectionViewFlowLayout.m in Sources */,
 				3F947B031CD8C9A300111559 /* MJRefreshAutoNormalFooter.m in Sources */,
-				3F4894AB1CE20770004BF8DB /* Author.m in Sources */,
 				3FC20E1B1CDB3EDB002E8EF9 /* UIProgressView+AFNetworking.m in Sources */,
 				3F947B071CD8C9A300111559 /* MJRefreshBackStateFooter.m in Sources */,
 				3F947AB81CD8BDBF00111559 /* XLHBaseView.m in Sources */,
@@ -1850,7 +1838,11 @@
 				GCC_PREFIX_HEADER = "Floral&Melody/PrefixHeader.h";
 				INFOPLIST_FILE = "Floral&Melody/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+
 				PRODUCT_BUNDLE_IDENTIFIER = com.floralmelody;
+
+				PRODUCT_BUNDLE_IDENTIFIER = graduatiokokofloral;
+
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = "-Wno-deprecated-declarations";
@@ -1868,7 +1860,11 @@
 				GCC_PREFIX_HEADER = "Floral&Melody/PrefixHeader.h";
 				INFOPLIST_FILE = "Floral&Melody/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+
 				PRODUCT_BUNDLE_IDENTIFIER = com.floralmelody;
+
+				PRODUCT_BUNDLE_IDENTIFIER = graduatiokokofloral;
+
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = "-Wno-deprecated-declarations";

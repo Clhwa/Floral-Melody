@@ -11,11 +11,6 @@
 @implementation RadioModel
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
-    
-    if ([key isEqualToString:@"userinfo"]) {
-        self.dic = value;
-        [self.author setValuesForKeysWithDictionary:self.dic];
-    }
 }
 
 @end

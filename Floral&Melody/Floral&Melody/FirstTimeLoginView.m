@@ -7,7 +7,8 @@
 //
 
 #import "FirstTimeLoginView.h"
-
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+#define HEIGHT [UIScreen mainScreen].bounds.size.height
 @interface FirstTimeLoginView ()
 @property(nonatomic,strong)UIButton *button;
 @property(nonatomic,strong)UIScrollView *scroll;
