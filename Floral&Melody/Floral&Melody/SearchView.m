@@ -88,15 +88,15 @@
     //记录参数
     fromValue = (__bridge id _Nullable)(fromBezierPath.CGPath);
     toValue = (__bridge id _Nullable)(toBezierPath.CGPath);
-    
+    [self insertSubview:self.tf belowSubview:_imageV];
 }
 #pragma mark-动画出现
 -(void)appearOrNot
 {
     //判断是否已添加tf
-    if (![self.subviews containsObject:self.tf]) {
-        [self insertSubview:self.tf belowSubview:_imageV];
-    }
+//    if (![self.subviews containsObject:self.tf]) {
+//        [self insertSubview:self.tf belowSubview:_imageV];
+//    }
 
     
     if (_isAppear) {
